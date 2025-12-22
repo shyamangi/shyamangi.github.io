@@ -51,7 +51,8 @@
             -webkit-backdrop-filter: blur(10px);
         }
 
-        /* --- NEW ANIMATION STYLES --- */
+        /* --- SCROLL ANIMATION STYLES (Only for Hero section on load) --- */
+        /* Define the base animation: fade in and slide up */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -63,16 +64,11 @@
             }
         }
 
+        /* Class applied by JS when element enters viewport */
         .animate-fade-up {
             animation: fadeInUp 0.8s ease-out forwards;
             opacity: 0; /* Hidden by default until animation runs */
         }
-        
-        /* Staggered delays for different elements */
-        .delay-100 { animation-delay: 0.1s; }
-        .delay-300 { animation-delay: 0.3s; }
-        .delay-500 { animation-delay: 0.5s; }
-        .delay-700 { animation-delay: 0.7s; }
 
         /* Ensure smooth horizontal scrolling and hides scrollbar for aesthetic */
         .overflow-x-scroll-hidden::-webkit-scrollbar {
@@ -92,7 +88,7 @@
             <div class="flex justify-between items-center h-16">
                 <!-- Logo/Brand Name (Muted Black/Dark Gray) -->
                 <a href="#" class="flex items-center space-x-2">
-                    <span class="text-xl font-bold text-apple-blue tracking-wider animate-fade-up">Shyamangi</span>
+                    <span class="text-xl font-bold text-apple-blue tracking-wider">Shyamangi</span>
                 </a>
                 
                 <!-- Desktop Navigation (Muted Black/Gray) -->
@@ -134,37 +130,34 @@
     </header>
 
     <!-- Hero Section (Minimal, High-Impact Typography) -->
-    <section class="bg-white pt-28 pb-40 sm:pt-44 sm:pb-60" id="program">
+    <section class="bg-white pt-20 pb-28 sm:pt-28 sm:pb-40" id="program">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Eyebrow (Subtle, uppercase, wide tracking) -->
-            <span class="text-sm font-medium text-gray-500 mb-6 inline-block tracking-widest uppercase animate-fade-up delay-100">
+            <!-- Eyebrow (Delay 100ms) -->
+            <span class="text-sm font-medium text-gray-500 mb-6 inline-block tracking-widest uppercase" data-animate-target data-delay="100">
                 CFRM Professional Certificate
             </span>
 
-            <!-- Headline (Massive, precise weight) -->
-            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold hero-text-style leading-none mb-8 max-w-6xl mx-auto animate-fade-up delay-300">
+            <!-- Headline (Delay 300ms) -->
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold hero-text-style leading-none mb-8 max-w-6xl mx-auto" data-animate-target data-delay="300">
                 Launch Your <span class="text-apple-blue font-bold">BFSI</span> Career, Certified.
             </h1>
 
-            <!-- Subtitle (Clean and readable) -->
-            <p class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 font-light tracking-wide animate-fade-up delay-500">
+            <!-- Subtitle (Delay 500ms) -->
+            <p class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 font-light tracking-wide" data-animate-target data-delay="500">
                 Certified, Compliant, and Job-Ready in 9 Weeks. Master the essential skills demanded by Jaipur's top financial institutions.
             </p>
 
-            <!-- CTA Buttons (Apple Style: Pill-shaped, Primary filled, Secondary ghost) -->
-            <div class="flex justify-center space-x-4 sm:space-x-6 animate-fade-up delay-700">
-                <!-- Primary Action (Apple Blue Button, Fully Rounded) -->
-                <a href="#" class="px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover">
-                    Download Syllabus
-                </a>
-                <!-- Secondary Action (Ghost/Outline Button) -->
-                <a href="#pillars" class="px-8 py-3.5 bg-transparent text-apple-blue font-semibold text-lg rounded-full ring-1 ring-apple-blue hover:bg-blue-50 transition duration-300">
+            <!-- CTA Buttons (Delay 700ms) -->
+            <div class="flex justify-center space-x-4 sm:space-x-6" data-animate-target data-delay="700">
+                <!-- Primary Action -->
+                <a href="#pillars" class="px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover">
                     Explore Details
                 </a>
+                
             </div>
 
-            <!-- Key Features / Badge Row (Minimalist Badges) -->
-            <div class="flex justify-center flex-wrap gap-3 mt-16 text-sm font-medium text-gray-600 animate-fade-up delay-700">
+            <!-- Key Features / Badge Row (Delay 900ms) -->
+            <div class="flex justify-center flex-wrap gap-3 mt-16 text-sm font-medium text-gray-600" data-animate-target data-delay="900">
                 <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">NISM Exam Prep</span>
                 <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">CRM Proficiency</span>
                 <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">KYC/AML Compliance</span>
@@ -368,6 +361,7 @@
                     <p class="text-gray-500 font-medium text-sm">Upcoming Q1 2025</p>
                 </div>
 
+                <!-- Sector 4: Tourism (Muted Grey ring) -->
                 <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">04</div>
@@ -455,7 +449,7 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Functionality -->
+    <!-- JavaScript for Functionality and Animations -->
     <script>
         // 1. Mobile Menu Toggle
         document.getElementById('mobile-menu-button').addEventListener('click', function() {
@@ -493,6 +487,44 @@
         mobileLinks.forEach(link => {
             link.addEventListener('click', function() {
                 document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+
+        // 3. Scroll-Triggered Fade-In Animation (Intersection Observer)
+        document.addEventListener('DOMContentLoaded', () => {
+            // Only target elements marked for animation (currently just the Hero section)
+            const animatedElements = document.querySelectorAll('[data-animate-target]');
+
+            const observerOptions = {
+                root: null, // viewport
+                rootMargin: '0px',
+                // Trigger when 10% of the element is visible.
+                threshold: 0.1 
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const element = entry.target;
+                        // Retrieve the custom delay from the data attribute (e.g., "300")
+                        const delay = element.getAttribute('data-delay') || '0'; 
+                        
+                        // Apply the animation delay via inline style
+                        element.style.animationDelay = `${parseInt(delay) / 1000}s`;
+                        
+                        // Apply the animation class
+                        element.classList.add('animate-fade-up');
+                        
+                        // Stop observing once the animation is triggered
+                        observer.unobserve(element);
+                    }
+                });
+            }, observerOptions);
+
+            // Start observing all targeted elements
+            animatedElements.forEach(element => {
+                observer.observe(element);
             });
         });
     </script>
