@@ -3,167 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shyamangi CFRM - Launch Your BFSI Career</title>
+    <title>Shyamangi - Certified Financial Risk Management Program</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* Optional: Custom font import and root styling */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            overflow-x: hidden;
-            background: #fbfbfd;
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFFFF; /* Pure white background */
+            color: #1D1D1F; /* Apple's dark text color */
+        }
+        
+        /* Define the Apple System Blue */
+        .apple-blue { background-color: #007AFF; }
+        .apple-blue-hover:hover { background-color: #005ce6; }
+        .text-apple-blue { color: #007AFF; }
+        
+        /* Custom styling for primary buttons and large elements */
+        .btn-primary {
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); /* Subtle blue shadow for depth */
         }
 
-        /* Navigation - Apple Style */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(251, 251, 253, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
+        /* Hero Text Style - Bold and Clean */
+        .hero-text-style {
+            color: #1D1D1F; 
         }
 
-        .nav-container {
-            max-width: 980px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 22px;
-            height: 44px;
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: 600;
-            color: #1d1d1f;
-            letter-spacing: -0.01em;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            list-style: none;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #1d1d1f;
-            font-size: 12px;
-            font-weight: 400;
-            letter-spacing: -0.01em;
-            transition: opacity 0.3s;
-            opacity: 0.8;
-        }
-
-        .nav-links a:hover {
-            opacity: 1;
-        }
-
-        .cta-btn {
-            padding: 8px 16px;
-            background: #0071e3;
-            color: white;
-            border: none;
-            border-radius: 980px;
-            font-size: 12px;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: -0.01em;
-        }
-
-        .cta-btn:hover {
-            background: #0077ed;
-        }
-
-        /* Hero Section - Apple Style */
-        .hero {
-            margin-top: 44px;
-            min-height: 100vh;
-            background: #000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
+        /* Style for the expandable FAQ content */
+        .faq-content {
+            max-height: 0;
             overflow: hidden;
+            background-color: #F9F9F9; /* Very subtle grey background for expanded content */
+            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .faq-content.active {
+            max-height: 400px;
+            padding-top: 1rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Header Glass Effect (Subtle Transparency and Blur) */
+        .glass-header {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
         }
 
-        .hero-video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 70% 50%, rgba(88, 86, 214, 0.3) 0%, transparent 50%);
-            animation: pulse 8s ease-in-out infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; transform: scale(1); }
-            50% { opacity: 0.8; transform: scale(1.05); }
-        }
-
-        .hero-content {
-            max-width: 980px;
-            margin: 0 auto;
-            padding: 0 22px;
-            color: white;
-            position: relative;
-            z-index: 1;
-            text-align: center;
-        }
-
-        .hero-eyebrow {
-            font-size: 21px;
-            font-weight: 600;
-            letter-spacing: 0.011em;
-            margin-bottom: 8px;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.2s forwards;
-        }
-
-        .hero h1 {
-            font-size: 80px;
-            font-weight: 700;
-            letter-spacing: -0.015em;
-            line-height: 1.05;
-            margin-bottom: 24px;
-            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.8) 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.4s forwards;
-        }
-
-        .hero-subtitle {
-            font-size: 28px;
-            font-weight: 400;
-            letter-spacing: 0.007em;
-            line-height: 1.14286;
-            margin-bottom: 24px;
-            opacity: 0.9;
-            max-width: 740px;
-            margin-left: auto;
-            margin-right: auto;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.6s forwards;
-        }
-
+        /* --- NEW ANIMATION STYLES --- */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -171,703 +63,427 @@
             }
         }
 
-        .hero-cta {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.8s forwards;
-        }
-
-        .primary-btn {
-            padding: 12px 22px;
-            background: #0071e3;
-            color: white;
-            border: none;
-            border-radius: 980px;
-            font-size: 17px;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: -0.022em;
-        }
-
-        .primary-btn:hover {
-            background: #0077ed;
-        }
-
-        .secondary-btn {
-            padding: 12px 22px;
-            background: transparent;
-            color: #2997ff;
-            border: 1px solid #2997ff;
-            border-radius: 980px;
-            font-size: 17px;
-            font-weight: 400;
-            cursor: pointer;
-            transition: all 0.3s;
-            letter-spacing: -0.022em;
-        }
-
-        .secondary-btn:hover {
-            background: #2997ff;
-            color: white;
-        }
-
-        .skills-badges {
-            display: flex;
-            gap: 24px;
-            margin-top: 48px;
-            justify-content: center;
-            flex-wrap: wrap;
-            opacity: 0;
-            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 1s forwards;
-        }
-
-        .badge {
-            font-size: 14px;
-            font-weight: 500;
-            letter-spacing: -0.016em;
-            opacity: 0.8;
-        }
-
-        /* Section Styles - Apple Minimalism */
-        section {
-            padding: 100px 22px;
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .section-eyebrow {
-            font-size: 21px;
-            font-weight: 600;
-            letter-spacing: 0.011em;
-            text-align: center;
-            margin-bottom: 8px;
-            color: #6e6e73;
-        }
-
-        h2 {
-            font-size: 56px;
-            font-weight: 700;
-            letter-spacing: -0.005em;
-            text-align: center;
-            margin-bottom: 16px;
-            color: #1d1d1f;
-            line-height: 1.07143;
-        }
-
-        .section-subtitle {
-            font-size: 24px;
-            font-weight: 400;
-            letter-spacing: 0.009em;
-            text-align: center;
-            color: #6e6e73;
-            margin-bottom: 60px;
-            line-height: 1.16667;
-        }
-
-        /* Feature Cards - Apple Style */
-        .difference-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 12px;
-            margin-top: 60px;
-        }
-
-        .difference-card {
-            background: white;
-            padding: 48px 32px;
-            border-radius: 18px;
-            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .difference-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-        }
-
-        .card-icon {
-            font-size: 48px;
-            margin-bottom: 20px;
-        }
-
-        .difference-card h3 {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 0.009em;
-            margin-bottom: 12px;
-            color: #1d1d1f;
-        }
-
-        .difference-card p {
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-        }
-
-        /* Timeline - Minimal Apple Style */
-        .timeline {
-            margin-top: 60px;
-        }
-
-        .timeline-item {
-            background: white;
-            padding: 40px;
-            margin: 12px 0;
-            border-radius: 18px;
-            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            cursor: pointer;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .timeline-item:hover {
-            transform: translateX(8px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-        }
-
-        .timeline-item h3 {
-            font-size: 24px;
-            font-weight: 600;
-            letter-spacing: 0.009em;
-            color: #1d1d1f;
-            margin-bottom: 8px;
-        }
-
-        .timeline-content {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-        }
-
-        .timeline-item.active .timeline-content {
-            max-height: 200px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid rgba(0, 0, 0, 0.08);
-        }
-
-        /* Instructor Section - Apple Product Style */
-        .instructor-section {
-            background: #f5f5f7;
-            padding: 100px 22px;
-            margin: 60px 0;
-        }
-
-        .instructor {
-            max-width: 980px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            align-items: center;
-        }
-
-        .instructor-image {
-            width: 100%;
-            aspect-ratio: 1;
-            border-radius: 18px;
-            background: linear-gradient(135deg, #0071e3 0%, #5856d6 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 120px;
-            color: white;
-            font-weight: 300;
-        }
-
-        .instructor-info h3 {
-            font-size: 40px;
-            font-weight: 700;
-            letter-spacing: -0.005em;
-            color: #1d1d1f;
-            margin-bottom: 8px;
-        }
-
-        .instructor-info h4 {
-            font-size: 21px;
-            font-weight: 400;
-            letter-spacing: 0.011em;
-            color: #6e6e73;
-            margin-bottom: 32px;
-        }
-
-        .instructor-info ul {
-            list-style: none;
-        }
-
-        .instructor-info li {
-            padding: 12px 0;
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
-            color: #1d1d1f;
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-        }
-
-        .instructor-info li:before {
-            content: '✓';
-            color: #0071e3;
-            font-weight: 600;
-            font-size: 20px;
-            flex-shrink: 0;
-        }
-
-        /* Pillars Grid - Apple Product Grid */
-        .pillars-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-            margin-top: 60px;
-        }
-
-        .pillar-card {
-            background: white;
-            padding: 60px 40px;
-            border-radius: 18px;
-            text-align: center;
-            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            border: 1px solid rgba(0, 0, 0, 0.04);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pillar-card:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, #0071e3 0%, #5856d6 100%);
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .pillar-card.active:before {
-            opacity: 1;
-        }
-
-        .pillar-card > * {
-            position: relative;
-            z-index: 1;
-        }
-
-        .pillar-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
-        }
-
-        .pillar-number {
-            font-size: 96px;
-            font-weight: 700;
-            opacity: 0.1;
-            margin-bottom: 16px;
-            line-height: 1;
-        }
-
-        .pillar-card.active .pillar-number {
-            color: white;
-            opacity: 0.3;
-        }
-
-        .pillar-card h3 {
-            font-size: 28px;
-            font-weight: 600;
-            letter-spacing: 0.007em;
-            margin-bottom: 12px;
-            color: #1d1d1f;
-        }
-
-        .pillar-card.active h3 {
-            color: white;
-        }
-
-        .pillar-card p {
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-        }
-
-        .pillar-card.active p {
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        .coming-soon {
-            margin-top: 20px;
-            font-size: 14px;
-            font-weight: 500;
-            color: #0071e3;
-        }
-
-        .pillar-card.active .coming-soon {
-            display: none;
-        }
-
-        .view-program {
-            margin-top: 20px;
-            display: none;
-        }
-
-        .pillar-card.active .view-program {
-            display: block;
-        }
-
-        .view-program button {
-            padding: 8px 16px;
-            background: white;
-            color: #0071e3;
-            border: none;
-            border-radius: 980px;
-            font-size: 14px;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .view-program button:hover {
-            transform: scale(1.05);
-        }
-
-        /* FAQ - Apple Clean Style */
-        .faq-item {
-            background: white;
-            margin: 12px 0;
-            border-radius: 18px;
-            overflow: hidden;
-            transition: all 0.3s;
-            border: 1px solid rgba(0, 0, 0, 0.04);
-        }
-
-        .faq-question {
-            padding: 28px 32px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 21px;
-            font-weight: 600;
-            letter-spacing: 0.011em;
-            color: #1d1d1f;
-        }
-
-        .faq-question:hover {
-            background: #fbfbfd;
-        }
-
-        .faq-answer {
-            padding: 0 32px;
-            max-height: 0;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
-            font-size: 17px;
-            line-height: 1.47059;
-            letter-spacing: -0.022em;
-            color: #6e6e73;
-        }
-
-        .faq-item.active .faq-answer {
-            padding: 0 32px 28px 32px;
-            max-height: 300px;
-        }
-
-        .faq-icon {
-            transition: transform 0.3s;
-            font-size: 14px;
-            opacity: 0.6;
-        }
-
-        .faq-item.active .faq-icon {
-            transform: rotate(180deg);
-        }
-
-        /* Final CTA - Apple Event Style */
-        .final-cta {
-            text-align: center;
-            background: #000;
-            color: white;
-            border-radius: 18px;
-            padding: 80px 40px;
-            margin: 60px 0;
-        }
-
-        .final-cta h2 {
-            color: white;
-            margin-bottom: 16px;
-        }
-
-        .final-cta p {
-            font-size: 24px;
-            font-weight: 400;
-            letter-spacing: 0.009em;
-            margin-bottom: 32px;
-            opacity: 0.9;
-        }
-
-        /* Footer - Apple Minimalist */
-        footer {
-            background: #f5f5f7;
-            color: #1d1d1f;
-            padding: 60px 22px 40px;
-        }
-
-        .footer-content {
-            max-width: 980px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        .footer-section h3 {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            color: #1d1d1f;
-            margin-bottom: 16px;
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links a {
-            color: #6e6e73;
-            text-decoration: none;
-            display: block;
-            padding: 6px 0;
-            font-size: 12px;
-            transition: color 0.3s;
-        }
-
-        .footer-links a:hover {
-            color: #1d1d1f;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            padding-top: 20px;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-            font-size: 12px;
-            color: #6e6e73;
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .hero h1 {
-                font-size: 56px;
-            }
-
-            h2 {
-                font-size: 40px;
-            }
-
-            .difference-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .instructor {
-                grid-template-columns: 1fr;
-            }
-
-            .pillars-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .footer-content {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 40px;
-            }
-
-            .hero-subtitle {
-                font-size: 21px;
-            }
-
-            .nav-links {
-                display: none;
-            }
-
-            section {
-                padding: 60px 22px;
-            }
-        }
+        .animate-fade-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+            opacity: 0; /* Hidden by default until animation runs */
+        }
+        
+        /* Staggered delays for different elements */
+        .delay-100 { animation-delay: 0.1s; }
+        .delay-300 { animation-delay: 0.3s; }
+        .delay-500 { animation-delay: 0.5s; }
+        .delay-700 { animation-delay: 0.7s; }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="nav-container">
-            <div class="logo">Shyamangi</div>
-            <ul class="nav-links">
-                <li><a href="#program">Program</a></li>
-                <li><a href="#pillars">Pillars</a></li>
-                <li><a href="#instructor">Instructor</a></li>
-                <li><a href="#faq">FAQ</a></li>
-            </ul>
-            <button class="cta-btn" onclick="scrollToEnroll()">Enroll</button>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-video-bg"></div>
-        <div class="hero-content">
-            <div class="hero-eyebrow">CFRM Program</div>
-            <h1>Launch Your<br>BFSI Career</h1>
-            <p class="hero-subtitle">Certified, Compliant, and Job-Ready in 9 Weeks.<br>Master the skills Jaipur's top banks demand.</p>
-            <div class="hero-cta">
-                <button class="primary-btn">Download Syllabus</button>
-                <button class="secondary-btn">Learn More</button>
-            </div>
-            <div class="skills-badges">
-                <div class="badge">NISM Prep</div>
-                <div class="badge">CRM Mastery</div>
-                <div class="badge">KYC/AML Compliance</div>
-            </div>
-        </div>
-    </section>
+    <!-- Header & Navigation (Clean White, Floating Glass Effect) -->
+    <header class="sticky top-0 z-50 glass-header shadow-sm border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo/Brand Name (Muted Black/Dark Gray) -->
+                <a href="#" class="flex items-center space-x-2">
+                    <span class="text-xl font-bold text-apple-blue tracking-wider animate-fade-up">Shyamangi</span>
+                </a>
+                
+                <!-- Desktop Navigation (Muted Black/Gray) -->
+                <nav class="hidden lg:flex space-x-8 text-sm font-medium">
+                    <a href="#program" class="text-gray-600 hover:text-apple-blue transition duration-150">Program</a>
+                    <a href="#pillars" class="text-gray-600 hover:text-apple-blue transition duration-150">Pillars</a>
+                    <a href="#instructor" class="text-gray-600 hover:text-apple-blue transition duration-150">Instructor</a>
+                    <a href="#curriculum" class="text-gray-600 hover:text-apple-blue transition duration-150">Curriculum</a>
+                    <a href="#faq" class="text-gray-600 hover:text-apple-blue transition duration-150">FAQ</a>
+                </nav>
 
-    <!-- Difference Section -->
-    <section id="program">
-        <div class="section-eyebrow">Why CFRM</div>
-        <h2>The Shyamangi<br>Difference</h2>
-        <p class="section-subtitle">Three pillars that set you apart in the BFSI industry</p>
-        <div class="difference-grid">
-            <div class="difference-card">
-                <div class="card-icon">🛡️</div>
-                <h3>Regulatory Edge</h3>
-                <p>Practical KYC/AML training in Customer Due Diligence and Red Flag Indicators—the mandatory skills banks audit and hire for.</p>
-            </div>
-            <div class="difference-card">
-                <div class="card-icon">💻</div>
-                <h3>CRM Proficiency</h3>
-                <p>Hands-on practice in Zoho and HubSpot. Submit a verified Pipeline Forecast Report as proof of digital literacy.</p>
-            </div>
-            <div class="difference-card">
-                <div class="card-icon">🤝</div>
-                <h3>Interview Ready</h3>
-                <p>NISM V-A crash course and recorded mock interviews focused on questions that matter to Jaipur HR.</p>
-            </div>
-        </div>
-    </section>
-
-
-    <!-- Instructor Section -->
-    <div class="instructor-section" id="instructor">
-        <div class="instructor">
-            <div class="instructor-image">AS</div>
-            <div class="instructor-info">
-                <h3>Ankita Sharma</h3>
-                <h4>18+ Years in Banking</h4>
-                <ul>
-                    <li>Former Branch Manager & Compliance Head at ICICI Bank, Jaipur</li>
-                    <li>Certified over 50 Relationship Managers across Rajasthan</li>
-                    <li>Designed curriculum based on current HR requirements</li>
-                    <li>Direct network becomes your interview pipeline</li>
-                </ul>
-            </div>
-        </div>
-    </div>
-
-    <!-- Pillars Section -->
-    <section id="pillars">
-        <div class="section-eyebrow">Our Vision</div>
-        <h2>Mastering India's<br>Growth Sectors</h2>
-        <p class="section-subtitle">Skillshare for high-demand professional careers</p>
-        <div class="pillars-grid">
-            <div class="pillar-card active">
-                <div class="pillar-number">01</div>
-                <h3>BFSI</h3>
-                <p>Banking, Financial Services, and Insurance</p>
-                <div class="view-program">
-                    <button>View CFRM Program</button>
+                <!-- CTA Button (Apple Blue, Fully Rounded, Clean) -->
+                <div class="hidden lg:block">
+                    <a href="#enroll" class="px-5 py-2 rounded-full text-sm btn-primary apple-blue text-white apple-blue-hover">
+                        Enroll Now
+                    </a>
                 </div>
+
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button class="lg:hidden p-2 text-gray-600 hover:text-apple-blue" id="mobile-menu-button">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
             </div>
-            <div class="pillar-card">
-                <div class="pillar-number">02</div>
-                <h3>IT & Tech Sales</h3>
-                <p>Presales, Inside Sales, Customer Success</p>
-                <div class="coming-soon">Coming Q4 2024</div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div class="lg:hidden bg-white hidden border-t border-gray-100" id="mobile-menu">
+            <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+                <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Program</a>
+                <a href="#pillars" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Pillars</a>
+                <a href="#instructor" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Instructor</a>
+                <a href="#curriculum" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Curriculum</a>
+                <a href="#faq" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
+                <a href="#enroll" class="block w-full text-center px-4 py-3 mt-4 rounded-full btn-primary apple-blue text-white apple-blue-hover">
+                    Enroll
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section (Minimal, High-Impact Typography) -->
+    <section class="bg-white pt-28 pb-40 sm:pt-44 sm:pb-60" id="program">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Eyebrow (Subtle, uppercase, wide tracking) -->
+            <span class="text-sm font-medium text-gray-500 mb-6 inline-block tracking-widest uppercase animate-fade-up delay-100">
+                CFRM Professional Certificate
+            </span>
+
+            <!-- Headline (Massive, precise weight) -->
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-semibold hero-text-style leading-none mb-8 max-w-6xl mx-auto animate-fade-up delay-300">
+                Launch Your <span class="text-apple-blue font-bold">BFSI</span> Career, Certified.
+            </h1>
+
+            <!-- Subtitle (Clean and readable) -->
+            <p class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 font-light tracking-wide animate-fade-up delay-500">
+                Certified, Compliant, and Job-Ready in 9 Weeks. Master the essential skills demanded by Jaipur's top financial institutions.
+            </p>
+
+            <!-- CTA Buttons (Apple Style: Pill-shaped, Primary filled, Secondary ghost) -->
+            <div class="flex justify-center space-x-4 sm:space-x-6 animate-fade-up delay-700">
+                <!-- Primary Action (Apple Blue Button, Fully Rounded) -->
+                <a href="#" class="px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover">
+                    Download Syllabus
+                </a>
+                <!-- Secondary Action (Ghost/Outline Button) -->
+                <a href="#pillars" class="px-8 py-3.5 bg-transparent text-apple-blue font-semibold text-lg rounded-full ring-1 ring-apple-blue hover:bg-blue-50 transition duration-300">
+                    Explore Details
+                </a>
             </div>
-            <div class="pillar-card">
-                <div class="pillar-number">03</div>
-                <h3>Retail & Logistics</h3>
-                <p>Store Management, Supply Chain, Inventory</p>
-                <div class="coming-soon">Coming Q1 2025</div>
+
+            <!-- Key Features / Badge Row (Minimalist Badges) -->
+            <div class="flex justify-center flex-wrap gap-3 mt-16 text-sm font-medium text-gray-600 animate-fade-up delay-700">
+                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">NISM Exam Prep</span>
+                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">CRM Proficiency</span>
+                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">KYC/AML Compliance</span>
             </div>
-            <div class="pillar-card">
-                <div class="pillar-number">04</div>
-                <h3>Tourism</h3>
-                <p>Client Relations, Destination Sales, Booking</p>
-                <div class="coming-soon">Coming Q2 2025</div>
-            </div>
+
         </div>
     </section>
 
-    <!-- FAQ Section -->
-    <section id="faq">
-        <div class="section-eyebrow">Support</div>
-        <h2>Questions?<br>We have answers.</h2>
-        <div style="margin-top: 48px;">
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">
-                    Weekend classes only?
-                    <span class="faq-icon">▼</span>
+    <!-- Pillars Section (Clean, Subtle Cards on off-white background) -->
+    <section class="py-28 bg-[#F9F9F9]" id="pillars">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-4">The <span class="text-apple-blue">Shyamangi</span> Difference</h2>
+            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-20">
+                Three core principles driving your career acceleration.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                
+                <!-- Pillar 1: Regulatory Edge (Apple Card Style) -->
+                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-50 mb-6">
+                        <span class="text-2xl text-red-500 font-medium">🛡️</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">Regulatory Edge</h3>
+                    <p class="text-gray-700">Practical KYC/AML training in Customer Due Diligence and Red Flag Indicators—the mandatory skills banks audit and hire for.</p>
                 </div>
-                <div class="faq-answer">
-                    Yes, the CFRM program is designed for working professionals and conducted on weekends so you can continue your current commitments while upgrading your skills.
+
+                <!-- Pillar 2: CRM Proficiency (Apple Card Style) -->
+                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 mb-6">
+                        <span class="text-2xl text-apple-blue font-medium">💻</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">CRM Proficiency</h3>
+                    <p class="text-gray-700">Hands-on practice in Zoho and HubSpot. Submit a verified Pipeline Forecast Report as proof of digital literacy.</p>
                 </div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">
-                    NISM exam fee included?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    The program fee includes comprehensive NISM V-A preparation and study materials. The actual NISM exam registration fee is paid separately directly to NISM.
-                </div>
-            </div>
-            <div class="faq-item" onclick="toggleFAQ(this)">
-                <div class="faq-question">
-                    What job support is provided?
-                    <span class="faq-icon">▼</span>
-                </div>
-                <div class="faq-answer">
-                    Comprehensive placement support including resume building, mock interviews, direct introductions to hiring managers in Jaipur's BFSI sector, and access to our instructor's 18+ year network.
+
+                <!-- Pillar 3: Interview Ready (Apple Card Style) -->
+                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-50 mb-6">
+                        <span class="text-2xl text-green-600 font-medium">🤝</span>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-2">Career Readiness</h3>
+                    <p class="text-gray-700">NISM V-A crash course and recorded mock interviews focused on questions that matter to top HR departments in Jaipur.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Final CTA -->
-    <section>
-        <div class="final-cta">
-            <h2>Ready to transform<br>your career?</h2>
-            <p>Join the next cohort. Become job-ready in 9 weeks.</p>
-            <button class="primary-btn" style="background: white; color: #000;">Secure Your Seat</button>
+    <!-- Instructor Profile Section (Clean, Borderless Card) -->
+    <section class="py-28 bg-white" id="instructor">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-16">Meet Your Instructor</h2>
+            
+            <!-- Instructor Card -->
+            <div class="flex flex-col md:flex-row items-center bg-[#F9F9F9] rounded-3xl p-8 md:p-12 shadow-lg ring-1 ring-gray-100">
+                
+                <!-- Image/Initials Placeholder (Clean Circle with subtle background) -->
+                <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-16">
+                    <div class="w-36 h-36 flex items-center justify-center bg-white text-gray-800 text-6xl font-medium rounded-full ring-2 ring-apple-blue/10">
+                        AS
+                    </div>
+                </div>
+
+                <!-- Instructor Details -->
+                <div class="md:w-3/4">
+                    <h3 class="text-3xl font-bold">Ankita Sharma</h3>
+                    <p class="text-xl text-gray-600 mb-6 font-light">Lead BFSI Trainer | 18+ Years in Banking</p>
+                    
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start">
+                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </span> 
+                            <span class="font-normal">Former Branch Manager & Compliance Head at ICICI Bank, Jaipur.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </span> 
+                            <span class="font-normal">Certified over 50 Relationship Managers across Rajasthan.</span>
+                        </li>
+                        <li class="flex items-start">
+                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                            </span> 
+                            <span class="font-normal">Curriculum designed directly from current HR requirements.</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-section">
-                <h3>PROGRAM</h3>
-                <ul class
+    <!-- Curriculum Section (Horizontal & Compact Stepper) -->
+    <section class="py-28 bg-[#F9F9F9]" id="curriculum">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-4">The 9-Week Curriculum</h2>
+            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-20">
+                A focused progression from foundational compliance to career execution.
+            </p>
+
+            <!-- Horizontal Stepper (Flex container that wraps on mobile) -->
+            <div class="flex flex-col sm:flex-row justify-between items-start space-y-8 sm:space-y-0 sm:space-x-4">
+                
+                <!-- Step 1 (Now includes group-hover text color change for title and description) -->
+                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                        W1
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">BFSI Foundations</h3>
+                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Regulatory & Core Products.</p>
+                </div>
+                
+                <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
+
+                <!-- Step 3 (Now includes group-hover text color change for title and description) -->
+                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                        W3
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Digital CRM</h3>
+                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Zoho/HubSpot Practice.</p>
+                </div>
+
+                <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
+                
+                <!-- Step 7 (Now includes group-hover text color change for title and description) -->
+                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                        W7
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Advanced Sales</h3>
+                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">SPIN Selling & Clients.</p>
+                </div>
+                
+                 <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
+
+                <!-- Step 9 (Now includes group-hover text color change for title and description) -->
+                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                        W9
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Career Launch</h3>
+                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">NISM Prep & Interviews.</p>
+                </div>
+            </div>
+
+            <!-- Syllabus CTA (Minimal Ghost Button Style) -->
+            <div class="text-center mt-20">
+                <a href="#" class="inline-block px-8 py-3 bg-white text-apple-blue font-semibold rounded-full ring-1 ring-apple-blue hover:bg-blue-50 transition duration-300">
+                    View Complete Syllabus
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Vision / Growth Sectors Section (Clean Grids) -->
+    <section class="py-28 bg-white border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-4">Mastering Growth Sectors</h2>
+            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-20">
+                Where our certified professionals are in highest demand.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Sector 1: BFSI (Active - Apple Blue ring) -->
+                <div class="p-6 bg-[#F9F9F9] rounded-xl ring-1 ring-apple-blue/50 flex flex-col justify-between h-full transition duration-300 hover:ring-apple-blue">
+                    <div class="mb-6">
+                        <div class="text-5xl font-bold text-apple-blue mb-2">01</div>
+                        <h3 class="text-2xl font-semibold mb-1">BFSI</h3>
+                        <p class="text-base text-gray-600">Banking, Financial Services, and Insurance.</p>
+                    </div>
+                    <a href="#program" class="text-apple-blue font-medium text-sm flex items-center hover:underline">
+                        Current Program Focus
+                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </a>
+                </div>
+
+                <!-- Upcoming Sectors (Muted Grey ring) -->
+                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                    <div class="mb-6">
+                        <div class="text-5xl font-bold text-gray-400 mb-2">02</div>
+                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">IT & Tech Sales</h3>
+                        <p class="text-base text-gray-500">Presales, Inside Sales, Customer Success.</p>
+                    </div>
+                    <p class="text-gray-500 font-medium text-sm">Upcoming Q4 2024</p>
+                </div>
+                
+                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                    <div class="mb-6">
+                        <div class="text-5xl font-bold text-gray-400 mb-2">03</div>
+                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">Retail & Logistics</h3>
+                        <p class="text-base text-gray-500">Store Management, Supply Chain, Inventory.</p>
+                    </div>
+                    <p class="text-gray-500 font-medium text-sm">Upcoming Q1 2025</p>
+                </div>
+
+                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                    <div class="mb-6">
+                        <div class="text-5xl font-bold text-gray-400 mb-2">04</div>
+                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">Tourism</h3>
+                        <p class="text-base text-gray-500">Client Relations, Destination Sales, Booking.</p>
+                    </div>
+                    <p class="text-gray-500 font-medium text-sm">Upcoming Q2 2025</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section (Minimalist Accordion Card) -->
+    <section class="py-28 bg-[#F9F9F9]" id="faq">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-semibold text-center mb-16">Support: Frequently Asked Questions</h2>
+
+            <div class="space-y-0 bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl shadow-gray-200/50 overflow-hidden">
+                
+                <!-- FAQ Item 1 -->
+                <div class="border-b border-gray-100 last:border-b-0">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
+                        Are classes only held on weekends?
+                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="faq-content text-gray-700 px-6" id="faq1">
+                        <p>Yes, the CFRM Program is structured to offer classes exclusively on weekends (Saturday and Sunday) to accommodate working professionals and university students. Detailed timing is available in the syllabus.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 2 -->
+                <div class="border-b border-gray-100 last:border-b-0">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
+                        Is the NISM exam fee included in the program cost?
+                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="faq-content text-gray-700 px-6" id="faq2">
+                        <p>No, the official NISM certification exam fee is separate. We provide the comprehensive preparatory course and study materials, but candidates are responsible for registering and paying for the exam directly through NISM.</p>
+                    </div>
+                </div>
+
+                <!-- FAQ Item 3 -->
+                <div class="border-b border-gray-100 last:border-b-0">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
+                        What level of placement or job support is guaranteed?
+                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        </span>
+                    </button>
+                    <div class="faq-content text-gray-700 px-6" id="faq3">
+                        <p>We provide extensive career services (resume optimization, mock interviews, and network referrals). While we cannot guarantee job placement, we ensure you meet the high hiring standards of major banks in the region and leverage our professional network for your benefit.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section (Enroll - High Contrast Black/Apple Blue) -->
+    <section class="py-24 bg-[#1D1D1F]" id="enroll">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 class="text-4xl sm:text-5xl font-semibold text-white mb-6">Start Your Career Transformation.</h2>
+            <p class="text-xl text-gray-300 mb-10 font-light">
+                Enroll now and secure your place in the next CFRM cohort.
+            </p>
+            <a href="#" class="px-12 py-4 apple-blue text-white font-semibold text-xl rounded-full btn-primary apple-blue-hover">
+                Secure Your Seat
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer (Minimal Dark Footer) -->
+    <footer class="bg-[#1D1D1F] text-white py-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <!-- Brand Name (Muted White) -->
+            <h4 class="text-xl font-bold mb-2 text-apple-blue">Shyamangi</h4>
+            <p class="text-sm text-gray-500">Certified Financial Risk Management Program</p>
+            <div class="mt-8 text-xs text-gray-600">
+                <!-- Copyright -->
+                &copy; 2025 <span class="text-apple-blue">Shyamangi</span>. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript for Functionality -->
+    <script>
+        // 1. Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+
+        // 2. FAQ Accordion Toggle
+        document.querySelectorAll('[data-faq-toggle]').forEach(button => {
+            button.addEventListener('click', () => {
+                const targetId = button.getAttribute('data-faq-toggle');
+                const targetContent = document.getElementById(targetId);
+                const icon = button.querySelector('.faq-icon');
+                
+                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+
+                // Close all other open FAQ items and reset their icons
+                document.querySelectorAll('.faq-content.active').forEach(content => {
+                    if (content.id !== targetId) {
+                        content.classList.remove('active');
+                        content.previousElementSibling.setAttribute('aria-expanded', 'false');
+                        content.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                    }
+                });
+
+                // Toggle the clicked item
+                button.setAttribute('aria-expanded', !isExpanded);
+                targetContent.classList.toggle('active');
+                icon.classList.toggle('rotate-180');
+            });
+        });
+
+        // Optional: Close mobile menu when a link is clicked
+        const mobileLinks = document.querySelectorAll('#mobile-menu a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
