@@ -73,6 +73,15 @@
         .delay-300 { animation-delay: 0.3s; }
         .delay-500 { animation-delay: 0.5s; }
         .delay-700 { animation-delay: 0.7s; }
+
+        /* Ensure smooth horizontal scrolling and hides scrollbar for aesthetic */
+        .overflow-x-scroll-hidden::-webkit-scrollbar {
+            display: none;
+        }
+        .overflow-x-scroll-hidden {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
     </style>
 </head>
 <body>
@@ -172,10 +181,11 @@
                 Three core principles driving your career acceleration.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Redesigned for horizontal scroll on mobile -->
+            <div class="flex md:grid md:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
                 
                 <!-- Pillar 1: Regulatory Edge (Apple Card Style) -->
-                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-50 mb-6">
                         <span class="text-2xl text-red-500 font-medium">🛡️</span>
                     </div>
@@ -184,7 +194,7 @@
                 </div>
 
                 <!-- Pillar 2: CRM Proficiency (Apple Card Style) -->
-                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 mb-6">
                         <span class="text-2xl text-apple-blue font-medium">💻</span>
                     </div>
@@ -193,7 +203,7 @@
                 </div>
 
                 <!-- Pillar 3: Interview Ready (Apple Card Style) -->
-                <div class="p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl">
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-50 mb-6">
                         <span class="text-2xl text-green-600 font-medium">🤝</span>
                     </div>
@@ -257,52 +267,52 @@
                 A focused progression from foundational compliance to career execution.
             </p>
 
-            <!-- Horizontal Stepper (Flex container that wraps on mobile) -->
-            <div class="flex flex-col sm:flex-row justify-between items-start space-y-8 sm:space-y-0 sm:space-x-4">
+            <!-- Redesigned for true horizontal scroll on mobile (compact stepper) -->
+            <div class="flex overflow-x-auto sm:overflow-visible space-x-12 sm:space-x-4 pb-4 snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0">
                 
-                <!-- Step 1 (Now includes group-hover text color change for title and description) -->
-                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                <!-- Step 1 -->
+                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W1
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">BFSI Foundations</h3>
-                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Regulatory & Core Products.</p>
+                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">BFSI Foundations</h3>
+                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Regulatory & Core Products.</p>
                 </div>
                 
                 <!-- Separator Line (Only visible on desktop/intermediate screens) -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
 
-                <!-- Step 3 (Now includes group-hover text color change for title and description) -->
-                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                <!-- Step 3 -->
+                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W3
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Digital CRM</h3>
-                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Zoho/HubSpot Practice.</p>
+                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Digital CRM</h3>
+                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Zoho/HubSpot Practice.</p>
                 </div>
 
                 <!-- Separator Line (Only visible on desktop/intermediate screens) -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
                 
-                <!-- Step 7 (Now includes group-hover text color change for title and description) -->
-                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                <!-- Step 7 -->
+                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W7
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Advanced Sales</h3>
-                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">SPIN Selling & Clients.</p>
+                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Advanced Sales</h3>
+                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">SPIN Selling & Clients.</p>
                 </div>
                 
                  <!-- Separator Line (Only visible on desktop/intermediate screens) -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
 
-                <!-- Step 9 (Now includes group-hover text color change for title and description) -->
-                <div class="flex flex-col items-start sm:items-center text-left sm:text-center w-full sm:w-1/4 group">
+                <!-- Step 9 -->
+                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
                     <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W9
                     </div>
-                    <h3 class="text-lg font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Career Launch</h3>
-                    <p class="text-sm text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">NISM Prep & Interviews.</p>
+                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Career Launch</h3>
+                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">NISM Prep & Interviews.</p>
                 </div>
             </div>
 
@@ -323,10 +333,11 @@
                 Where our certified professionals are in highest demand.
             </p>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Redesigned for horizontal scroll on mobile (Growth Sectors) -->
+            <div class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
                 
                 <!-- Sector 1: BFSI (Active - Apple Blue ring) -->
-                <div class="p-6 bg-[#F9F9F9] rounded-xl ring-1 ring-apple-blue/50 flex flex-col justify-between h-full transition duration-300 hover:ring-apple-blue">
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-[#F9F9F9] rounded-xl ring-1 ring-apple-blue/50 flex flex-col justify-between h-full transition duration-300 hover:ring-apple-blue snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-apple-blue mb-2">01</div>
                         <h3 class="text-2xl font-semibold mb-1">BFSI</h3>
@@ -339,7 +350,7 @@
                 </div>
 
                 <!-- Upcoming Sectors (Muted Grey ring) -->
-                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">02</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">IT & Tech Sales</h3>
@@ -348,7 +359,7 @@
                     <p class="text-gray-500 font-medium text-sm">Upcoming Q4 2024</p>
                 </div>
                 
-                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">03</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">Retail & Logistics</h3>
@@ -357,7 +368,7 @@
                     <p class="text-gray-500 font-medium text-sm">Upcoming Q1 2025</p>
                 </div>
 
-                <div class="p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300">
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">04</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">Tourism</h3>
