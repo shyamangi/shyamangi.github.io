@@ -11,7 +11,6 @@
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF; /* Pure white background */
             color: #1D1D1F; /* Apple's dark text color */
         }
         
@@ -22,8 +21,14 @@
         
         /* Custom styling for primary buttons and large elements */
         .btn-primary {
-            transition: all 0.2s ease-in-out;
+            transition: all 0.3s ease-in-out;
             box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); /* Subtle blue shadow for depth */
+        }
+
+        /* NEW: Button Glow Effect */
+        .btn-glow:hover {
+            box-shadow: 0 0 30px rgba(0, 122, 255, 0.7);
+            transform: translateY(-2px);
         }
 
         /* Hero Text Style - Bold and Clean */
@@ -52,7 +57,6 @@
         }
 
         /* --- SCROLL ANIMATION STYLES (Only for Hero section on load) --- */
-        /* Define the base animation: fade in and slide up */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -63,35 +67,28 @@
                 transform: translateY(0);
             }
         }
-
-        /* Class applied by JS when element enters viewport */
         .animate-fade-up {
             animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; /* Hidden by default until animation runs */
+            opacity: 0; 
         }
 
-        /* Ensure smooth horizontal scrolling and hides scrollbar for aesthetic */
-        .overflow-x-scroll-hidden::-webkit-scrollbar {
-            display: none;
-        }
-        .overflow-x-scroll-hidden {
-            -ms-overflow-style: none;  /* IE and Edge */
-            scrollbar-width: none;  /* Firefox */
-        }
+        /* Utility classes for responsive design */
+        .overflow-x-scroll-hidden::-webkit-scrollbar { display: none; }
+        .overflow-x-scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-<body>
+<body class="bg-[#F5F9FF]"> <!-- NEW: Base light blue background -->
 
     <!-- Header & Navigation (Clean White, Floating Glass Effect) -->
     <header class="sticky top-0 z-50 glass-header shadow-sm border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
-                <!-- Logo/Brand Name (Muted Black/Dark Gray) -->
+                <!-- Logo/Brand Name -->
                 <a href="#" class="flex items-center space-x-2">
                     <span class="text-xl font-bold text-apple-blue tracking-wider">Shyamangi</span>
                 </a>
                 
-                <!-- Desktop Navigation (Muted Black/Gray) -->
+                <!-- Desktop Navigation -->
                 <nav class="hidden lg:flex space-x-8 text-sm font-medium">
                     <a href="#program" class="text-gray-600 hover:text-apple-blue transition duration-150">Program</a>
                     <a href="#pillars" class="text-gray-600 hover:text-apple-blue transition duration-150">Pillars</a>
@@ -100,9 +97,9 @@
                     <a href="#faq" class="text-gray-600 hover:text-apple-blue transition duration-150">FAQ</a>
                 </nav>
 
-                <!-- CTA Button (Apple Blue, Fully Rounded, Clean) -->
+                <!-- CTA Button -->
                 <div class="hidden lg:block">
-                    <a href="#enroll" class="px-5 py-2 rounded-full text-sm btn-primary apple-blue text-white apple-blue-hover">
+                    <a href="#enroll" class="px-5 py-2 rounded-full text-sm btn-primary apple-blue text-white apple-blue-hover btn-glow">
                         Enroll Now
                     </a>
                 </div>
@@ -114,7 +111,7 @@
             </div>
         </div>
 
-        <!-- Mobile Menu (Hidden by default) -->
+        <!-- Mobile Menu -->
         <div class="lg:hidden bg-white hidden border-t border-gray-100" id="mobile-menu">
             <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
                 <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Program</a>
@@ -122,35 +119,35 @@
                 <a href="#instructor" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Instructor</a>
                 <a href="#curriculum" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Curriculum</a>
                 <a href="#faq" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
-                <a href="#enroll" class="block w-full text-center px-4 py-3 mt-4 rounded-full btn-primary apple-blue text-white apple-blue-hover">
+                <a href="#enroll" class="block w-full text-center px-4 py-3 mt-4 rounded-full btn-primary apple-blue text-white apple-blue-hover btn-glow">
                     Enroll
                 </a>
             </nav>
         </div>
     </header>
 
-    <!-- Hero Section (Minimal, High-Impact Typography) -->
-    <section class="bg-white pt-20 pb-28 sm:pt-28 sm:pb-40" id="program">
+    <!-- Hero Section (Light Blue Background) -->
+    <section class="bg-[#F5F9FF] pt-20 pb-28 sm:pt-28 sm:pb-40" id="program">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Eyebrow (Delay 100ms) -->
+            <!-- Eyebrow -->
             <span class="text-sm font-medium text-gray-500 mb-6 inline-block tracking-widest uppercase" data-animate-target data-delay="100">
                 CFRM Professional Certificate
             </span>
 
-            <!-- Headline (Reduced size on mobile for better wrapping) -->
-            <h1 class="text-4xl sm:text-7xl lg:text-8xl font-semibold hero-text-style leading-none mb-8 max-w-6xl mx-auto" data-animate-target data-delay="300">
-                Launch Your <span class="text-apple-blue font-bold">BFSI</span> Career, Certified.
+            <!-- Headline (Font weight adjusted for cleaner look) -->
+            <h1 class="text-4xl sm:text-7xl lg:text-8xl font-extrabold hero-text-style leading-none mb-8 max-w-6xl mx-auto" data-animate-target data-delay="300">
+                Launch Your <span class="text-apple-blue font-extrabold">BFSI</span> Career, Certified.
             </h1>
 
-            <!-- Subtitle (Delay 500ms) -->
+            <!-- Subtitle -->
             <p class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 font-light tracking-wide" data-animate-target data-delay="500">
                 Certified, Compliant, and Job-Ready in 9 Weeks. Master the essential skills demanded by Jaipur's top financial institutions.
             </p>
 
-            <!-- CTA Buttons (Delay 700ms - Adjusted padding for mobile tap targets) -->
+            <!-- CTA Buttons (Primary button with glow) -->
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6" data-animate-target data-delay="700">
                 <!-- Primary Action -->
-                <a href="#" class="w-full sm:w-auto px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover">
+                <a href="#" class="w-full sm:w-auto px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover btn-glow">
                     Download Syllabus
                 </a>
                 <!-- Secondary Action -->
@@ -159,18 +156,18 @@
                 </a>
             </div>
 
-            <!-- Key Features / Badge Row (Delay 900ms) -->
+            <!-- Key Features / Badge Row -->
             <div class="flex justify-center flex-wrap gap-3 mt-16 text-sm font-medium text-gray-600" data-animate-target data-delay="900">
-                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">NISM Exam Prep</span>
-                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">CRM Proficiency</span>
-                <span class="px-4 py-2 rounded-full bg-gray-100 ring-1 ring-gray-200">KYC/AML Compliance</span>
+                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">NISM Exam Prep</span>
+                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">CRM Proficiency</span>
+                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">KYC/AML Compliance</span>
             </div>
 
         </div>
     </section>
 
-    <!-- Pillars Section (Clean, Subtle Cards on off-white background) -->
-    <section class="py-28 bg-[#F9F9F9]" id="pillars">
+    <!-- Pillars Section (Pure White Background for contrast) -->
+    <section class="py-28 bg-white" id="pillars">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-semibold text-center mb-4">The <span class="text-apple-blue">Shyamangi</span> Difference</h2>
             <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
@@ -178,15 +175,15 @@
             </p>
             
             <!-- Mobile Scroll Hint -->
-            <p class="block md:hidden text-center text-sm text-gray-500 mb-10">
-                <span class="animate-pulse">← Swipe left to view all pillars →</span>
+            <p class="block md:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
+                ← Swipe left to view all pillars →
             </p>
 
-            <!-- Redesigned for horizontal scroll on mobile -->
+            <!-- Redesigned for horizontal scroll on mobile (Card Hover Lift) -->
             <div class="flex md:grid md:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
                 
-                <!-- Pillar 1: Regulatory Edge (Apple Card Style) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
+                <!-- Pillar 1: Regulatory Edge (Card Lift) -->
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-50 mb-6">
                         <span class="text-2xl text-red-500 font-medium">🛡️</span>
                     </div>
@@ -194,8 +191,8 @@
                     <p class="text-gray-700">Practical KYC/AML training in Customer Due Diligence and Red Flag Indicators—the mandatory skills banks audit and hire for.</p>
                 </div>
 
-                <!-- Pillar 2: CRM Proficiency (Apple Card Style) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
+                <!-- Pillar 2: CRM Proficiency (Card Lift) -->
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 mb-6">
                         <span class="text-2xl text-apple-blue font-medium">💻</span>
                     </div>
@@ -203,8 +200,8 @@
                     <p class="text-gray-700">Hands-on practice in Zoho and HubSpot. Submit a verified Pipeline Forecast Report as proof of digital literacy.</p>
                 </div>
 
-                <!-- Pillar 3: Interview Ready (Apple Card Style) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-white shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl snap-start">
+                <!-- Pillar 3: Interview Ready (Card Lift) -->
+                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
                     <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-50 mb-6">
                         <span class="text-2xl text-green-600 font-medium">🤝</span>
                     </div>
@@ -215,17 +212,17 @@
         </div>
     </section>
 
-    <!-- Instructor Profile Section (Clean, Borderless Card) -->
-    <section class="py-28 bg-white" id="instructor">
+    <!-- Instructor Profile Section (Light Blue Background) -->
+    <section class="py-28 bg-[#F5F9FF]" id="instructor">
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-semibold text-center mb-16">Meet Your Instructor</h2>
             
-            <!-- Instructor Card -->
-            <div class="flex flex-col md:flex-row items-center bg-[#F9F9F9] rounded-3xl p-8 md:p-12 shadow-lg ring-1 ring-gray-100">
+            <!-- Instructor Card (Pure white for visual hierarchy) -->
+            <div class="flex flex-col md:flex-row items-center bg-white rounded-3xl p-8 md:p-12 shadow-xl ring-1 ring-gray-100">
                 
-                <!-- Image/Initials Placeholder (Clean Circle with subtle background) -->
+                <!-- Image/Initials Placeholder -->
                 <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-16">
-                    <div class="w-36 h-36 flex items-center justify-center bg-white text-gray-800 text-6xl font-medium rounded-full ring-2 ring-apple-blue/10">
+                    <div class="w-36 h-36 flex items-center justify-center bg-[#F5F9FF] text-gray-800 text-6xl font-medium rounded-full ring-2 ring-apple-blue/20">
                         AS
                     </div>
                 </div>
@@ -260,8 +257,8 @@
         </div>
     </section>
 
-    <!-- Curriculum Section (Horizontal & Compact Stepper) -->
-    <section class="py-28 bg-[#F9F9F9]" id="curriculum">
+    <!-- Curriculum Section (Pure White Background) -->
+    <section class="py-28 bg-white" id="curriculum">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-semibold text-center mb-4">The 9-Week Curriculum</h2>
             <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
@@ -269,52 +266,52 @@
             </p>
 
              <!-- Mobile Scroll Hint -->
-            <p class="block sm:hidden text-center text-sm text-gray-500 mb-10">
-                <span class="animate-pulse">← Swipe left to view all weeks →</span>
+            <p class="block sm:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
+                ← Swipe left to view all weeks →
             </p>
 
-            <!-- Redesigned for true horizontal scroll on mobile (compact stepper) -->
+            <!-- Horizontal Stepper -->
             <div class="flex overflow-x-auto sm:overflow-visible space-x-12 sm:space-x-4 pb-4 snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0">
                 
                 <!-- Step 1 -->
                 <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W1
                     </div>
                     <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">BFSI Foundations</h3>
                     <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Regulatory & Core Products.</p>
                 </div>
                 
-                <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                <!-- Separator Line -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
 
                 <!-- Step 3 -->
                 <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W3
                     </div>
                     <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Digital CRM</h3>
                     <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Zoho/HubSpot Practice.</p>
                 </div>
 
-                <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                <!-- Separator Line -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
                 
                 <!-- Step 7 -->
                 <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W7
                     </div>
                     <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Advanced Sales</h3>
                     <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">SPIN Selling & Clients.</p>
                 </div>
                 
-                 <!-- Separator Line (Only visible on desktop/intermediate screens) -->
+                 <!-- Separator Line -->
                 <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
 
                 <!-- Step 9 -->
                 <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-white text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
+                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
                         W9
                     </div>
                     <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Career Launch</h3>
@@ -324,15 +321,15 @@
 
             <!-- Syllabus CTA (Minimal Ghost Button Style) -->
             <div class="text-center mt-20">
-                <a href="#" class="inline-block px-8 py-3 bg-white text-apple-blue font-semibold rounded-full ring-1 ring-apple-blue hover:bg-blue-50 transition duration-300">
+                <a href="#" class="inline-block px-8 py-3 bg-[#F5F9FF] text-apple-blue font-semibold rounded-full ring-1 ring-apple-blue hover:bg-blue-100 transition duration-300">
                     View Complete Syllabus
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Our Vision / Growth Sectors Section (Clean Grids) -->
-    <section class="py-28 bg-white border-t border-gray-100">
+    <!-- Our Vision / Growth Sectors Section (Light Blue Background) -->
+    <section class="py-28 bg-[#F5F9FF] border-t border-gray-100" id="sectors">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-semibold text-center mb-4">Mastering Growth Sectors</h2>
             <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
@@ -340,15 +337,15 @@
             </p>
 
             <!-- Mobile Scroll Hint -->
-            <p class="block md:hidden text-center text-sm text-gray-500 mb-10">
-                <span class="animate-pulse">← Swipe left to view all sectors →</span>
+            <p class="block md:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
+                ← Swipe left to view all sectors →
             </p>
 
-            <!-- Redesigned for horizontal scroll on mobile (Growth Sectors) -->
+            <!-- Growth Sectors (Card Hover Lift) -->
             <div class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
                 
-                <!-- Sector 1: BFSI (Active - Apple Blue ring) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-[#F9F9F9] rounded-xl ring-1 ring-apple-blue/50 flex flex-col justify-between h-full transition duration-300 hover:ring-apple-blue snap-start">
+                <!-- Sector 1: BFSI (Active - Apple Blue ring, Lift) -->
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-2 ring-apple-blue/50 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-apple-blue hover:-translate-y-1 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-apple-blue mb-2">01</div>
                         <h3 class="text-2xl font-semibold mb-1">BFSI</h3>
@@ -360,8 +357,8 @@
                     </a>
                 </div>
 
-                <!-- Upcoming Sectors (Muted Grey ring) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
+                <!-- Upcoming Sectors (Muted Grey ring, Lift) -->
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">02</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">IT & Tech Sales</h3>
@@ -370,7 +367,7 @@
                     <p class="text-gray-500 font-medium text-sm">Upcoming Q4 2024</p>
                 </div>
                 
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">03</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">Retail & Logistics</h3>
@@ -379,8 +376,8 @@
                     <p class="text-gray-500 font-medium text-sm">Upcoming Q1 2025</p>
                 </div>
 
-                <!-- Sector 4: Tourism (Muted Grey ring) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full transition duration-300 hover:ring-gray-300 snap-start">
+                <!-- Sector 4: Tourism (Muted Grey ring, Lift) -->
+                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
                     <div class="mb-6">
                         <div class="text-5xl font-bold text-gray-400 mb-2">04</div>
                         <h3 class="text-2xl font-semibold text-gray-600 mb-1">Tourism</h3>
@@ -392,16 +389,17 @@
         </div>
     </section>
 
-    <!-- FAQ Section (Minimalist Accordion Card) -->
-    <section class="py-28 bg-[#F9F9F9]" id="faq">
+    <!-- FAQ Section (Pure White Background) -->
+    <section class="py-28 bg-white" id="faq">
         <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 class="text-4xl font-semibold text-center mb-16">Support: Frequently Asked Questions</h2>
 
-            <div class="space-y-0 bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl shadow-gray-200/50 overflow-hidden">
+            <!-- FAQ Container (Subtle shadow, light background toggles) -->
+            <div class="space-y-0 bg-[#F5F9FF] rounded-2xl ring-1 ring-gray-200 shadow-xl shadow-gray-200/50 overflow-hidden">
                 
                 <!-- FAQ Item 1 -->
                 <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
                         Are classes only held on weekends?
                         <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -414,7 +412,7 @@
 
                 <!-- FAQ Item 2 -->
                 <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
                         Is the NISM exam fee included in the program cost?
                         <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -427,7 +425,7 @@
 
                 <!-- FAQ Item 3 -->
                 <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
+                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
                         What level of placement or job support is guaranteed?
                         <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
@@ -448,7 +446,7 @@
             <p class="text-xl text-gray-300 mb-10 font-light">
                 Enroll now and secure your place in the next CFRM cohort.
             </p>
-            <a href="#" class="px-12 py-4 apple-blue text-white font-semibold text-xl rounded-full btn-primary apple-blue-hover">
+            <a href="#" class="px-12 py-4 apple-blue text-white font-semibold text-xl rounded-full btn-primary apple-blue-hover btn-glow">
                 Secure Your Seat
             </a>
         </div>
@@ -511,13 +509,11 @@
 
         // 3. Scroll-Triggered Fade-In Animation (Intersection Observer)
         document.addEventListener('DOMContentLoaded', () => {
-            // Only target elements marked for animation (currently just the Hero section)
             const animatedElements = document.querySelectorAll('[data-animate-target]');
 
             const observerOptions = {
-                root: null, // viewport
+                root: null, 
                 rootMargin: '0px',
-                // Trigger when 10% of the element is visible.
                 threshold: 0.1 
             };
 
@@ -525,22 +521,16 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         const element = entry.target;
-                        // Retrieve the custom delay from the data attribute (e.g., "300")
                         const delay = element.getAttribute('data-delay') || '0'; 
                         
-                        // Apply the animation delay via inline style
                         element.style.animationDelay = `${parseInt(delay) / 1000}s`;
-                        
-                        // Apply the animation class
                         element.classList.add('animate-fade-up');
                         
-                        // Stop observing once the animation is triggered
                         observer.unobserve(element);
                     }
                 });
             }, observerOptions);
 
-            // Start observing all targeted elements
             animatedElements.forEach(element => {
                 observer.observe(element);
             });
