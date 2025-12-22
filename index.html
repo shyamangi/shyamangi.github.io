@@ -3,552 +3,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shyamangi - Certified Financial Risk Management Program</title>
-    <!-- Load Tailwind CSS -->
+
+    <title>Shyamangi – Certified Financial Risk Management (CFRM) Program</title>
+    <meta name="description" content="Become bank-ready in 9 weeks with Shyamangi’s Certified Financial Risk Management program. Designed for freshers and career switchers in Jaipur." />
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
-        /* Optional: Custom font import and root styling */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
-        body {
-            font-family: 'Inter', sans-serif;
-            color: #1D1D1F; /* Apple's dark text color */
-        }
-        
-        /* Define the Apple System Blue */
-        .apple-blue { background-color: #007AFF; }
-        .apple-blue-hover:hover { background-color: #005ce6; }
-        .text-apple-blue { color: #007AFF; }
-        
-        /* Custom styling for primary buttons and large elements */
-        .btn-primary {
-            transition: all 0.3s ease-in-out;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); /* Subtle blue shadow for depth */
-        }
+        body { font-family: 'Inter', sans-serif; color:#1D1D1F; }
 
-        /* Button Glow Effect */
-        .btn-glow:hover {
-            box-shadow: 0 0 30px rgba(0, 122, 255, 0.7);
-            transform: translateY(-2px);
-        }
+        .apple-blue { background-color:#007AFF; }
+        .apple-blue-hover:hover { background-color:#005ce6; }
+        .text-apple-blue { color:#007AFF; }
 
-        /* Hero Text Style - Bold and Clean */
-        .hero-text-style {
-            color: #1D1D1F; 
-        }
+        .btn-primary { transition:all .3s ease; box-shadow:0 4px 15px rgba(0,122,255,.3); }
+        .btn-glow:hover { box-shadow:0 0 30px rgba(0,122,255,.6); transform:translateY(-2px); }
 
-        /* Style for the expandable FAQ content */
-        .faq-content {
-            max-height: 0;
-            overflow: hidden;
-            background-color: #F9F9F9; /* Very subtle grey background for expanded content */
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .faq-content.active {
-            max-height: 400px;
-            padding-top: 1rem;
-            padding-bottom: 1.5rem;
-        }
-        
-        /* Header Glass Effect (Subtle Transparency and Blur) */
-        .glass-header {
-            background-color: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
+        .glass-header { background:rgba(255,255,255,.95); backdrop-filter:blur(10px); -webkit-backdrop-filter: blur(10px); }
 
-        /* --- NEW: Animated Gradient Background for Hero Section --- */
+        /* Animated Gradient for Hero */
         @keyframes gradient-shift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+            0%{background-position:0% 50%}
+            50%{background-position:100% 50%}
+            100%{background-position:0% 50%}
         }
-
         .animated-gradient {
-            /* Soft gradient colors: Light Blue, White, Light Gray */
-            background: linear-gradient(-45deg, #F5F9FF, #FFFFFF, #E0E7FF, #FFFFFF);
-            background-size: 400% 400%; /* Make the gradient large */
-            animation: gradient-shift 15s ease infinite; /* Slow, continuous shift */
+            background:linear-gradient(-45deg,#F5F9FF,#FFFFFF,#E0E7FF,#FFFFFF);
+            background-size:400% 400%;
+            animation:gradient-shift 15s ease infinite;
         }
 
-        /* --- SCROLL ANIMATION STYLES (Only for Hero section on load) --- */
+        /* Hero Load-in Animation */
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
-        .animate-fade-up {
-            animation: fadeInUp 0.8s ease-out forwards;
-            opacity: 0; 
+        .stagger-in {
+            /* * FIX: Removed 'opacity: 0' and set fill-mode to 'both'. 
+             * 'both' ensures it starts hidden (0% keyframe) and stays visible (100% keyframe) after finishing.
+             */
+            animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
+            animation-fill-mode: both; 
         }
 
-        /* Utility classes for responsive design */
-        .overflow-x-scroll-hidden::-webkit-scrollbar { display: none; }
-        .overflow-x-scroll-hidden { -ms-overflow-style: none; scrollbar-width: none; }
+        /* FAQ Accordion Styles - max-height increased from 400px to 1000px to prevent overflow */
+        .faq-content{max-height:0;overflow:hidden;background:#F9F9F9;transition:max-height .4s cubic-bezier(0.4, 0, 0.2, 1),padding .4s cubic-bezier(0.4, 0, 0.2, 1)}
+        .faq-content.active{max-height:1000px;padding:1rem 0 1.5rem}
     </style>
 </head>
+
 <body class="bg-[#F5F9FF]">
 
-    <!-- Header & Navigation (Clean White, Floating Glass Effect) -->
-    <header class="sticky top-0 z-50 glass-header shadow-sm border-b border-gray-100">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <!-- Logo/Brand Name -->
-                <a href="#" class="flex items-center space-x-2">
-                    <span class="text-xl font-bold text-apple-blue tracking-wider">Shyamangi</span>
-                </a>
-                
-                <!-- Desktop Navigation -->
-                <nav class="hidden lg:flex space-x-8 text-sm font-medium">
-                    <a href="#program" class="text-gray-600 hover:text-apple-blue transition duration-150">Program</a>
-                    <a href="#pillars" class="text-gray-600 hover:text-apple-blue transition duration-150">Pillars</a>
-                    <a href="#instructor" class="text-gray-600 hover:text-apple-blue transition duration-150">Instructor</a>
-                    <a href="#curriculum" class="text-gray-600 hover:text-apple-blue transition duration-150">Curriculum</a>
-                    <a href="#faq" class="text-gray-600 hover:text-apple-blue transition duration-150">FAQ</a>
-                </nav>
+<!-- HEADER (UPDATED: Added Mobile Menu Toggle and new Testimonials link) -->
+<header class="sticky top-0 z-50 glass-header border-b border-gray-100">
+    <div class="max-w-7xl mx-auto px-4 h-16 flex justify-between items-center">
+        <span class="text-xl font-bold text-apple-blue">Shyamangi</span>
+        
+        <!-- Navigation Links (Desktop) -->
+        <nav class="hidden lg:flex space-x-8 text-sm font-medium">
+            <a href="#pillars" class="text-gray-600 hover:text-apple-blue transition duration-150">Advantage</a>
+            <a href="#instructor" class="text-gray-600 hover:text-apple-blue transition duration-150">Instructor</a>
+            <a href="#testimonials" class="text-gray-600 hover:text-apple-blue transition duration-150">Success Stories</a>
+            <a href="#curriculum" class="text-gray-600 hover:text-apple-blue transition duration-150">Curriculum</a>
+            <a href="#faq" class="text-gray-600 hover:text-apple-blue transition duration-150">FAQ</a>
+        </nav>
+        
+        <!-- Desktop CTA and Mobile Menu Button -->
+        <div class="flex items-center space-x-4">
+            <!-- Desktop CTA -->
+            <a href="#enroll" class="hidden lg:inline-block px-5 py-2 rounded-full apple-blue text-white btn-primary btn-glow">Enroll Now</a>
 
-                <!-- CTA Button -->
-                <div class="hidden lg:block">
-                    <a href="#enroll" class="px-5 py-2 rounded-full text-sm btn-primary apple-blue text-white apple-blue-hover btn-glow">
-                        Enroll Now
-                    </a>
-                </div>
-
-                <!-- Mobile Menu Button (Hamburger) -->
-                <button class="lg:hidden p-2 text-gray-600 hover:text-apple-blue" id="mobile-menu-button">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
+            <!-- Mobile Menu Button (Hamburger) -->
+            <button class="lg:hidden p-2 text-gray-600 hover:text-apple-blue" id="mobile-menu-button">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
         </div>
+    </div>
 
-        <!-- Mobile Menu -->
-        <div class="lg:hidden bg-white hidden border-t border-gray-100" id="mobile-menu">
-            <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
-                <a href="#program" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Program</a>
-                <a href="#pillars" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Pillars</a>
-                <a href="#instructor" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Instructor</a>
-                <a href="#curriculum" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">Curriculum</a>
-                <a href="#faq" class="block px-3 py-2 rounded-lg text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
-                <a href="#enroll" class="block w-full text-center px-4 py-3 mt-4 rounded-full btn-primary apple-blue text-white apple-blue-hover btn-glow">
-                    Enroll
-                </a>
-            </nav>
-        </div>
-    </header>
+    <!-- Mobile Menu Drawer Content (Initially Hidden) -->
+    <div class="lg:hidden bg-white hidden border-t border-gray-100" id="mobile-menu">
+        <nav class="px-2 pt-2 pb-4 space-y-1 sm:px-3">
+            <a href="#pillars" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Advantage</a>
+            <a href="#instructor" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Instructor</a>
+            <a href="#testimonials" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Success Stories</a>
+            <a href="#curriculum" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">Curriculum</a>
+            <a href="#faq" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:bg-gray-50">FAQ</a>
+            <!-- Mobile CTA -->
+            <a href="#enroll" class="block w-full text-center px-4 py-3 mt-4 rounded-full apple-blue text-white btn-primary btn-glow">Enroll Now</a>
+        </nav>
+    </div>
+</header>
 
-    <!-- Hero Section (NEW: Animated Gradient Background) -->
-    <section class="animated-gradient pt-20 pb-28 sm:pt-28 sm:pb-40" id="program">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Eyebrow -->
-            <span class="text-sm font-medium text-gray-500 mb-6 inline-block tracking-widest uppercase" data-animate-target data-delay="100">
-                CFRM Professional Certificate
-            </span>
+<!-- HERO -->
+<section class="animated-gradient pt-24 pb-32 text-center">
+    <div class="max-w-6xl mx-auto px-4">
+        <!-- Stagger 1 -->
+        <span class="text-sm uppercase tracking-widest text-gray-500 stagger-in" style="animation-delay: 0.1s;">CFRM Professional Certificate</span>
 
-            <!-- Headline -->
-            <h1 class="text-4xl sm:text-7xl lg:text-8xl font-extrabold hero-text-style leading-none mb-8 max-w-6xl mx-auto" data-animate-target data-delay="300">
-                Launch Your <span class="text-apple-blue font-extrabold">BFSI</span> Career, Certified.
-            </h1>
+        <!-- Stagger 2 -->
+        <h1 class="text-5xl sm:text-7xl font-extrabold mt-6 mb-4 stagger-in" style="animation-delay: 0.3s;">
+            Launch Your <span class="text-apple-blue">BFSI</span> Career —<br class="hidden sm:block">
+            <span class="text-apple-blue">Bank-Ready in 9 Weeks</span>
+        </h1>
 
-            <!-- Subtitle -->
-            <p class="text-xl sm:text-2xl text-gray-700 max-w-3xl mx-auto mb-12 font-light tracking-wide" data-animate-target data-delay="500">
-                Certified, Compliant, and Job-Ready in 9 Weeks. Master the essential skills demanded by Jaipur's top financial institutions.
-            </p>
+        <!-- Stagger 3 -->
+        <p class="text-xl text-gray-700 max-w-3xl mx-auto mb-4 stagger-in" style="animation-delay: 0.5s;">
+            Certified, compliant, and job-ready training designed for freshers and career switchers in Jaipur.
+        </p>
 
-            <!-- CTA Buttons (Primary button with glow) -->
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6" data-animate-target data-delay="700">
-                <!-- Primary Action -->
-                <a href="#" class="w-full sm:w-auto px-8 py-3.5 apple-blue text-white font-semibold text-lg rounded-full btn-primary apple-blue-hover btn-glow">
-                    Download Syllabus
-                </a>
-                <!-- Secondary Action -->
-                <a href="#pillars" class="w-full sm:w-auto px-8 py-3.5 bg-transparent text-apple-blue font-semibold text-lg rounded-full ring-1 ring-apple-blue hover:bg-blue-50 transition duration-300">
-                    Explore Details
-                </a>
-            </div>
+        <!-- Stagger 4 -->
+        <p class="text-sm text-gray-500 mb-10 stagger-in" style="animation-delay: 0.7s;">
+            Weekend batches • Industry-aligned curriculum • Practical CRM & compliance training
+        </p>
 
-            <!-- Key Features / Badge Row -->
-            <div class="flex justify-center flex-wrap gap-3 mt-16 text-sm font-medium text-gray-600" data-animate-target data-delay="900">
-                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">NISM Exam Prep</span>
-                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">CRM Proficiency</span>
-                <span class="px-4 py-2 rounded-full bg-white ring-1 ring-gray-200 shadow-sm">KYC/AML Compliance</span>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Pillars Section (Pure White Background for contrast) -->
-    <section class="py-28 bg-white" id="pillars">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-4">The <span class="text-apple-blue">Shyamangi</span> Difference</h2>
-            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
-                Three core principles driving your career acceleration.
-            </p>
-            
-            <!-- Mobile Scroll Hint -->
-            <p class="block md:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
-                ← Swipe left to view all pillars →
-            </p>
-
-            <!-- Redesigned for horizontal scroll on mobile (Card Hover Lift) -->
-            <div class="flex md:grid md:grid-cols-3 gap-8 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
-                
-                <!-- Pillar 1: Regulatory Edge (Card Lift) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-red-50 mb-6">
-                        <span class="text-2xl text-red-500 font-medium">🛡️</span>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-2">Regulatory Edge</h3>
-                    <p class="text-gray-700">Practical KYC/AML training in Customer Due Diligence and Red Flag Indicators—the mandatory skills banks audit and hire for.</p>
-                </div>
-
-                <!-- Pillar 2: CRM Proficiency (Card Lift) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-blue-50 mb-6">
-                        <span class="text-2xl text-apple-blue font-medium">💻</span>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-2">CRM Proficiency</h3>
-                    <p class="text-gray-700">Hands-on practice in Zoho and HubSpot. Submit a verified Pipeline Forecast Report as proof of digital literacy.</p>
-                </div>
-
-                <!-- Pillar 3: Interview Ready (Card Lift) -->
-                <div class="flex-shrink-0 w-[85vw] sm:w-[45vw] md:w-auto p-8 rounded-2xl bg-[#F9F9F9] shadow-xl shadow-gray-200 ring-1 ring-gray-100 transition duration-300 transform hover:shadow-2xl hover:-translate-y-1 snap-start">
-                    <div class="w-12 h-12 flex items-center justify-center rounded-lg bg-green-50 mb-6">
-                        <span class="text-2xl text-green-600 font-medium">🤝</span>
-                    </div>
-                    <h3 class="text-2xl font-semibold mb-2">Career Readiness</h3>
-                    <p class="text-gray-700">NISM V-A crash course and recorded mock interviews focused on questions that matter to top HR departments in Jaipur.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Instructor Profile Section (Light Blue Background) -->
-    <section class="py-28 bg-[#F5F9FF]" id="instructor">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-16">Meet Your Instructor</h2>
-            
-            <!-- Instructor Card (Pure white for visual hierarchy) -->
-            <div class="flex flex-col md:flex-row items-center bg-white rounded-3xl p-8 md:p-12 shadow-xl ring-1 ring-gray-100">
-                
-                <!-- Image/Initials Placeholder -->
-                <div class="flex-shrink-0 mb-8 md:mb-0 md:mr-16">
-                    <div class="w-36 h-36 flex items-center justify-center bg-[#F5F9FF] text-gray-800 text-6xl font-medium rounded-full ring-2 ring-apple-blue/20">
-                        AS
-                    </div>
-                </div>
-
-                <!-- Instructor Details -->
-                <div class="md:w-3/4">
-                    <h3 class="text-3xl font-bold">Ankita Sharma</h3>
-                    <p class="text-xl text-gray-600 mb-6 font-light">Lead BFSI Trainer | 18+ Years in Banking</p>
-                    
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start">
-                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            </span> 
-                            <span class="font-normal">Former Branch Manager & Compliance Head at ICICI Bank, Jaipur.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            </span> 
-                            <span class="font-normal">Certified over 50 Relationship Managers across Rajasthan.</span>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="text-apple-blue text-xl mr-3 flex-shrink-0 mt-0.5">
-                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                            </span> 
-                            <span class="font-normal">Curriculum designed directly from current HR requirements.</span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Curriculum Section (Pure White Background) -->
-    <section class="py-28 bg-white" id="curriculum">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-4">The 9-Week Curriculum</h2>
-            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
-                A focused progression from foundational compliance to career execution.
-            </p>
-
-             <!-- Mobile Scroll Hint -->
-            <p class="block sm:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
-                ← Swipe left to view all weeks →
-            </p>
-
-            <!-- Horizontal Stepper -->
-            <div class="flex overflow-x-auto sm:overflow-visible space-x-12 sm:space-x-4 pb-4 snap-x snap-mandatory -mx-4 px-4 sm:mx-0 sm:px-0">
-                
-                <!-- Step 1 -->
-                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
-                        W1
-                    </div>
-                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">BFSI Foundations</h3>
-                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Regulatory & Core Products.</p>
-                </div>
-                
-                <!-- Separator Line -->
-                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
-
-                <!-- Step 3 -->
-                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
-                        W3
-                    </div>
-                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Digital CRM</h3>
-                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">Zoho/HubSpot Practice.</p>
-                </div>
-
-                <!-- Separator Line -->
-                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
-                
-                <!-- Step 7 -->
-                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
-                        W7
-                    </div>
-                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Advanced Sales</h3>
-                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">SPIN Selling & Clients.</p>
-                </div>
-                
-                 <!-- Separator Line -->
-                <div class="hidden sm:block flex-grow border-t-2 border-dashed border-gray-300 mt-5 mx-2"></div>
-
-                <!-- Step 9 -->
-                <div class="flex-shrink-0 w-24 flex flex-col items-center text-center group snap-start">
-                    <div class="w-10 h-10 flex items-center justify-center rounded-full bg-[#F5F9FF] text-gray-800 font-bold text-lg ring-4 ring-gray-100 shadow-md mb-3 transition duration-300 group-hover:bg-apple-blue group-hover:text-white">
-                        W9
-                    </div>
-                    <h3 class="text-base font-semibold text-gray-800 group-hover:text-apple-blue transition duration-300">Career Launch</h3>
-                    <p class="text-xs text-gray-500 hidden sm:block group-hover:text-apple-blue transition duration-300">NISM Prep & Interviews.</p>
-                </div>
-            </div>
-
-            <!-- Syllabus CTA (Minimal Ghost Button Style) -->
-            <div class="text-center mt-20">
-                <a href="#" class="inline-block px-8 py-3 bg-[#F5F9FF] text-apple-blue font-semibold rounded-full ring-1 ring-apple-blue hover:bg-blue-100 transition duration-300">
-                    View Complete Syllabus
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Our Vision / Growth Sectors Section (Light Blue Background) -->
-    <section class="py-28 bg-[#F5F9FF] border-t border-gray-100" id="sectors">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-4">Mastering Growth Sectors</h2>
-            <p class="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-10">
-                Where our certified professionals are in highest demand.
-            </p>
-
-            <!-- Mobile Scroll Hint -->
-            <p class="block md:hidden text-center text-sm text-gray-500 mb-10 animate-pulse">
-                ← Swipe left to view all sectors →
-            </p>
-
-            <!-- Growth Sectors (Card Hover Lift) -->
-            <div class="flex md:grid md:grid-cols-2 lg:grid-cols-4 gap-6 overflow-x-auto snap-x snap-mandatory pb-4 -mx-4 px-4 md:overflow-visible md:mx-0 md:px-0">
-                
-                <!-- Sector 1: BFSI (Active - Apple Blue ring, Lift) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-2 ring-apple-blue/50 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-apple-blue hover:-translate-y-1 snap-start">
-                    <div class="mb-6">
-                        <div class="text-5xl font-bold text-apple-blue mb-2">01</div>
-                        <h3 class="text-2xl font-semibold mb-1">BFSI</h3>
-                        <p class="text-base text-gray-600">Banking, Financial Services, and Insurance.</p>
-                    </div>
-                    <a href="#program" class="text-apple-blue font-medium text-sm flex items-center hover:underline">
-                        Current Program Focus
-                        <svg class="w-4 h-4 ml-1 transform transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
-                    </a>
-                </div>
-
-                <!-- Upcoming Sectors (Muted Grey ring, Lift) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
-                    <div class="mb-6">
-                        <div class="text-5xl font-bold text-gray-400 mb-2">02</div>
-                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">IT & Tech Sales</h3>
-                        <p class="text-base text-gray-500">Presales, Inside Sales, Customer Success.</p>
-                    </div>
-                    <p class="text-gray-500 font-medium text-sm">Upcoming Q4 2024</p>
-                </div>
-                
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
-                    <div class="mb-6">
-                        <div class="text-5xl font-bold text-gray-400 mb-2">03</div>
-                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">Retail & Logistics</h3>
-                        <p class="text-base text-gray-500">Store Management, Supply Chain, Inventory.</p>
-                    </div>
-                    <p class="text-gray-500 font-medium text-sm">Upcoming Q1 2025</p>
-                </div>
-
-                <!-- Sector 4: Tourism (Muted Grey ring, Lift) -->
-                <div class="flex-shrink-0 w-[70vw] sm:w-[45vw] lg:w-auto p-6 bg-white rounded-xl ring-1 ring-gray-200 flex flex-col justify-between h-full shadow-lg transition duration-300 hover:ring-gray-300 hover:-translate-y-1 snap-start">
-                    <div class="mb-6">
-                        <div class="text-5xl font-bold text-gray-400 mb-2">04</div>
-                        <h3 class="text-2xl font-semibold text-gray-600 mb-1">Tourism</h3>
-                        <p class="text-base text-gray-500">Client Relations, Destination Sales, Booking.</p>
-                    </div>
-                    <p class="text-gray-500 font-medium text-sm">Upcoming Q2 2025</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FAQ Section (Pure White Background) -->
-    <section class="py-28 bg-white" id="faq">
-        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-4xl font-semibold text-center mb-16">Support: Frequently Asked Questions</h2>
-
-            <!-- FAQ Container (Subtle shadow, light background toggles) -->
-            <div class="space-y-0 bg-[#F5F9FF] rounded-2xl ring-1 ring-gray-200 shadow-xl shadow-gray-200/50 overflow-hidden">
-                
-                <!-- FAQ Item 1 -->
-                <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
-                        Are classes only held on weekends?
-                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
-                    </button>
-                    <div class="faq-content text-gray-700 px-6" id="faq1">
-                        <p>Yes, the CFRM Program is structured to offer classes exclusively on weekends (Saturday and Sunday) to accommodate working professionals and university students. Detailed timing is available in the syllabus.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 2 -->
-                <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
-                        Is the NISM exam fee included in the program cost?
-                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
-                    </button>
-                    <div class="faq-content text-gray-700 px-6" id="faq2">
-                        <p>No, the official NISM certification exam fee is separate. We provide the comprehensive preparatory course and study materials, but candidates are responsible for registering and paying for the exam directly through NISM.</p>
-                    </div>
-                </div>
-
-                <!-- FAQ Item 3 -->
-                <div class="border-b border-gray-100 last:border-b-0">
-                    <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-100 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
-                        What level of placement or job support is guaranteed?
-                        <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
-                        </span>
-                    </button>
-                    <div class="faq-content text-gray-700 px-6" id="faq3">
-                        <p>We provide extensive career services (resume optimization, mock interviews, and network referrals). While we cannot guarantee job placement, we ensure you meet the high hiring standards of major banks in the region and leverage our professional network for your benefit.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Final CTA Section (Enroll - High Contrast Black/Apple Blue) -->
-    <section class="py-24 bg-[#1D1D1F]" id="enroll">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 class="text-4xl sm:text-5xl font-semibold text-white mb-6">Start Your Career Transformation.</h2>
-            <p class="text-xl text-gray-300 mb-10 font-light">
-                Enroll now and secure your place in the next CFRM cohort.
-            </p>
-            <a href="#" class="px-12 py-4 apple-blue text-white font-semibold text-xl rounded-full btn-primary apple-blue-hover btn-glow">
-                Secure Your Seat
+        <!-- Stagger 5 -->
+        <div class="flex flex-col sm:flex-row justify-center gap-4 stagger-in" style="animation-delay: 0.9s;">
+            <a href="#" class="px-8 py-3 apple-blue text-white rounded-full btn-primary btn-glow">
+                Download Syllabus
+            </a>
+            <a href="#pillars" class="px-8 py-3 rounded-full ring-1 ring-apple-blue text-apple-blue hover:bg-blue-50 transition duration-300">
+                Explore Program
             </a>
         </div>
-    </section>
+    </div>
+</section>
 
-    <!-- Footer (Minimal Dark Footer) -->
-    <footer class="bg-[#1D1D1F] text-white py-12 border-t border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <!-- Brand Name (Muted White) -->
-            <h4 class="text-xl font-bold mb-2 text-apple-blue">Shyamangi</h4>
-            <p class="text-sm text-gray-500">Certified Financial Risk Management Program</p>
-            <div class="mt-8 text-xs text-gray-600">
-                <!-- Copyright -->
-                &copy; 2025 <span class="text-apple-blue">Shyamangi</span>. All rights reserved.
+<!-- WHO IS THIS FOR -->
+<section class="py-24 bg-white">
+    <div class="max-w-5xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold mb-6">Who This Program Is For</h2>
+        <p class="text-xl text-gray-600 mb-10">If you want a stable, respected BFSI career — this is built for you.</p>
+
+        <div class="grid md:grid-cols-4 gap-6">
+            <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🎓<br><strong>Final-Year Students</strong><br>Any stream</div>
+            <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🚀<br><strong>Fresh Graduates</strong><br>First BFSI role</div>
+            <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🔄<br><strong>Career Switchers</strong><br>Into banking</div>
+            <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">📈<br><strong>Working Professionals</strong><br>Sales & ops</div>
+        </div>
+    </div>
+</section>
+
+<!-- PILLARS (UPDATED: Added hover effect for card lift) -->
+<section class="py-28 bg-white" id="pillars">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold mb-4">The <span class="text-apple-blue">Shyamangi</span> Advantage</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">Built around real hiring expectations — not theory.</p>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow transition duration-300 transform hover:scale-[1.03] hover:shadow-xl">
+                <h3 class="text-2xl font-semibold mb-2">🛡 Regulatory Edge</h3>
+                <p>KYC, AML, CDD, and audit-ready compliance skills banks actually test for.</p>
+            </div>
+            <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow transition duration-300 transform hover:scale-[1.03] hover:shadow-xl">
+                <h3 class="text-2xl font-semibold mb-2">💻 CRM Proficiency</h3>
+                <p>Hands-on Zoho & HubSpot usage with real pipeline reporting.</p>
+            </div>
+            <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow transition duration-300 transform hover:scale-[1.03] hover:shadow-xl">
+                <h3 class="text-2xl font-semibold mb-2">🤝 Career Readiness</h3>
+                <p>Interview prep, NISM guidance, and recruiter-focused mock rounds.</p>
             </div>
         </div>
-    </footer>
+    </div>
+</section>
 
-    <!-- JavaScript for Functionality and Animations -->
-    <script>
-        // 1. Mobile Menu Toggle
-        document.getElementById('mobile-menu-button').addEventListener('click', function() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
+<!-- INSTRUCTOR (UPDATED: Added title and subtitle) -->
+<section class="py-28 bg-[#F5F9FF]" id="instructor">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold mb-4">Meet Your <span class="text-apple-blue">Industry Expert</span></h2>
+        <p class="text-xl text-gray-600 mb-12">Learn directly from an experienced former banker.</p>
+        
+        <div class="bg-white p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-10 text-left">
+            <div class="w-32 h-32 rounded-full bg-[#F5F9FF] flex items-center justify-center text-5xl">AS</div>
+            <div>
+                <h3 class="text-3xl font-bold">Ankita Sharma</h3>
+                <p class="text-gray-600 mb-4">Lead BFSI Trainer | 18+ Years</p>
+                <ul class="space-y-2 text-gray-700">
+                    <li>✔ Former Branch Manager, ICICI Bank</li>
+                    <li>✔ Trained 200+ BFSI professionals across Rajasthan</li>
+                    <li>✔ Curriculum aligned with live hiring standards</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS / SOCIAL PROOF (New Section) -->
+<section class="py-28 bg-white" id="testimonials">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold mb-12">Hear From Our Successful Graduates</h2>
+
+        <div class="grid md:grid-cols-2 gap-8">
+            <!-- Testimonial 1 -->
+            <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow-lg text-left transition duration-300 transform hover:scale-[1.03] hover:shadow-2xl">
+                <p class="italic text-gray-700 mb-4">"The focus on KYC and CRM was a game-changer. I felt completely prepared for the technical rounds. Landed an analyst role within two weeks of certification!"</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-apple-blue flex items-center justify-center text-white text-sm font-semibold mr-3">SK</div>
+                    <div>
+                        <p class="font-bold text-gray-900">Sonia Kumari</p>
+                        <p class="text-sm text-gray-500">Analyst, HDFC Bank</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Testimonial 2 -->
+            <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow-lg text-left transition duration-300 transform hover:scale-[1.03] hover:shadow-2xl">
+                <p class="italic text-gray-700 mb-4">"Ankita Ma'am's practical experience makes all the difference. The mock interviews were spot on. Highly recommend for anyone switching careers into finance."</p>
+                <div class="flex items-center">
+                    <div class="w-10 h-10 rounded-full bg-apple-blue flex items-center justify-center text-white text-sm font-semibold mr-3">RJ</div>
+                    <div>
+                        <p class="font-bold text-gray-900">Rahul Jain</p>
+                        <p class="text-sm text-gray-500">Relationship Manager, Axis Bank</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a href="#" class="mt-12 inline-block text-apple-blue font-medium hover:text-blue-700 transition duration-150">Read More Success Stories →</a>
+    </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="py-28 bg-[#F5F9FF]" id="curriculum">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold mb-4">Key Milestones of the 9-Week Program</h2>
+        <p class="text-xl text-gray-600 mb-10">A clear journey from basics to job-ready confidence.</p>
+
+        <div class="flex justify-center gap-8 flex-wrap">
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 1–2: BFSI & Compliance</span>
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 3–5: CRM & Sales</span>
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 6–7: Client Handling</span>
+            <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 8–9: NISM & Interviews</span>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-28 bg-[#F5F9FF]" id="faq">
+    <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 class="text-4xl font-semibold text-center mb-16">Support: Frequently Asked Questions</h2>
+
+        <!-- FAQ Container (Subtle shadow, light background toggles) -->
+        <div class="space-y-0 bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl overflow-hidden">
+            
+            <!-- FAQ Item 1 -->
+            <div class="border-b border-gray-100 last:border-b-0">
+                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
+                    Are classes only held on weekends?
+                    <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </button>
+                <div class="faq-content text-gray-700 px-6" id="faq1">
+                    <p>Yes, the CFRM Program is structured to offer classes exclusively on weekends (Saturday and Sunday) to accommodate working professionals and university students. Detailed timing is available in the syllabus.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 2 -->
+            <div class="border-b border-gray-100 last:border-b-0">
+                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
+                    Is the NISM exam fee included in the program cost?
+                    <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </button>
+                <div class="faq-content text-gray-700 px-6" id="faq2">
+                    <p>No, the official NISM certification exam fee is separate. We provide the comprehensive preparatory course and study materials, but candidates are responsible for registering and paying for the exam directly through NISM.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Item 3 -->
+            <div class="border-b border-gray-100 last:border-b-0">
+                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
+                    What job support is provided after the 9 weeks?
+                    <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </span>
+                </button>
+                <div class="faq-content text-gray-700 px-6" id="faq3">
+                    <p>We provide extensive career services including resume optimization, recorded mock interviews specific to BFSI roles, and network referrals within our partner organizations in Jaipur. While we don't guarantee placement, we guarantee job-readiness.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="py-24 bg-[#1D1D1F]" id="enroll">
+    <div class="max-w-4xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-semibold text-white mb-4">Start Your BFSI Career the Right Way</h2>
+        <p class="text-gray-300 mb-6">
+            Next cohort starts <strong>March 2025</strong> • Limited seats
+        </p>
+        <a href="#" class="px-12 py-4 apple-blue text-white rounded-full btn-primary btn-glow">
+            Enroll Now
+        </a>
+    </div>
+</section>
+
+<footer class="bg-[#1D1D1F] text-gray-500 py-10 text-center text-sm">
+    © 2025 Shyamangi. All rights reserved.
+</footer>
+
+<!-- JavaScript for Functionality -->
+<script>
+    // 1. Mobile Menu Toggle
+    document.getElementById('mobile-menu-button').addEventListener('click', function() {
+        const menu = document.getElementById('mobile-menu');
+        menu.classList.toggle('hidden');
+    });
+
+    // 2. Close mobile menu when a link is clicked
+    document.querySelectorAll('#mobile-menu a').forEach(link => {
+        link.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
         });
+    });
 
-        // 2. FAQ Accordion Toggle
-        document.querySelectorAll('[data-faq-toggle]').forEach(button => {
-            button.addEventListener('click', () => {
-                const targetId = button.getAttribute('data-faq-toggle');
-                const targetContent = document.getElementById(targetId);
-                const icon = button.querySelector('.faq-icon');
-                
-                const isExpanded = button.getAttribute('aria-expanded') === 'true';
+    // 3. FAQ Accordion Toggle Logic
+    document.querySelectorAll('[data-faq-toggle]').forEach(button => {
+        button.addEventListener('click', () => {
+            const targetId = button.getAttribute('data-faq-toggle');
+            const targetContent = document.getElementById(targetId);
+            const icon = button.querySelector('.faq-icon');
+            
+            const isExpanded = button.getAttribute('aria-expanded') === 'true';
 
-                // Close all other open FAQ items and reset their icons
-                document.querySelectorAll('.faq-content.active').forEach(content => {
-                    if (content.id !== targetId) {
-                        content.classList.remove('active');
-                        content.previousElementSibling.setAttribute('aria-expanded', 'false');
-                        content.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
-                    }
-                });
-
-                // Toggle the clicked item
-                button.setAttribute('aria-expanded', !isExpanded);
-                targetContent.classList.toggle('active');
-                icon.classList.toggle('rotate-180');
+            // Close all other open FAQ items and reset their icons
+            document.querySelectorAll('.faq-content.active').forEach(content => {
+                if (content.id !== targetId) {
+                    content.classList.remove('active');
+                    content.previousElementSibling.setAttribute('aria-expanded', 'false');
+                    // Find the icon in the sibling button and rotate it back
+                    content.previousElementSibling.querySelector('.faq-icon').classList.remove('rotate-180');
+                }
             });
+
+            // Toggle the clicked item
+            button.setAttribute('aria-expanded', !isExpanded);
+            targetContent.classList.toggle('active');
+            icon.classList.toggle('rotate-180'); // Rotates the chevron icon
         });
+    });
+</script>
 
-        // Optional: Close mobile menu when a link is clicked
-        const mobileLinks = document.querySelectorAll('#mobile-menu a');
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', function() {
-                document.getElementById('mobile-menu').classList.add('hidden');
-            });
-        });
-
-
-        // 3. Scroll-Triggered Fade-In Animation (Intersection Observer)
-        document.addEventListener('DOMContentLoaded', () => {
-            const animatedElements = document.querySelectorAll('[data-animate-target]');
-
-            const observerOptions = {
-                root: null, 
-                rootMargin: '0px',
-                threshold: 0.1 
-            };
-
-            const observer = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const element = entry.target;
-                        const delay = element.getAttribute('data-delay') || '0'; 
-                        
-                        element.style.animationDelay = `${parseInt(delay) / 1000}s`;
-                        element.classList.add('animate-fade-up');
-                        
-                        observer.unobserve(element);
-                    }
-                });
-            }, observerOptions);
-
-            animatedElements.forEach(element => {
-                observer.observe(element);
-            });
-        });
-    </script>
 </body>
 </html>
