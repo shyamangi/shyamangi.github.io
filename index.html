@@ -34,17 +34,25 @@
             animation:gradient-shift 15s ease infinite;
         }
 
-        /* Hero Load-in Animation */
+        /* Hero Load-in Animation & General Scroll-Reveal Animation */
         @keyframes fadeInUp {
             0% { opacity: 0; transform: translateY(20px); }
             100% { opacity: 1; transform: translateY(0); }
         }
         .stagger-in {
-            /* * FIX: Removed 'opacity: 0' and set fill-mode to 'both'. 
-             * 'both' ensures it starts hidden (0% keyframe) and stays visible (100% keyframe) after finishing.
-             */
+            /* For Hero only, uses inline style for delay */
             animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1);
             animation-fill-mode: both; 
+        }
+
+        /* New class for elements that will be revealed on scroll */
+        .scroll-reveal {
+            opacity: 0;
+        }
+        
+        /* Class added by JS when element is visible */
+        .revealed {
+            animation: fadeInUp 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
         }
 
         /* FAQ Accordion Styles - max-height increased from 400px to 1000px to prevent overflow */
@@ -132,10 +140,10 @@
 <!-- WHO IS THIS FOR -->
 <section class="py-24 bg-white">
     <div class="max-w-5xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold mb-6">Who This Program Is For</h2>
-        <p class="text-xl text-gray-600 mb-10">If you want a stable, respected BFSI career — this is built for you.</p>
+        <h2 class="text-4xl font-semibold mb-6 scroll-reveal">Who This Program Is For</h2>
+        <p class="text-xl text-gray-600 mb-10 scroll-reveal" style="animation-delay: 0.1s;">If you want a stable, respected BFSI career — this is built for you.</p>
 
-        <div class="grid md:grid-cols-4 gap-6">
+        <div class="grid md:grid-cols-4 gap-6 scroll-reveal" style="animation-delay: 0.3s;">
             <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🎓<br><strong>Final-Year Students</strong><br>Any stream</div>
             <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🚀<br><strong>Fresh Graduates</strong><br>First BFSI role</div>
             <div class="p-6 rounded-xl bg-[#F9F9F9] shadow-md transition duration-300 hover:scale-[1.03] hover:shadow-lg">🔄<br><strong>Career Switchers</strong><br>Into banking</div>
@@ -147,10 +155,10 @@
 <!-- PILLARS (UPDATED: Added hover effect for card lift) -->
 <section class="py-28 bg-white" id="pillars">
     <div class="max-w-7xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold mb-4">The <span class="text-apple-blue">Shyamangi</span> Advantage</h2>
-        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12">Built around real hiring expectations — not theory.</p>
+        <h2 class="text-4xl font-semibold mb-4 scroll-reveal">The <span class="text-apple-blue">Shyamangi</span> Advantage</h2>
+        <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 scroll-reveal" style="animation-delay: 0.1s;">Built around real hiring expectations — not theory.</p>
 
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-3 gap-8 scroll-reveal" style="animation-delay: 0.3s;">
             <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow transition duration-300 transform hover:scale-[1.03] hover:shadow-xl">
                 <h3 class="text-2xl font-semibold mb-2">🛡 Regulatory Edge</h3>
                 <p>KYC, AML, CDD, and audit-ready compliance skills banks actually test for.</p>
@@ -170,10 +178,10 @@
 <!-- INSTRUCTOR (UPDATED: Added title and subtitle) -->
 <section class="py-28 bg-[#F5F9FF]" id="instructor">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold mb-4">Meet Your <span class="text-apple-blue">Industry Expert</span></h2>
-        <p class="text-xl text-gray-600 mb-12">Learn directly from an experienced former banker.</p>
+        <h2 class="text-4xl font-semibold mb-4 scroll-reveal">Meet Your <span class="text-apple-blue">Industry Expert</span></h2>
+        <p class="text-xl text-gray-600 mb-12 scroll-reveal" style="animation-delay: 0.1s;">Learn directly from an experienced former banker.</p>
         
-        <div class="bg-white p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-10 text-left">
+        <div class="bg-white p-10 rounded-3xl shadow-xl flex flex-col md:flex-row items-center gap-10 text-left scroll-reveal" style="animation-delay: 0.3s;">
             <div class="w-32 h-32 rounded-full bg-[#F5F9FF] flex items-center justify-center text-5xl">AS</div>
             <div>
                 <h3 class="text-3xl font-bold">Ankita Sharma</h3>
@@ -191,9 +199,9 @@
 <!-- TESTIMONIALS / SOCIAL PROOF (New Section) -->
 <section class="py-28 bg-white" id="testimonials">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold mb-12">Hear From Our Successful Graduates</h2>
+        <h2 class="text-4xl font-semibold mb-12 scroll-reveal">Hear From Our Successful Graduates</h2>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-8 scroll-reveal" style="animation-delay: 0.1s;">
             <!-- Testimonial 1 -->
             <div class="p-8 bg-[#F9F9F9] rounded-2xl shadow-lg text-left transition duration-300 transform hover:scale-[1.03] hover:shadow-2xl">
                 <p class="italic text-gray-700 mb-4">"The focus on KYC and CRM was a game-changer. I felt completely prepared for the technical rounds. Landed an analyst role within two weeks of certification!"</p>
@@ -218,17 +226,17 @@
                 </div>
             </div>
         </div>
-        <a href="#" class="mt-12 inline-block text-apple-blue font-medium hover:text-blue-700 transition duration-150">Read More Success Stories →</a>
+        <a href="#" class="mt-12 inline-block text-apple-blue font-medium hover:text-blue-700 transition duration-150 scroll-reveal" style="animation-delay: 0.3s;">Read More Success Stories →</a>
     </div>
 </section>
 
 <!-- CURRICULUM -->
 <section class="py-28 bg-[#F5F9FF]" id="curriculum">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold mb-4">Key Milestones of the 9-Week Program</h2>
-        <p class="text-xl text-gray-600 mb-10">A clear journey from basics to job-ready confidence.</p>
+        <h2 class="text-4xl font-semibold mb-4 scroll-reveal">Key Milestones of the 9-Week Program</h2>
+        <p class="text-xl text-gray-600 mb-10 scroll-reveal" style="animation-delay: 0.1s;">A clear journey from basics to job-ready confidence.</p>
 
-        <div class="flex justify-center gap-8 flex-wrap">
+        <div class="flex justify-center gap-8 flex-wrap scroll-reveal" style="animation-delay: 0.3s;">
             <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 1–2: BFSI & Compliance</span>
             <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 3–5: CRM & Sales</span>
             <span class="px-4 py-2 bg-white rounded-full shadow-sm">Week 6–7: Client Handling</span>
@@ -240,10 +248,10 @@
 <!-- FAQ Section -->
 <section class="py-28 bg-[#F5F9FF]" id="faq">
     <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-4xl font-semibold text-center mb-16">Support: Frequently Asked Questions</h2>
+        <h2 class="text-4xl font-semibold text-center mb-16 scroll-reveal">Support: Frequently Asked Questions</h2>
 
         <!-- FAQ Container (Subtle shadow, light background toggles) -->
-        <div class="space-y-0 bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl overflow-hidden">
+        <div class="space-y-0 bg-white rounded-2xl ring-1 ring-gray-200 shadow-xl overflow-hidden scroll-reveal" style="animation-delay: 0.1s;">
             
             <!-- FAQ Item 1 -->
             <div class="border-b border-gray-100 last:border-b-0">
@@ -290,11 +298,11 @@
 <!-- FINAL CTA -->
 <section class="py-24 bg-[#1D1D1F]" id="enroll">
     <div class="max-w-4xl mx-auto px-4 text-center">
-        <h2 class="text-4xl font-semibold text-white mb-4">Start Your BFSI Career the Right Way</h2>
-        <p class="text-gray-300 mb-6">
+        <h2 class="text-4xl font-semibold text-white mb-4 scroll-reveal">Start Your BFSI Career the Right Way</h2>
+        <p class="text-gray-300 mb-6 scroll-reveal" style="animation-delay: 0.1s;">
             Next cohort starts <strong>March 2025</strong> • Limited seats
         </p>
-        <a href="#" class="px-12 py-4 apple-blue text-white rounded-full btn-primary btn-glow">
+        <a href="#" class="px-12 py-4 apple-blue text-white rounded-full btn-primary btn-glow scroll-reveal" style="animation-delay: 0.3s;">
             Enroll Now
         </a>
     </div>
@@ -342,6 +350,29 @@
             button.setAttribute('aria-expanded', !isExpanded);
             targetContent.classList.toggle('active');
             icon.classList.toggle('rotate-180'); // Rotates the chevron icon
+        });
+    });
+
+    // 4. Scroll Reveal Animation Logic (Intersection Observer)
+    window.addEventListener('DOMContentLoaded', () => {
+        const revealElements = document.querySelectorAll('.scroll-reveal');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Add the revealed class which triggers the fadeInUp animation
+                    entry.target.classList.add('revealed');
+                    // Stop observing the element once it's revealed
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px', 
+            threshold: 0.1 // Trigger when 10% of the element is visible
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
         });
     });
 </script>
