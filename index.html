@@ -16,6 +16,8 @@
         .apple-blue { background-color:#007AFF; }
         .apple-blue-hover:hover { background-color:#005ce6; }
         .text-apple-blue { color:#007AFF; }
+        /* New custom class for premium FAQ button hover background */
+        .faq-hover-light { background-color: #F0F5FF; } 
 
         .btn-primary { transition:all .3s ease; box-shadow:0 4px 15px rgba(0,122,255,.3); }
         .btn-glow:hover { box-shadow:0 0 30px rgba(0,122,255,.6); transform:translateY(-2px); }
@@ -56,8 +58,23 @@
         }
 
         /* FAQ Accordion Styles - max-height increased from 400px to 1000px to prevent overflow */
-        .faq-content{max-height:0;overflow:hidden;background:#F9F9F9;transition:max-height .4s cubic-bezier(0.4, 0, 0.2, 1),padding .4s cubic-bezier(0.4, 0, 0.2, 1)}
-        .faq-content.active{max-height:1000px;padding:1rem 0 1.5rem}
+        .faq-content{max-height:0;overflow:hidden;background:#F9F9F9;transition:max-height .5s cubic-bezier(0.4, 0, 0.2, 1),padding .5s cubic-bezier(0.4, 0, 0.2, 1)}
+        /* UPDATED: Changed horizontal padding from 0 to 1.5rem (matches the button px-6) */
+        .faq-content.active{max-height:1000px;padding:1rem 1.5rem 1.5rem}
+        
+        /* Animation for the text content itself */
+        .faq-text-content {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.3s ease-out, transform 0.3s ease-out; 
+        }
+
+        /* Reveal the text content when the parent is active */
+        .faq-content.active .faq-text-content {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: 0.1s;
+        }
     </style>
 </head>
 
@@ -255,40 +272,40 @@
             
             <!-- FAQ Item 1 -->
             <div class="border-b border-gray-100 last:border-b-0">
-                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq1">
+                <button class="w-full text-left py-5 px-6 font-semibold text-lg text-gray-900 flex justify-between items-center transition duration-300 hover:bg-faq-hover-light hover:text-apple-blue" aria-expanded="false" data-faq-toggle="faq1">
                     Are classes only held on weekends?
                     <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </span>
                 </button>
                 <div class="faq-content text-gray-700 px-6" id="faq1">
-                    <p>Yes, the CFRM Program is structured to offer classes exclusively on weekends (Saturday and Sunday) to accommodate working professionals and university students. Detailed timing is available in the syllabus.</p>
+                    <p class="faq-text-content">Yes, the CFRM Program is structured to offer classes exclusively on weekends (Saturday and Sunday) to accommodate working professionals and university students. Detailed timing is available in the syllabus.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 2 -->
             <div class="border-b border-gray-100 last:border-b-0">
-                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq2">
+                <button class="w-full text-left py-5 px-6 font-semibold text-lg text-gray-900 flex justify-between items-center transition duration-300 hover:bg-faq-hover-light hover:text-apple-blue" aria-expanded="false" data-faq-toggle="faq2">
                     Is the NISM exam fee included in the program cost?
                     <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </span>
                 </button>
                 <div class="faq-content text-gray-700 px-6" id="faq2">
-                    <p>No, the official NISM certification exam fee is separate. We provide the comprehensive preparatory course and study materials, but candidates are responsible for registering and paying for the exam directly through NISM.</p>
+                    <p class="faq-text-content">No, the official NISM certification exam fee is separate. We provide the comprehensive preparatory course and study materials, but candidates are responsible for registering and paying for the exam directly through NISM.</p>
                 </div>
             </div>
 
             <!-- FAQ Item 3 -->
             <div class="border-b border-gray-100 last:border-b-0">
-                <button class="w-full text-left p-6 font-medium text-lg text-gray-900 flex justify-between items-center hover:bg-gray-50 transition duration-150" aria-expanded="false" data-faq-toggle="faq3">
+                <button class="w-full text-left py-5 px-6 font-semibold text-lg text-gray-900 flex justify-between items-center transition duration-300 hover:bg-faq-hover-light hover:text-apple-blue" aria-expanded="false" data-faq-toggle="faq3">
                     What job support is provided after the 9 weeks?
                     <span class="faq-icon transition-transform duration-300 transform rotate-0 text-apple-blue">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </span>
                 </button>
                 <div class="faq-content text-gray-700 px-6" id="faq3">
-                    <p>We provide extensive career services including resume optimization, recorded mock interviews specific to BFSI roles, and network referrals within our partner organizations in Jaipur. While we don't guarantee placement, we guarantee job-readiness.</p>
+                    <p class="faq-text-content">We provide extensive career services including resume optimization, recorded mock interviews specific to BFSI roles, and network referrals within our partner organizations in Jaipur. While we don't guarantee placement, we guarantee job-readiness.</p>
                 </div>
             </div>
         </div>
