@@ -1,816 +1,907 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Certified Financial Relations Manager (CFRM) — 9-week job-focused program: KYC/AML, CRM mastery, mock interviews, and placement support.">
-    <link rel="canonical" href="https://your-site.example/index.html">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="icon" href="/favicon.ico">
-    <meta name="theme-color" content="#003366">
-
-    <title>Shyamangi | Certified Financial Relations Manager (CFRM)</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Shyamangi CFRM - Launch Your BFSI Career</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f7f9fc;
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            overflow-x: hidden;
+            background: #fbfbfd;
         }
-        .text-primary { color: #003366; }
-        .bg-primary { background-color: #003366; }
-        .text-accent { color: #FFA500; }
-        .bg-accent { background-color: #FFA500; }
-        .border-accent { border-color: #FFA500; }
-        .cta-button {
-            transition: all 0.3s ease-in-out;
+
+        /* Navigation - Apple Style */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(251, 251, 253, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            transition: all 0.3s cubic-bezier(0.28, 0.11, 0.32, 1);
         }
-        .cta-button:hover {
-            box-shadow: 0 10px 15px -3px rgba(0, 51, 102, 0.3);
-            transform: translateY(-2px);
+
+        .nav-container {
+            max-width: 980px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 22px;
+            height: 44px;
         }
-        .stat-number {
-            font-size: 3rem;
-            font-weight: 800;
+
+        .logo {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.01em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1d1d1f;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            transition: opacity 0.3s;
+            opacity: 0.8;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        .cta-btn {
+            padding: 8px 16px;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 12px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: -0.01em;
+        }
+
+        .cta-btn:hover {
+            background: #0077ed;
+        }
+
+        /* Hero Section - Apple Style */
+        .hero {
+            margin-top: 44px;
+            min-height: 100vh;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-video-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(0, 113, 227, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 70% 50%, rgba(88, 86, 214, 0.3) 0%, transparent 50%);
+            animation: pulse 8s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; transform: scale(1); }
+            50% { opacity: 0.8; transform: scale(1.05); }
+        }
+
+        .hero-content {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 0 22px;
+            color: white;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .hero-eyebrow {
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: 0.011em;
+            margin-bottom: 8px;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.2s forwards;
+        }
+
+        .hero h1 {
+            font-size: 80px;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            line-height: 1.05;
+            margin-bottom: 24px;
+            background: linear-gradient(180deg, #fff 0%, rgba(255,255,255,0.8) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.4s forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 0.007em;
+            line-height: 1.14286;
+            margin-bottom: 24px;
+            opacity: 0.9;
+            max-width: 740px;
+            margin-left: auto;
+            margin-right: auto;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.6s forwards;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 32px;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 0.8s forwards;
+        }
+
+        .primary-btn {
+            padding: 12px 22px;
+            background: #0071e3;
+            color: white;
+            border: none;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: -0.022em;
+        }
+
+        .primary-btn:hover {
+            background: #0077ed;
+        }
+
+        .secondary-btn {
+            padding: 12px 22px;
+            background: transparent;
+            color: #2997ff;
+            border: 1px solid #2997ff;
+            border-radius: 980px;
+            font-size: 17px;
+            font-weight: 400;
+            cursor: pointer;
+            transition: all 0.3s;
+            letter-spacing: -0.022em;
+        }
+
+        .secondary-btn:hover {
+            background: #2997ff;
+            color: white;
+        }
+
+        .skills-badges {
+            display: flex;
+            gap: 24px;
+            margin-top: 48px;
+            justify-content: center;
+            flex-wrap: wrap;
+            opacity: 0;
+            animation: fadeInUp 0.8s cubic-bezier(0.28, 0.11, 0.32, 1) 1s forwards;
+        }
+
+        .badge {
+            font-size: 14px;
+            font-weight: 500;
+            letter-spacing: -0.016em;
+            opacity: 0.8;
+        }
+
+        /* Section Styles - Apple Minimalism */
+        section {
+            padding: 100px 22px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .section-eyebrow {
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: 0.011em;
+            text-align: center;
+            margin-bottom: 8px;
+            color: #6e6e73;
+        }
+
+        h2 {
+            font-size: 56px;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            text-align: center;
+            margin-bottom: 16px;
+            color: #1d1d1f;
+            line-height: 1.07143;
+        }
+
+        .section-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            text-align: center;
+            color: #6e6e73;
+            margin-bottom: 60px;
+            line-height: 1.16667;
+        }
+
+        /* Feature Cards - Apple Style */
+        .difference-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .difference-card {
+            background: white;
+            padding: 48px 32px;
+            border-radius: 18px;
+            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .difference-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .card-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .difference-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            margin-bottom: 12px;
+            color: #1d1d1f;
+        }
+
+        .difference-card p {
+            font-size: 17px;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+
+        /* Timeline - Minimal Apple Style */
+        .timeline {
+            margin-top: 60px;
+        }
+
+        .timeline-item {
+            background: white;
+            padding: 40px;
+            margin: 12px 0;
+            border-radius: 18px;
+            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            cursor: pointer;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .timeline-item:hover {
+            transform: translateX(8px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+        }
+
+        .timeline-item h3 {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 0.009em;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .timeline-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            font-size: 17px;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+
+        .timeline-item.active .timeline-content {
+            max-height: 200px;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+        }
+
+        /* Instructor Section - Apple Product Style */
+        .instructor-section {
+            background: #f5f5f7;
+            padding: 100px 22px;
+            margin: 60px 0;
+        }
+
+        .instructor {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .instructor-image {
+            width: 100%;
+            aspect-ratio: 1;
+            border-radius: 18px;
+            background: linear-gradient(135deg, #0071e3 0%, #5856d6 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: white;
+            font-weight: 300;
+        }
+
+        .instructor-info h3 {
+            font-size: 40px;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+        }
+
+        .instructor-info h4 {
+            font-size: 21px;
+            font-weight: 400;
+            letter-spacing: 0.011em;
+            color: #6e6e73;
+            margin-bottom: 32px;
+        }
+
+        .instructor-info ul {
+            list-style: none;
+        }
+
+        .instructor-info li {
+            padding: 12px 0;
+            font-size: 17px;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: #1d1d1f;
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .instructor-info li:before {
+            content: '✓';
+            color: #0071e3;
+            font-weight: 600;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Pillars Grid - Apple Product Grid */
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-top: 60px;
+        }
+
+        .pillar-card {
+            background: white;
+            padding: 60px 40px;
+            border-radius: 18px;
+            text-align: center;
+            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            border: 1px solid rgba(0, 0, 0, 0.04);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pillar-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, #0071e3 0%, #5856d6 100%);
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .pillar-card.active:before {
+            opacity: 1;
+        }
+
+        .pillar-card > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pillar-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+        }
+
+        .pillar-number {
+            font-size: 96px;
+            font-weight: 700;
+            opacity: 0.1;
+            margin-bottom: 16px;
             line-height: 1;
         }
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+
+        .pillar-card.active .pillar-number {
+            color: white;
+            opacity: 0.3;
         }
-        .animate-slide-in {
-            animation: slideIn 0.6s ease-out forwards;
+
+        .pillar-card h3 {
+            font-size: 28px;
+            font-weight: 600;
+            letter-spacing: 0.007em;
+            margin-bottom: 12px;
+            color: #1d1d1f;
         }
-        /* Visible focus for keyboard users */
-        :focus-visible {
-            outline: 3px solid #FFA500;
-            outline-offset: 2px;
-            border-radius: 6px;
+
+        .pillar-card.active h3 {
+            color: white;
+        }
+
+        .pillar-card p {
+            font-size: 17px;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+
+        .pillar-card.active p {
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .coming-soon {
+            margin-top: 20px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #0071e3;
+        }
+
+        .pillar-card.active .coming-soon {
+            display: none;
+        }
+
+        .view-program {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .pillar-card.active .view-program {
+            display: block;
+        }
+
+        .view-program button {
+            padding: 8px 16px;
+            background: white;
+            color: #0071e3;
+            border: none;
+            border-radius: 980px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .view-program button:hover {
+            transform: scale(1.05);
+        }
+
+        /* FAQ - Apple Clean Style */
+        .faq-item {
+            background: white;
+            margin: 12px 0;
+            border-radius: 18px;
+            overflow: hidden;
+            transition: all 0.3s;
+            border: 1px solid rgba(0, 0, 0, 0.04);
+        }
+
+        .faq-question {
+            padding: 28px 32px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 21px;
+            font-weight: 600;
+            letter-spacing: 0.011em;
+            color: #1d1d1f;
+        }
+
+        .faq-question:hover {
+            background: #fbfbfd;
+        }
+
+        .faq-answer {
+            padding: 0 32px;
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.28, 0.11, 0.32, 1);
+            font-size: 17px;
+            line-height: 1.47059;
+            letter-spacing: -0.022em;
+            color: #6e6e73;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 32px 28px 32px;
+            max-height: 300px;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+            font-size: 14px;
+            opacity: 0.6;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Final CTA - Apple Event Style */
+        .final-cta {
+            text-align: center;
+            background: #000;
+            color: white;
+            border-radius: 18px;
+            padding: 80px 40px;
+            margin: 60px 0;
+        }
+
+        .final-cta h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .final-cta p {
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 0.009em;
+            margin-bottom: 32px;
+            opacity: 0.9;
+        }
+
+        /* Footer - Apple Minimalist */
+        footer {
+            background: #f5f5f7;
+            color: #1d1d1f;
+            padding: 60px 22px 40px;
+        }
+
+        .footer-content {
+            max-width: 980px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: #6e6e73;
+            text-decoration: none;
+            display: block;
+            padding: 6px 0;
+            font-size: 12px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #1d1d1f;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+            color: #6e6e73;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 56px;
+            }
+
+            h2 {
+                font-size: 40px;
+            }
+
+            .difference-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .instructor {
+                grid-template-columns: 1fr;
+            }
+
+            .pillars-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 40px;
+            }
+
+            .hero-subtitle {
+                font-size: 21px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            section {
+                padding: 60px 22px;
+            }
         }
     </style>
-    <!-- Interactive scripts moved to bottom of document to ensure handlers bind after DOM is ready -->
 </head>
-<body class="text-gray-800">
-    <a href="#main-content" class="sr-only focus:not-sr-only focus:block p-2 bg-white text-primary">Skip to content</a>
-    <main id="main-content">
-
-    <!-- Header & Navigation -->
-    <header class="bg-white shadow-md sticky top-0 z-50 relative">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-extrabold text-primary">Shyamangi</a>
-            <!-- Mobile hamburger (visible < md) -->
-            <button id="mobile-toggle" type="button" onclick="toggleMobileMenu()" class="md:hidden p-2 rounded-lg" aria-label="Open menu" aria-controls="mobile-menu" aria-expanded="false">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                </svg>
-            </button>
-            <nav aria-label="Primary Navigation" class="hidden md:flex space-x-8 text-lg font-medium">
-                <a href="#cfrm" class="hover:text-accent transition duration-150">CFRM Program</a>
-                <a href="#curriculum" class="hover:text-accent transition duration-150">Curriculum</a>
-                <a href="#outcomes" class="hover:text-accent transition duration-150">Outcomes</a>
-                <a href="#instructor" class="hover:text-accent transition duration-150">Instructor</a>
-                <a href="#pricing" class="hover:text-accent transition duration-150">Pricing</a>
-                <a href="#faq" class="hover:text-accent transition duration-150">FAQ</a>
-            </nav>
-            <button onclick="openModal()" class="cta-button bg-accent text-white py-2 px-6 rounded-lg font-semibold shadow-lg hover:bg-opacity-90 hidden md:block">
-                Enroll Now
-            </button>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">Shyamangi</div>
+            <ul class="nav-links">
+                <li><a href="#program">Program</a></li>
+                <li><a href="#pillars">Pillars</a></li>
+                <li><a href="#instructor">Instructor</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <button class="cta-btn" onclick="scrollToEnroll()">Enroll</button>
         </div>
-        <!-- Mobile menu (hidden by default) -->
-        <div id="mobile-menu" class="md:hidden hidden w-full bg-white shadow-lg rounded-b-lg">
-            <nav class="flex flex-col p-4 space-y-2 max-w-7xl mx-auto">
-                <a href="#cfrm" class="block px-2 py-2 hover:text-accent">CFRM Program</a>
-                <a href="#curriculum" class="block px-2 py-2 hover:text-accent">Curriculum</a>
-                <a href="#outcomes" class="block px-2 py-2 hover:text-accent">Outcomes</a>
-                <a href="#instructor" class="block px-2 py-2 hover:text-accent">Instructor</a>
-                <a href="#pricing" class="block px-2 py-2 hover:text-accent">Pricing</a>
-                <a href="#faq" class="block px-2 py-2 hover:text-accent">FAQ</a>
-                <button onclick="openModal()" class="mt-2 bg-accent text-white py-2 px-4 rounded-lg">Enroll Now</button>
-            </nav>
-        </div>
-    </header>
+    </nav>
 
-    <!-- Hero Section with Urgency -->
-    <section id="cfrm" class="bg-primary text-white py-20 md:py-32 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-            <!-- Urgency Banner -->
-            <div class="inline-block bg-accent text-primary px-6 py-2 rounded-full font-bold text-sm mb-6 animate-pulse">
-                ⏰ Next Cohort Starts: January 26, 2025 | Only 18 Seats Left
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-video-bg"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow">CFRM Program</div>
+            <h1>Launch Your<br>BFSI Career</h1>
+            <p class="hero-subtitle">Certified, Compliant, and Job-Ready in 9 Weeks.<br>Master the skills Jaipur's top banks demand.</p>
+            <div class="hero-cta">
+                <button class="primary-btn">Download Syllabus</button>
+                <button class="secondary-btn">Learn More</button>
             </div>
-            
-            <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">
-                LAUNCH YOUR BFSI CAREER: <span class="text-accent">Certified, Compliant, & Job-Ready</span> in 9 Weeks
-            </h1>
-            <p class="text-xl md:text-2xl font-light mb-8 max-w-3xl mx-auto">
-                Master the exact CRM, Sales, and KYC/AML skills that HDFC, ICICI, and Axis Bank demand. Stop applying—start getting hired.
-            </p>
-            
-            <!-- Results Bar -->
-            <div class="bg-white bg-opacity-10 rounded-xl p-6 mb-8 max-w-4xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                    <div>
-                        <div class="text-accent text-4xl font-bold">85%</div>
-                        <div class="text-sm mt-1">Job Placement Rate</div>
-                    </div>
-                    <div>
-                        <div class="text-accent text-4xl font-bold">₹4.2L</div>
-                        <div class="text-sm mt-1">Average Starting Salary</div>
-                    </div>
-                    <div>
-                        <div class="text-accent text-4xl font-bold">200+</div>
-                        <div class="text-sm mt-1">Graduates Placed</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="space-y-4 md:space-y-0 md:space-x-4">
-                <button onclick="openModal()" class="cta-button bg-accent text-primary py-4 px-10 rounded-xl font-bold text-lg shadow-2xl hover:bg-opacity-95 w-full md:w-auto">
-                    Download Full 9-Week Syllabus
-                </button>
-                <button onclick="openWhatsApp()" class="cta-button bg-white text-primary py-4 px-10 rounded-xl font-bold text-lg shadow-2xl hover:bg-gray-100 w-full md:w-auto">
-                    💬 Chat on WhatsApp
-                </button>
-            </div>
-            
-            <!-- Trust Bar -->
-            <div class="mt-12">
-                <p class="text-sm font-semibold uppercase opacity-70 mb-3">Skills Taught & Verified:</p>
-                <div class="flex flex-wrap justify-center gap-3">
-                    <span class="inline-flex items-center text-sm font-medium bg-white bg-opacity-10 px-4 py-2 rounded-full">✅ NISM Prep</span>
-                    <span class="inline-flex items-center text-sm font-medium bg-white bg-opacity-10 px-4 py-2 rounded-full">💻 CRM Mastery</span>
-                    <span class="inline-flex items-center text-sm font-medium bg-white bg-opacity-10 px-4 py-2 rounded-full">🛡️ KYC/AML Compliance</span>
-                    <span class="inline-flex items-center text-sm font-medium bg-white bg-opacity-10 px-4 py-2 rounded-full">🎯 SPIN Selling</span>
-                </div>
+            <div class="skills-badges">
+                <div class="badge">NISM Prep</div>
+                <div class="badge">CRM Mastery</div>
+                <div class="badge">KYC/AML Compliance</div>
             </div>
         </div>
     </section>
 
-    <!-- Social Proof / Testimonials -->
-    <section class="py-16 bg-white">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Our Graduates Are Now Working At</h2>
-            <div class="flex flex-wrap justify-center items-center gap-8 mb-12 opacity-60">
-                <div class="text-2xl font-bold text-primary">HDFC Bank</div>
-                <div class="text-2xl font-bold text-primary">ICICI Bank</div>
-                <div class="text-2xl font-bold text-primary">Axis Bank</div>
-                <div class="text-2xl font-bold text-primary">Kotak Mahindra</div>
-                <div class="text-2xl font-bold text-primary">SBI</div>
+    <!-- Difference Section -->
+    <section id="program">
+        <div class="section-eyebrow">Why CFRM</div>
+        <h2>The Shyamangi<br>Difference</h2>
+        <p class="section-subtitle">Three pillars that set you apart in the BFSI industry</p>
+        <div class="difference-grid">
+            <div class="difference-card">
+                <div class="card-icon">🛡️</div>
+                <h3>Regulatory Edge</h3>
+                <p>Practical KYC/AML training in Customer Due Diligence and Red Flag Indicators—the mandatory skills banks audit and hire for.</p>
             </div>
-
-            <div class="grid md:grid-cols-3 gap-8 mt-12">
-                <!-- Testimonial 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">P</div>
-                        <div class="ml-3">
-                            <div class="font-semibold text-lg">Priya Meena</div>
-                            <div class="text-sm text-gray-600">Relationship Manager, HDFC Bank</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"The KYC/AML module was game-changing. I cleared 3 interview rounds because I could speak their compliance language. Worth every rupee!"</p>
-                    <div class="mt-4 text-accent font-semibold">Salary: ₹4.5 LPA</div>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">R</div>
-                        <div class="ml-3">
-                            <div class="font-semibold text-lg">Rahul Sharma</div>
-                            <div class="text-sm text-gray-600">Sales Officer, Axis Bank</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"CRM training was hands-on, not theoretical. My interviewer was impressed when I showed my pipeline report. Got offer letter in 2 weeks."</p>
-                    <div class="mt-4 text-accent font-semibold">Salary: ₹3.8 LPA</div>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl">A</div>
-                        <div class="ml-3">
-                            <div class="font-semibold text-lg">Anjali Verma</div>
-                            <div class="text-sm text-gray-600">Client Advisor, ICICI Prudential</div>
-                        </div>
-                    </div>
-                    <p class="text-gray-700 italic">"Mock interviews and NISM prep were excellent. Ankita ma'am's network directly connected me to recruiters. Highly recommend!"</p>
-                    <div class="mt-4 text-accent font-semibold">Salary: ₹4.2 LPA</div>
-                </div>
+            <div class="difference-card">
+                <div class="card-icon">💻</div>
+                <h3>CRM Proficiency</h3>
+                <p>Hands-on practice in Zoho and HubSpot. Submit a verified Pipeline Forecast Report as proof of digital literacy.</p>
+            </div>
+            <div class="difference-card">
+                <div class="card-icon">🤝</div>
+                <h3>Interview Ready</h3>
+                <p>NISM V-A crash course and recorded mock interviews focused on questions that matter to Jaipur HR.</p>
             </div>
         </div>
     </section>
 
-    <!-- The CFRM Difference -->
-    <section class="py-16 md:py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Why CFRM Graduates Get Hired Faster</h2>
-        <p class="text-center text-gray-600 mb-12 max-w-2xl mx-auto">Most training programs teach theory. We teach what banks actually test in interviews.</p>
-        
-        <div class="grid md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary transform hover:scale-105 transition duration-300">
-                <div class="text-4xl text-accent mb-4">🛡️</div>
-                <h3 class="text-xl font-semibold mb-3">Regulatory Edge: KYC/AML</h3>
-                <p class="text-gray-600 mb-4">Go beyond theory. Get practical training in Customer Due Diligence, Red Flag Indicators, and Anti-Money Laundering—the mandatory skills that banks audit and hire for.</p>
-                <div class="bg-gray-50 p-3 rounded text-sm">
-                    <strong>Deliverable:</strong> Complete Compliance Checklist Report
+    <!-- Timeline Section -->
+    <section>
+        <div class="section-eyebrow">Curriculum</div>
+        <h2>9 Weeks.<br>Classroom to Career.</h2>
+        <div class="timeline">
+            <div class="timeline-item" onclick="toggleTimeline(this)">
+                <h3>Week 1 — Foundations</h3>
+                <div class="timeline-content">
+                    Building the ethical foundation and professional mindset required for BFSI success. Understanding industry standards and compliance basics.
                 </div>
             </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary transform hover:scale-105 transition duration-300">
-                <div class="text-4xl text-accent mb-4">💻</div>
-                <h3 class="text-xl font-semibold mb-3">CRM Proficiency Guaranteed</h3>
-                <p class="text-gray-600 mb-4">Hands-on practice in industry-standard CRM (Zoho/HubSpot Sandbox). Submit a verified Pipeline Forecast Report as proof of digital literacy to recruiters.</p>
-                <div class="bg-gray-50 p-3 rounded text-sm">
-                    <strong>Deliverable:</strong> 30-Day Sales Forecast Report
+            <div class="timeline-item" onclick="toggleTimeline(this)">
+                <h3>Week 3 — Tech Mastery</h3>
+                <div class="timeline-content">
+                    Hands-on training with industry-standard CRM platforms. Learn to manage customer relationships digitally and create pipeline forecasts.
                 </div>
             </div>
-
-            <div class="bg-white p-6 rounded-xl shadow-lg border-t-4 border-primary transform hover:scale-105 transition duration-300">
-                <div class="text-4xl text-accent mb-4">🤝</div>
-                <h3 class="text-xl font-semibold mb-3">NISM-Ready & Interview Prep</h3>
-                <p class="text-gray-600 mb-4">Dedicated crash course for NISM V-A (Mutual Funds) and mandatory recorded mock interviews. We focus on preparing you for the questions that matter most to Jaipur HR.</p>
-                <div class="bg-gray-50 p-3 rounded text-sm">
-                    <strong>Deliverable:</strong> Graded Mock Interview Video
+            <div class="timeline-item" onclick="toggleTimeline(this)">
+                <h3>Week 7 — SPIN Selling</h3>
+                <div class="timeline-content">
+                    Master consultative selling techniques. Develop questioning skills that uncover customer needs through active listening.
+                </div>
+            </div>
+            <div class="timeline-item" onclick="toggleTimeline(this)">
+                <h3>Week 9 — Career Launch</h3>
+                <div class="timeline-content">
+                    NISM preparation, compliance certification, and placement support to launch your career in banking.
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- Comparison Table -->
-    <section class="bg-gray-100 py-16">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-12 text-primary">Traditional Training vs. CFRM</h2>
-            
-            <div class="bg-white rounded-xl shadow-xl">
-                <!-- Desktop table (visible >= md) -->
-                <div class="hidden md:block overflow-x-auto">
-                    <table class="w-full">
-                    <caption class="sr-only">Comparison of Traditional Training versus CFRM</caption>
-                    <thead class="bg-primary text-white">
-                        <tr>
-                            <th class="p-4 text-left">Feature</th>
-                            <th class="p-4 text-center">Traditional Training</th>
-                            <th class="p-4 text-center bg-accent text-primary">Shyamangi CFRM ✓</th>
-                        </tr>
-                    </thead>
-                    <tbody class="divide-y divide-gray-200">
-                        <tr>
-                            <td class="p-4 font-medium">Weekend Schedule</td>
-                            <td class="p-4 text-center text-red-500">❌</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="p-4 font-medium">Hands-on CRM Training</td>
-                            <td class="p-4 text-center text-red-500">❌</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">KYC/AML Compliance Module</td>
-                            <td class="p-4 text-center text-red-500">❌</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="p-4 font-medium">NISM V-A Mock Tests</td>
-                            <td class="p-4 text-center text-yellow-500">Sometimes</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅ Included</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">Graded Mock Interviews</td>
-                            <td class="p-4 text-center text-red-500">❌</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅ Mandatory</td>
-                        </tr>
-                        <tr class="bg-gray-50">
-                            <td class="p-4 font-medium">Direct Recruiter Network</td>
-                            <td class="p-4 text-center text-red-500">❌</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅ Jaipur-focused</td>
-                        </tr>
-                        <tr>
-                            <td class="p-4 font-medium">Industry Expert Instructor</td>
-                            <td class="p-4 text-center text-yellow-500">Varies</td>
-                            <td class="p-4 text-center text-green-600 font-bold">✅ 18+ Years</td>
-                        </tr>
-                    </tbody>
-                </table>
-                </div>
-
-                <!-- Mobile stacked cards (visible < md) -->
-                <div class="md:hidden p-4 space-y-3">
-                    <div class="p-4 bg-gray-50 rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">Weekend Schedule</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-red-500 font-semibold">❌</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">Hands-on CRM Training</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-red-500 font-semibold">❌</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">KYC/AML Compliance Module</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-red-500 font-semibold">❌</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">NISM V-A Mock Tests</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-yellow-500 font-semibold">Sometimes</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅ Included</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">Graded Mock Interviews</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-red-500 font-semibold">❌</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅ Mandatory</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-white rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">Direct Recruiter Network</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-red-500 font-semibold">❌</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅ Jaipur-focused</span></div>
-                        </div>
-                    </div>
-
-                    <div class="p-4 bg-gray-50 rounded-lg border flex flex-col items-center text-center">
-                        <div class="font-medium mb-2 text-center">Industry Expert Instructor</div>
-                        <div class="text-sm">
-                            <div class="text-gray-600">Traditional: <span class="text-yellow-500 font-semibold">Varies</span></div>
-                            <div class="text-gray-800 font-semibold">CFRM: <span class="text-green-600">✅ 18+ Years</span></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div style="text-align: center; margin-top: 48px;">
+            <button class="primary-btn">View Complete Syllabus</button>
         </div>
     </section>
 
-    <!-- Complete 9-Week Curriculum -->
-    <section id="curriculum" class="bg-white py-16 md:py-24">
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">The Complete 9-Week Blueprint</h2>
-            <p class="text-center text-gray-600 mb-12">From Classroom to Career: Every Weekend, Every Skill, Every Deliverable</p>
-            
-            <div class="space-y-3">
-                <!-- Week 1 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-1" aria-expanded="false" aria-controls="content-1" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(1)">
-                        <span>Week 1: Foundations - Mindset & Ethics</span>
-                        <span id="icon-1" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-1" role="region" aria-labelledby="accordion-1" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Sales Ethics, Anti-Mis-selling, Role/Compensation Structure, TRAI DND rules, Understanding Financial Services Ecosystem</p>
-                        <p class="mb-2"><strong>Skills:</strong> Professional conduct, ethical selling, compliance awareness</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> Personal P&L Tracker (Target & Commission Calculator)</p>
-                    </div>
-                </div>
-
-                <!-- Week 2 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-2" aria-expanded="false" aria-controls="content-2" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(2)">
-                        <span>Week 2: Product Knowledge - Banking & Investment</span>
-                        <span id="icon-2" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-2" role="region" aria-labelledby="accordion-2" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Savings/Current Accounts, Fixed Deposits, Mutual Funds, Insurance basics, Credit Cards, Personal Loans</p>
-                        <p class="mb-2"><strong>Skills:</strong> Product comparison, customer need mapping, cross-selling strategies</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> Product Comparison Matrix for 5 Key Products</p>
-                    </div>
-                </div>
-
-                <!-- Week 3 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-3" aria-expanded="false" aria-controls="content-3" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(3)">
-                        <span>Week 3: Tech Mastery - CRM & Pipeline Management</span>
-                        <span id="icon-3" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-3" role="region" aria-labelledby="accordion-3" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Hands-on CRM (Zoho/HubSpot Sandbox), Lead Management, Sales Funnel, Pipeline Forecasting, Activity Tracking</p>
-                        <p class="mb-2"><strong>Skills:</strong> Digital literacy, data entry, reporting, sales automation</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> 30-Day Sales Forecast Report from Live CRM</p>
-                    </div>
-                </div>
-
-                <!-- Week 4 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-4" aria-expanded="false" aria-controls="content-4" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(4)">
-                        <span>Week 4: Prospecting & Lead Generation</span>
-                        <span id="icon-4" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-4" role="region" aria-labelledby="accordion-4" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Cold calling scripts, LinkedIn outreach, Referral strategies, Database mining, Networking techniques</p>
-                        <p class="mb-2"><strong>Skills:</strong> Prospecting, qualification, lead scoring</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> 50 Qualified Lead Database with Source Tracking</p>
-                    </div>
-                </div>
-
-                <!-- Week 5 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-5" aria-expanded="false" aria-controls="content-5" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(5)">
-                        <span>Week 5: Communication Excellence - Phone & Email</span>
-                        <span id="icon-5" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-5" role="region" aria-labelledby="accordion-5" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Professional phone etiquette, Email templates, Follow-up cadence, Voice modulation, Active listening</p>
-                        <p class="mb-2"><strong>Skills:</strong> Clear communication, persuasion, objection handling</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> Recorded Cold Call (5 minutes) - Graded for Clarity</p>
-                    </div>
-                </div>
-
-                <!-- Week 6 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-6" aria-expanded="false" aria-controls="content-6" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(6)">
-                        <span>Week 6: Customer Onboarding & Documentation</span>
-                        <span id="icon-6" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-6" role="region" aria-labelledby="accordion-6" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Account opening process, Document verification, Digital signatures, Aadhaar eKYC, PAN validation</p>
-                        <p class="mb-2"><strong>Skills:</strong> Detail orientation, compliance adherence, process management</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> Complete Mock Account Opening File (15 Documents)</p>
-                    </div>
-                </div>
-
-                <!-- Week 7 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-7" aria-expanded="false" aria-controls="content-7" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(7)">
-                        <span>Week 7: Discovery & Needs Analysis - SPIN Selling</span>
-                        <span id="icon-7" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-7" role="region" aria-labelledby="accordion-7" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> SPIN framework (Situation, Problem, Implication, Need-payoff), Financial goal mapping, Trust-building techniques</p>
-                        <p class="mb-2"><strong>Skills:</strong> Consultative selling, questioning, empathy</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> 20-Minute Discovery Call Role-Play (Recorded & Graded)</p>
-                    </div>
-                </div>
-
-                <!-- Week 8 -->
-                <div class="border-2 border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition">
-                    <button id="accordion-8" aria-expanded="false" aria-controls="content-8" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-gray-50 hover:bg-gray-100" onclick="toggleAccordion(8)">
-                        <span>Week 8: Objection Handling & Closing Techniques</span>
-                        <span id="icon-8" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-8" role="region" aria-labelledby="accordion-8" class="hidden p-5 bg-white text-gray-700 border-t border-gray-200">
-                        <p class="mb-2"><strong>Focus:</strong> Common objections in BFSI, Reframing techniques, Trial closes, Assumptive close, Alternative choice close</p>
-                        <p class="mb-2"><strong>Skills:</strong> Confidence, resilience, closing mastery</p>
-                        <p class="bg-accent bg-opacity-10 p-3 rounded"><strong>📋 Deliverable:</strong> Objection Response Script Library (10 Scenarios)</p>
-                    </div>
-                </div>
-
-                <!-- Week 9 -->
-                <div class="border-2 border-accent rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition">
-                    <button id="accordion-9" aria-expanded="false" aria-controls="content-9" class="w-full text-left p-5 font-semibold text-lg flex justify-between items-center bg-accent text-primary" onclick="toggleAccordion(9)">
-                        <span>Week 9: CAPSTONE - Compliance, NISM & Career Launch 🎓</span>
-                        <span id="icon-9" class="text-2xl text-primary">+</span>
-                    </button>
-                    <div id="content-9" role="region" aria-labelledby="accordion-9" class="hidden p-5 bg-white text-gray-700 border-t-2 border-accent">
-                        <p class="mb-2"><strong>Focus:</strong> Deep Dive KYC/AML (Red flags, Suspicious Activity Reporting), NISM V-A Crash Course, Mock Interviews, Resume Refinement</p>
-                        <p class="mb-2"><strong>Skills:</strong> Compliance mastery, exam readiness, interview confidence</p>
-                        <div class="bg-accent bg-opacity-20 p-4 rounded mt-3">
-                            <p class="font-bold mb-2">🏆 FINAL DELIVERABLES:</p>
-                            <ul class="list-disc list-inside space-y-1">
-                                <li>Complete KYC/AML Compliance Checklist</li>
-                                <li>Graded NISM V-A Mock Test (80%+ Pass Required)</li>
-                                <li>Final Mock Interview Recording</li>
-                                <li>Job-Ready Resume with CFRM Certification</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="text-center mt-10">
-                <button onclick="openModal()" class="cta-button bg-primary text-white py-4 px-8 rounded-lg font-semibold shadow-lg text-lg">
-                    Download Complete Week-by-Week Breakdown PDF
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Learning Outcomes -->
-    <section id="outcomes" class="bg-gray-50 py-16">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">What You'll Walk Away With</h2>
-            <p class="text-center text-gray-600 mb-12">Tangible skills and deliverables that make your resume stand out</p>
-
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-6 rounded-xl shadow-md text-center min-h-[180px] flex flex-col items-center justify-center border-t-4 border-primary hover:shadow-lg transform hover:-translate-y-1 transition">
-                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mb-3">🛡️</div>
-                    <h3 class="font-semibold text-lg mb-2">KYC/AML Mastery</h3>
-                    <p class="text-sm text-gray-600 mb-3">Practical compliance skills banks test in interviews</p>
-                    <div class="text-sm font-semibold text-accent">Deliverable: Compliance checklist</div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md text-center min-h-[180px] flex flex-col items-center justify-center border-t-4 border-primary hover:shadow-lg transform hover:-translate-y-1 transition">
-                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mb-3">💻</div>
-                    <h3 class="font-semibold text-lg mb-2">CRM Proficiency</h3>
-                    <p class="text-sm text-gray-600 mb-3">Hands-on CRM workflows and pipeline reporting</p>
-                    <div class="text-sm font-semibold text-accent">Deliverable: 30-day sales forecast</div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md text-center min-h-[180px] flex flex-col items-center justify-center border-t-4 border-primary hover:shadow-lg transform hover:-translate-y-1 transition">
-                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mb-3">🎯</div>
-                    <h3 class="font-semibold text-lg mb-2">Mock Interviews & NISM</h3>
-                    <p class="text-sm text-gray-600 mb-3">Exam prep and interview simulations that convert to offers</p>
-                    <div class="text-sm font-semibold text-accent">Deliverable: Graded mock + NISM prep</div>
-                </div>
-
-                <div class="bg-white p-6 rounded-xl shadow-md text-center min-h-[180px] flex flex-col items-center justify-center border-t-4 border-primary hover:shadow-lg transform hover:-translate-y-1 transition">
-                    <div class="bg-primary text-white rounded-full w-12 h-12 flex items-center justify-center mb-3">📄</div>
-                    <h3 class="font-semibold text-lg mb-2">Resume & Certification</h3>
-                    <p class="text-sm text-gray-600 mb-3">Job-ready resume and CFRM certification to show recruiters</p>
-                    <div class="text-sm font-semibold text-accent">Deliverable: CFRM certificate + resume</div>
-                </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Instructor -->
-        <section id="instructor" class="bg-white py-16">
-          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Instructor</h2>
-            <p class="text-center text-gray-600 mb-8">Learn directly from industry practitioners with recruitment experience.</p>
-            <div class="flex flex-col md:flex-row items-center md:items-start gap-8">
-              <img src="https://via.placeholder.com/240" alt="Ankita Sharma" class="w-40 h-40 rounded-full object-cover shadow-lg mx-auto md:mx-0"/>
-              <div>
-                <h3 class="text-2xl font-semibold">Ankita Sharma</h3>
-                <div class="text-sm text-gray-600 mb-3">Lead Instructor — 18+ years in BFSI (HDFC, ICICI), Recruitment & Interview Coach</div>
-                <p class="text-gray-700 mb-4">Ankita has led on-boarding and sales training programs across multiple national banks and placed 200+ relationship managers through hands-on coaching, mock interviews and compliance workshops.</p>
-                <div class="flex gap-3">
-                  <a href= target="_blank" class="border border-gray-200 py-2 px-4 rounded">View LinkedIn</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Pricing -->
-        <section id="pricing" class="bg-gray-50 py-16">
-          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Pricing</h2>
-            <p class="text-center text-gray-600 mb-8">Transparent pricing with flexible options — choose what fits your schedule.</p>
-            <div class="grid md:grid-cols-3 gap-6">
-              <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                <div class="text-lg font-semibold mb-2">Self-Paced</div>
-                <div class="text-3xl font-extrabold text-primary mb-3">₹9,999</div>
-                <p class="text-sm text-gray-600 mb-4">Access recorded sessions, materials, and community board. No live mentorship.</p>
-                <ul class="text-sm text-gray-700 mb-4 space-y-1">
-                  <li>Recorded curriculum</li>
-                  <li>Community forum access</li>
-                  <li>1 mock test</li>
+    <!-- Instructor Section -->
+    <div class="instructor-section" id="instructor">
+        <div class="instructor">
+            <div class="instructor-image">AS</div>
+            <div class="instructor-info">
+                <h3>Ankita Sharma</h3>
+                <h4>18+ Years in Banking</h4>
+                <ul>
+                    <li>Former Branch Manager & Compliance Head at ICICI Bank, Jaipur</li>
+                    <li>Certified over 50 Relationship Managers across Rajasthan</li>
+                    <li>Designed curriculum based on current HR requirements</li>
+                    <li>Direct network becomes your interview pipeline</li>
                 </ul>
-                <button onclick="openModal()" class="w-full bg-accent text-white py-2 rounded">Choose</button>
-              </div>
-
-              <div class="bg-white p-6 rounded-xl shadow-lg text-center border-2 border-accent transform scale-100 md:scale-105">
-                <div class="text-lg font-semibold mb-2">Full Bootcamp (Recommended)</div>
-                <div class="text-3xl font-extrabold text-primary mb-3">₹29,999</div>
-                <p class="text-sm text-gray-600 mb-4">Live weekend classes, mentor feedback, graded mocks and placement support.</p>
-                <ul class="text-sm text-gray-700 mb-4 space-y-1">
-                  <li>Live weekend sessions (9 weeks)</li>
-                  <li>Graded mock interviews</li>
-                  <li>Resume & recruiter introductions</li>
-                </ul>
-                <button onclick="openModal()" class="w-full bg-primary text-white py-2 rounded">Enroll</button>
-              </div>
-
-              <div class="bg-white p-6 rounded-xl shadow-md text-center">
-                <div class="text-lg font-semibold mb-2">Installments</div>
-                <div class="text-3xl font-extrabold text-primary mb-3">₹3,499 / mo</div>
-                <p class="text-sm text-gray-600 mb-4">3-month EMI with upfront enrollment benefits and scholarship checks.</p>
-                <ul class="text-sm text-gray-700 mb-4 space-y-1">
-                  <li>Start now, pay later</li>
-                  <li>Scholarship available</li>
-                  <li>Limited seats for discounted cohort</li>
-                </ul>
-                <button onclick="openModal()" class="w-full bg-accent text-white py-2 rounded">Apply</button>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- FAQ -->
-        <section id="faq" class="bg-white py-16">
-          <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 class="text-3xl md:text-4xl font-bold text-center mb-4 text-primary">Frequently Asked Questions</h2>
-            <p class="text-center text-gray-600 mb-8">Common questions about scheduling, payments, and career support.</p>
-
-            <div class="space-y-3">
-              <div class="border rounded-lg overflow-hidden">
-                <button id="faq-accordion-1" aria-expanded="false" aria-controls="faq-content-1" class="w-full text-left p-5 flex justify-between items-center bg-gray-50" onclick="toggleFAQ(1)">
-                  <span class="font-semibold">When does the next cohort start?</span>
-                  <span id="faq-icon-1" class="text-2xl text-primary">+</span>
-                </button>
-                <div id="faq-content-1" role="region" aria-labelledby="faq-accordion-1" class="hidden p-5 bg-white text-gray-700">
-                  Cohorts start quarterly — the next cohort begins January 26, 2025. Reach out to secure your seat.
-                </div>
-              </div>
-
-              <div class="border rounded-lg overflow-hidden">
-                <button id="faq-accordion-2" aria-expanded="false" aria-controls="faq-content-2" class="w-full text-left p-5 flex justify-between items-center bg-gray-50" onclick="toggleFAQ(2)">
-                  <span class="font-semibold">Do you provide placement support?</span>
-                  <span id="faq-icon-2" class="text-2xl text-primary">+</span>
-                </button>
-                <div id="faq-content-2" role="region" aria-labelledby="faq-accordion-2" class="hidden p-5 bg-white text-gray-700">
-                  Yes — we provide graded mock interviews, resume review, and introductions to our recruiter network for qualifying students.
-                </div>
-              </div>
-
-              <div class="border rounded-lg overflow-hidden">
-                <button id="faq-accordion-3" aria-expanded="false" aria-controls="faq-content-3" class="w-full text-left p-5 flex justify-between items-center bg-gray-50" onclick="toggleFAQ(3)">
-                  <span class="font-semibold">Is there a scholarship or EMI available?</span>
-                  <span id="faq-icon-3" class="text-2xl text-primary">+</span>
-                </button>
-                <div id="faq-content-3" role="region" aria-labelledby="faq-accordion-3" class="hidden p-5 bg-white text-gray-700">
-                  We offer limited scholarships and EMI options. Apply early for scholarship consideration.
-                </div>
-              </div>
-
-              <div class="border rounded-lg overflow-hidden">
-                <button id="faq-accordion-4" aria-expanded="false" aria-controls="faq-content-4" class="w-full text-left p-5 flex justify-between items-center bg-gray-50" onclick="toggleFAQ(4)">
-                  <span class="font-semibold">What is the time commitment per weekend?</span>
-                  <span id="faq-icon-4" class="text-2xl text-primary">+</span>
-                </button>
-                <div id="faq-content-4" role="region" aria-labelledby="faq-accordion-4" class="hidden p-5 bg-white text-gray-700">
-                  Expect 5–6 hours per weekend, including live sessions and deliverables.
-                </div>
-              </div>
-
-              <div class="border rounded-lg overflow-hidden">
-                <button id="faq-accordion-5" aria-expanded="false" aria-controls="faq-content-5" class="w-full text-left p-5 flex justify-between items-center bg-gray-50" onclick="toggleFAQ(5)">
-                  <span class="font-semibold">Do I get a certificate?</span>
-                  <span id="faq-icon-5" class="text-2xl text-primary">+</span>
-                </button>
-                <div id="faq-content-5" role="region" aria-labelledby="faq-accordion-5" class="hidden p-5 bg-white text-gray-700">
-                  Yes — eligible graduates receive the CFRM certificate and a resume badge for verified skills.
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-
-        </main>
-        <!-- Accessible Modal -->
-        <div id="site-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center" role="dialog" aria-modal="true" aria-hidden="true">
-            <div class="bg-white rounded-lg max-w-md w-full p-6 shadow-lg focus:outline-none" tabindex="-1">
-                <div class="flex justify-between items-center mb-4">
-                    <h3 class="text-lg font-semibold">Enroll / Download Syllabus</h3>
-                    <button class="text-gray-600 hover:text-gray-800" aria-label="Close modal" onclick="closeModal()">✕</button>
-                </div>
-                <div class="text-sm text-gray-700 mb-4">
-                    Download the full 9-week syllabus or enroll in the next cohort. Enter your email and we'll send the PDF.
-                </div>
-                <form onsubmit="event.preventDefault(); closeModal(); alert('Thanks! We will email you the syllabus.');">
-                    <input type="email" required placeholder="Your email" class="w-full p-3 border rounded mb-3" />
-                    <button type="submit" class="w-full bg-primary text-white py-3 rounded font-semibold">Send Syllabus</button>
-                </form>
             </div>
         </div>
-        <footer class="bg-white border-t mt-12">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 text-center text-sm text-gray-600">
-                © 2025 Shyamangi. All rights reserved.
-            </div>
-        </footer>
+    </div>
 
-    <script>
-    function toggleAccordion(i){
-      const content = document.getElementById('content-'+i);
-      const icon = document.getElementById('icon-'+i);
-      const btn = document.getElementById('accordion-'+i);
-      if(!content || !btn) return;
-      const isHidden = content.classList.toggle('hidden');
-      btn.setAttribute('aria-expanded', String(!content.classList.contains('hidden')));
-      if(icon) icon.textContent = content.classList.contains('hidden') ? '+' : '−';
-      // If opened, move focus into content for keyboard users
-      if(!content.classList.contains('hidden')){
-        const focusable = content.querySelector('a, button, input, [tabindex]');
-        if(focusable) focusable.focus();
-      }else{
-        btn.focus();
-      }
-    }
-    function toggleCard(id){
-      const el = document.getElementById(id);
-      const icon = document.getElementById(id + '-icon');
-      if(!el) return;
-      el.classList.toggle('hidden');
-      if(icon) icon.textContent = el.classList.contains('hidden') ? '+' : '−';
-      // update aria-expanded on the button
-      const btn = icon ? icon.parentElement : null;
-      if(btn) btn.setAttribute('aria-expanded', !el.classList.contains('hidden'));
-    }
-    function openWhatsApp(){
-      window.open('https://wa.me/919999999999','_blank');
-    }
-    // FAQ toggles (accessible)
-    function toggleFAQ(i){
-      const content = document.getElementById('faq-content-'+i);
-      const icon = document.getElementById('faq-icon-'+i);
-      const btn = document.getElementById('faq-accordion-'+i);
-      if(!content || !btn) return;
-      content.classList.toggle('hidden');
-      const expanded = !content.classList.contains('hidden');
-      btn.setAttribute('aria-expanded', String(expanded));
-      if(icon) icon.textContent = expanded ? '−' : '+';
-      if(expanded){
-        const focusable = content.querySelector('a, button, input, [tabindex]');
-        if(focusable) focusable.focus();
-      } else {
-        btn.focus();
-      }
-    }
-    // Accessible modal: open and close, focus trap, Esc to close
-    function openModal(){
-      const modal = document.getElementById('site-modal');
-      if(!modal) return;
-      const previouslyFocused = document.activeElement;
-      modal.classList.remove('hidden');
-      document.body.classList.add('overflow-hidden');
-      modal.setAttribute('aria-hidden', 'false');
-      // focus first focusable element
-      const focusable = modal.querySelector('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
-      (focusable || modal).focus();
-      // focus trap
-      function trap(e){
-        if(e.key === 'Tab'){
-          const focusables = Array.from(modal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])')).filter(el => !el.disabled && el.offsetParent !== null);
-          if(focusables.length === 0) return;
-          const first = focusables[0];
-          const last = focusables[focusables.length -1];
-          if(e.shiftKey && document.activeElement === first){
-            e.preventDefault(); last.focus();
-          } else if(!e.shiftKey && document.activeElement === last){
-            e.preventDefault(); first.focus();
-          }
-        }
-        if(e.key === 'Escape'){
-          closeModal();
-        }
-      }
-      document.addEventListener('keydown', trap);
-      modal.__trap = trap;
-      // close on backdrop click
-      modal.addEventListener('click', function onBackdrop(e){
-        if(e.target === modal){ closeModal(); }
-      });
-      modal.__onBackdrop = onBackdrop;
-      // store prev focus
-      modal.__previouslyFocused = previouslyFocused;
-    }
-    function closeModal(){
-      const modal = document.getElementById('site-modal');
-      if(!modal) return;
-      modal.classList.add('hidden');
-      document.body.classList.remove('overflow-hidden');
-      modal.setAttribute('aria-hidden', 'true');
-      // remove listeners
-      if(modal.__trap) document.removeEventListener('keydown', modal.__trap);
-      if(modal.__onBackdrop) modal.removeEventListener('click', modal.__onBackdrop);
-      // restore focus
-      const prev = modal.__previouslyFocused;
-      if(prev && typeof prev.focus === 'function') prev.focus();
-    }
-    // Mobile menu: simple global toggle and handlers
-    function toggleMobileMenu(){
-      const toggle = document.getElementById('mobile-toggle');
-      const menu = document.getElementById('mobile-menu');
-      if(!toggle || !menu) return;
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      menu.classList.toggle('hidden');
-      toggle.setAttribute('aria-expanded', String(!expanded));
-    }
-    // Attach handlers (script is at end of document so DOM elements exist)
-    (function(){
-      const toggle = document.getElementById('mobile-toggle');
-      const menu = document.getElementById('mobile-menu');
-      if(!toggle || !menu) return;
-      toggle.addEventListener('click', toggleMobileMenu);
-      try{ window.toggleMobileMenu = toggleMobileMenu; }catch(e){}
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && !menu.classList.contains('hidden')){
-          menu.classList.add('hidden');
-          toggle.setAttribute('aria-expanded','false');
-        }
-      });
-      document.addEventListener('click', function(e){
-        if(!menu.classList.contains('hidden') && !menu.contains(e.target) && e.target !== toggle){
-          menu.classList.add('hidden');
-          toggle.setAttribute('aria-expanded','false');
-        }
-      });
-    })();
-    </script>
-    </body>
-</html>
+    <!-- Pillars Section -->
+    <section id="pillars">
+        <div class="section-eyebrow">Our Vision</div>
+        <h2>Mastering India's<br>Growth Sectors</h2>
+        <p class="section-subtitle">Skillshare for high-demand professional careers</p>
+        <div class="pillars-grid">
+            <div class="pillar-card active">
+                <div class="pillar-number">01</div>
+                <h3>BFSI</h3>
+                <p>Banking, Financial Services, and Insurance</p>
+                <div class="view-program">
+                    <button>View CFRM Program</button>
+                </div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-number">02</div>
+                <h3>IT & Tech Sales</h3>
+                <p>Presales, Inside Sales, Customer Success</p>
+                <div class="coming-soon">Coming Q4 2024</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-number">03</div>
+                <h3>Retail & Logistics</h3>
+                <p>Store Management, Supply Chain, Inventory</p>
+                <div class="coming-soon">Coming Q1 2025</div>
+            </div>
+            <div class="pillar-card">
+                <div class="pillar-number">04</div>
+                <h3>Tourism</h3>
+                <p>Client Relations, Destination Sales, Booking</p>
+                <div class="coming-soon">Coming Q2 2025</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq">
+        <div class="section-eyebrow">Support</div>
+        <h2>Questions?<br>We have answers.</h2>
+        <div style="margin-top: 48px;">
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    Weekend classes only?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Yes, the CFRM program is designed for working professionals and conducted on weekends so you can continue your current commitments while upgrading your skills.
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    NISM exam fee included?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    The program fee includes comprehensive NISM V-A preparation and study materials. The actual NISM exam registration fee is paid separately directly to NISM.
+                </div>
+            </div>
+            <div class="faq-item" onclick="toggleFAQ(this)">
+                <div class="faq-question">
+                    What job support is provided?
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    Comprehensive placement support including resume building, mock interviews, direct introductions to hiring managers in Jaipur's BFSI sector, and access to our instructor's 18+ year network.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section>
+        <div class="final-cta">
+            <h2>Ready to transform<br>your career?</h2>
+            <p>Join the next cohort. Become job-ready in 9 weeks.</p>
+            <button class="primary-btn" style="background: white; color: #000;">Secure Your Seat</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>PROGRAM</h3>
+                <ul class
