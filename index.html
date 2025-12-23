@@ -149,6 +149,8 @@
                 0 0 5px #FFC300,   /* Accent yellow glow */
                 0 0 10px #FF8C00;   /* Deep orange halo */
         }
+        
+        /* Removed custom media queries for pricing, relying on Tailwind now */
 
     </style>
 </head>
@@ -217,8 +219,8 @@
         </div>
     </section>
 
-    <!-- Key Features Section (INSTANTLY VISIBLE) -->
-    <section class="pb-16 pt-10">
+    <!-- Key Features Section -->
+    <section class="pb-8 pt-10">
         <div class="separator-line mb-10"></div>
         <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
@@ -245,7 +247,7 @@
 
             </div>
             
-            <!-- PROGRAM DESCRIPTION MOVED HERE (Below the stats) -->
+            <!-- PROGRAM DESCRIPTION -->
             <p class="text-lg text-gray-400 mt-12 mb-0 max-w-4xl mx-auto text-center">
                 <span class="font-bold text-white">Exclusive Jaipur-based intensive program.</span> We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance & Fintech.
             </p>
@@ -253,8 +255,8 @@
         </div>
     </section>
     
-    <!-- Detailed Curriculum Section (INSTANTLY VISIBLE) -->
-    <section id="curriculum" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+    <!-- Detailed Curriculum Section (REDUCED BOTTOM PADDING) -->
+    <section id="curriculum" class="pt-16 pb-12 md:pt-20 md:pb-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
                 Your 9-Week Journey To <span class="text-accent-orange">BFSI Readiness</span>
@@ -339,6 +341,7 @@
                     <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
                         <li>Anticipating Objections: Top 10 BFSI objections.</li>
                         <li>Handling Techniques: Feel-Felt-Found, Deflection, and Clarification.</li>
+                        <li>Closing Techniques: Assumptive, Scarcity, and Tie-down closing.</li>
                     </ul>
                     <li class="font-bold text-white text-sm mt-3">Output: High-stakes, graded Negotiation role-play.</li>
                 </div>
@@ -370,8 +373,8 @@
         </div>
     </section>
 
-    <!-- Benefits Section (INSTANTLY VISIBLE) -->
-    <section id="benefits" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <!-- Benefits Section -->
+    <section id="benefits" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
                 Why This Program Is <span class="text-accent-orange">Different</span>
@@ -447,8 +450,8 @@
         </div>
     </section>
 
-    <!-- Success Stories Section (INSTANTLY VISIBLE) -->
-    <section id="stories" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+    <!-- Success Stories Section -->
+    <section id="stories" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto">
             <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
                 Success Stories From <span class="text-accent-orange">Our Alumni</span>
@@ -504,8 +507,8 @@
         </div>
     </section>
 
-    <!-- Pricing Section (INSTANTLY VISIBLE) -->
-    <section id="pricing" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+    <!-- Pricing Section -->
+    <section id="pricing" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
         <div class="max-w-7xl mx-auto text-center">
             <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
                 Investment In Your <span class="text-accent-orange">Future</span>
@@ -520,9 +523,13 @@
                     
                     <p class="text-xl font-bold uppercase tracking-wider text-accent-orange mb-4">EARLY BIRD OFFER - LIMITED TIME ONLY</p>
                     
-                    <div class="flex justify-center items-baseline mb-6">
-                        <span class="text-3xl line-through text-gray-500 mr-4">₹79,999</span>
-                        <span class="text-6xl font-extrabold text-white">₹49,999</span>
+                    <!-- RESPONSIVE PRICE FIX APPLIED HERE (Pure Tailwind) -->
+                    <div class="flex flex-wrap justify-center items-baseline gap-4 mb-6">
+                        <!-- Original Price (Struck-through) - Changed to text-xl (small) on mobile, text-3xl on larger screens -->
+                        <span class="text-xl sm:text-3xl line-through text-gray-500">₹79,999</span>
+                        
+                        <!-- Discounted Price (Prominent) - Changed to text-4xl (large but fits) on mobile, text-6xl on larger screens -->
+                        <span class="text-4xl sm:text-6xl font-extrabold text-white">₹49,999</span>
                     </div>
 
                     <p class="text-sm text-gray-400 mb-8 font-semibold">One-time payment for complete 9-week program</p>
@@ -574,8 +581,8 @@
         </div>
     </section>
 
-    <!-- Footer (INSTANTLY VISIBLE) -->
-    <footer class="bg-dark-bg border-t border-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+    <!-- Footer -->
+    <footer class="bg-dark-bg border-t border-gray-900 pt-8 pb-16 px-4 sm:px-6 lg:px-8">
         <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
             
             <!-- Brand Info (Col 1 & 2 on mobile, Col 1 on desktop) -->
@@ -608,9 +615,9 @@
             <div class="col-span-1 md:col-span-1 lg:col-span-2">
                 <h4 class="text-white font-bold mb-4">Contact</h4>
                 <ul class="space-y-3 text-sm">
-                    <li class="text-gray-400">C-Scheme, Jaipur, Rajasthan 302001</li>
-                    <li><a href="tel:+919876543210" class="text-gray-400 hover:text-accent-orange">+91 98765 43210</a></li>
-                    <li><a href="mailto:info@bfsicareer.com" class="text-gray-400 hover:text-accent-orange">info@bfsicareer.com</a></li>
+                    <li class="text-gray-400"> Finsales Launchpad, Premnagar Puliya, Agra Road, Jaipur, Rajasthan 302031</li>
+                    <li><a href="tel:+9743570824 class="text-gray-400 hover:text-accent-orange">+91 98765 43210</a></li>
+                    <li><a href="mailto:finsales.net" class="text-gray-400 hover:text-accent-orange">sales@shyamangi.com</a></li>
                 </ul>
             </div>
 
@@ -618,7 +625,7 @@
 
         <!-- Copyright & Legal -->
         <div class="mt-16 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-            <p>&copy; 2024 Finsales Launchpad. All rights reserved.</p>
+            <p>&copy; 2026 Finsales Launchpad. An Initiative by Shyamangi. All rights reserved.</p>
             <div class="mt-2 space-x-4">
                 <a href="#" class="hover:text-accent-orange">Privacy Policy</a>
                 <a href="#" class="hover:text-accent-orange">Terms of Service</a>
