@@ -204,18 +204,13 @@
                     Transform from Fresher to Industry-Ready Professional in Just 9 Weeks
                 </p>
 
-                <!-- Description -->
-                <p class="text-base text-gray-400 mb-10 max-w-3xl mx-auto fade-in-hidden" style="transition-delay: 1.20s;">
-                    Exclusive Jaipur-based intensive program. We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance &amp; Fintech.
-                </p>
-
                 <!-- CTA Buttons (The primary button has the pulsing-cta class) -->
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 fade-in-hidden" style="transition-delay: 1.50s;">
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 fade-in-hidden" style="transition-delay: 1.20s;">
                     <a href="#pricing" class="pulsing-cta bg-accent-orange text-black font-bold py-3 px-8 rounded-xl text-lg shadow-xl hover:bg-yellow-400 transition duration-300 w-full sm:w-auto">
                         CLAIM YOUR SPOT NOW <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
                     </a>
                     <a href="#curriculum" class="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">
-                        DOWNLOAD CURRICULUM
+                        VIEW CURRICULUM
                     </a>
                 </div>
             </main>
@@ -225,25 +220,35 @@
     <!-- Key Features Section (INSTANTLY VISIBLE) -->
     <section class="pb-16 pt-10">
         <div class="separator-line mb-10"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-10 sm:gap-4">
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
             
-            <!-- Feature Item 1 -->
-            <div class="flex flex-col items-center text-center">
-                <span id="key-feature-1" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">9</span>
-                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Weeks</span>
-            </div>
+            <!-- Feature Stats -->
+            <div class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-10 sm:gap-4">
+                
+                <!-- Feature Item 1 -->
+                <div class="flex flex-col items-center text-center">
+                    <span id="key-feature-1" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">9</span>
+                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Weeks</span>
+                </div>
 
-            <!-- Feature Item 2 -->
-            <div class="flex flex-col items-center text-center">
-                <span id="key-feature-2" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">100%</span>
-                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Support</span>
-            </div>
+                <!-- Feature Item 2 -->
+                <div class="flex flex-col items-center text-center">
+                    <span id="key-feature-2" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">100%</span>
+                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Support</span>
+                </div>
 
-            <!-- Feature Item 3 -->
-            <div class="flex flex-col items-center text-center">
-                <span id="key-feature-3" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">20+</span>
-                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Industry Partners</span>
+                <!-- Feature Item 3 -->
+                <div class="flex flex-col items-center text-center">
+                    <span id="key-feature-3" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">20+</span>
+                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Industry Partners</span>
+                </div>
+
             </div>
+            
+            <!-- PROGRAM DESCRIPTION MOVED HERE (Below the stats) -->
+            <p class="text-lg text-gray-400 mt-12 mb-0 max-w-4xl mx-auto text-center">
+                <span class="font-bold text-white">Exclusive Jaipur-based intensive program.</span> We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance & Fintech.
+            </p>
 
         </div>
     </section>
@@ -662,7 +667,8 @@
         const canvas = document.getElementById('starfield');
         const ctx = canvas ? canvas.getContext('2d') : null;
         let stars = [];
-        const numStars = 250; 
+        // OPTIMIZATION: Reduced the number of stars from 250 to 125 for better mobile performance.
+        const numStars = 125; 
         const speed = 0.5;
 
         // Define the color palette for the stars (Yellow/Orange tones)
