@@ -3,801 +3,788 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finsales Launchpad</title>
+    <title>FinEngine Strategic One-Pagers | Future-Forward FinTech</title>
     <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom Tailwind Configuration for Accent Color and Font -->
+    <style>
+        /* APPLE-INSPIRED LIGHT THEME PALETTE */
+        
+        /* Base Colors */
+        :root {
+            --color-bg-primary: #F5F5F7; /* Very Light Gray (Similar to macOS background) */
+            --color-bg-secondary: #FFFFFF; /* Pure White for Cards/Sections */
+            --color-text-dark: #1F2937; /* Dark text for high contrast */
+            --color-text-medium: #6B7280; /* Muted Gray for Secondary Text */
+            --color-border: #E5E7EB; /* Light Border/Separator */
+            --color-accent-primary: #007AFF; /* Signature Apple Blue */
+        }
+
+        /* Accents: All sections now use the primary blue accent */
+        .fin-accent { color: var(--color-accent-primary); }
+        .fin-bg-light { background-color: rgba(0, 122, 255, 0.05); } /* Very light blue wash */
+        .fin-border { border-color: var(--color-accent-primary); }
+
+        /* Base Styles - Light theme application */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg-primary); 
+            color: var(--color-text-dark); 
+            padding-top: 64px; 
+        }
+        .separator {
+            height: 1px;
+            background-color: var(--color-border);
+            margin: 60px 0;
+        }
+        html { scroll-behavior: smooth; }
+        
+        /* General Card Styling (White on Light Gray background) */
+        .one-pager {
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-radius: 1.5rem; 
+            background-color: var(--color-bg-secondary); /* Pure white card background */
+            border: 1px solid var(--color-border);
+            /* Subtle, clean shadow */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 5px 10px rgba(0, 0, 0, 0.03); 
+        }
+        .one-pager:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); 
+        }
+
+        /* --- CTA BUTTONS (Clean & Solid) --- */
+        
+        .btn-primary {
+            background-color: var(--color-accent-primary);
+            color: white; 
+            font-weight: 600;
+            box-shadow: 0 3px 6px rgba(0, 122, 255, 0.3); /* Blue shadow */
+        }
+        .btn-primary:hover {
+            background-color: #006ddb; /* Darker blue on hover */
+            box-shadow: 0 4px 8px rgba(0, 122, 255, 0.5);
+        }
+
+        .btn-secondary-ghost {
+            background-color: transparent;
+            color: var(--color-accent-primary);
+            border: 2px solid var(--color-accent-primary);
+            font-weight: 600;
+        }
+        .btn-secondary-ghost:hover {
+            background-color: var(--color-bg-primary); /* Very light gray hover */
+        }
+
+        /* --- CURRICULUM CARD STRUCTURE (Minimalist) --- */
+        .curriculum-card {
+            position: relative;
+            overflow: hidden;
+            background-color: var(--color-bg-primary); /* Light gray card background within section */
+            border-radius: 0.75rem; 
+            border: 1px solid var(--color-border); 
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            transition: box-shadow 0.2s;
+        }
+        .curriculum-card:hover {
+            box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+        }
+
+        /* Header Accent Bar - Thin blue line */
+        .curriculum-card-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: var(--color-accent-primary); 
+        }
+        
+        /* NAVIGATION STYLING (Frosted Glass Effect) */
+        .navbar-frosted {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.05);
+            border-bottom: 1px solid #E5E7EB;
+        }
+        
+        /* Sub-menu styling */
+        .navbar-frosted .dropdown-menu {
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+        }
+        
+        /* --- HERO SECTION ANIMATIONS (New) --- */
+        @keyframes fadeInUp {
+            0% { 
+                opacity: 0; 
+                transform: translateY(20px); 
+            }
+            100% { 
+                opacity: 1; 
+                transform: translateY(0); 
+            }
+        }
+
+        .hero-animated-item {
+            opacity: 0; /* Start hidden */
+            animation: fadeInUp 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* 0.7s duration */
+        }
+
+        /* Staggered Delays (0.2s increment) */
+        .hero-delay-1 { animation-delay: 0.1s; }
+        .hero-delay-2 { animation-delay: 0.3s; }
+        .hero-delay-3 { animation-delay: 0.5s; }
+        .hero-delay-4 { animation-delay: 0.7s; }
+        .hero-delay-5 { animation-delay: 0.9s; }
+        /* --- END HERO SECTION ANIMATIONS --- */
+
+    </style>
+</head>
+<body class="font-sans p-4 md:p-8">
+
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        'accent-orange': '#FFC300', // The primary highlight color from the design
-                        'dark-bg': '#0A0A0A',
-                        'card-bg': '#1a1a1a',
-                    },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
                     },
-                }
-            }
+                },
+            },
         }
     </script>
-    <style>
-        /* Ensuring smooth scrolling for navigation links */
-        html {
-            scroll-behavior: smooth;
-        }
-        /* Custom border for the feature section separator */
-        .separator-line {
-            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
-            height: 1px;
-            width: 80%;
-            margin: 0 auto;
-        }
-        /* Style for the curriculum module cards */
-        .module-card-item {
-            background-color: #1a1a1a;
-            border: 1px solid #333;
-            transition: all 0.3s;
-        }
-        .module-card-item:hover {
-            border-color: #FFC300;
-            box-shadow: 0 0 15px rgba(255, 195, 0, 0.3);
-            transform: translateY(-2px);
-        }
-
-        /* --- CSS for Canvas Starfield Positioning --- */
-        #starfield {
-            /* Positioned absolutely to cover the parent section */
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            /* Ensure it is behind the content (z-index: 10 is the lowest z-index on content) */
-            z-index: 0; 
-            display: block; 
-        }
-
-        /* --- CSS for Soft Fade-In and Lift-Up Effect (ONLY for HERO) --- */
-        .fade-in-hidden {
-            opacity: 0;
-            /* Start further down for a soft lift-up effect */
-            transform: translateY(50px);
-            /* Define the transition property for the animation (Increased duration to 0.35s) */
-            transition: opacity 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
-                        transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        /* This class is added by JavaScript on page load */
-        .fade-in-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* --- CSS for Pulsing CTA Glow Effect --- */
-        @keyframes pulse-glow {
-            0%, 100% {
-                /* Subtle glow */
-                box-shadow: 0 0 8px rgba(255, 195, 0, 0.7), 0 0 16px rgba(255, 195, 0, 0.3);
-            }
-            50% {
-                /* Brighter glow */
-                box-shadow: 0 0 15px rgba(255, 195, 0, 1), 0 0 25px rgba(255, 195, 0, 0.6);
-            }
-        }
-
-        .pulsing-cta {
-            /* Apply the animation */
-            animation: pulse-glow 2s infinite ease-in-out;
-            /* Maintain background and text transitions */
-            transition: background-color 0.3s, box-shadow 0.3s;
-        }
-        
-        /* --- CSS for Animated Gradient Text Effect (BFSI & First Role) --- */
-        @keyframes text-flow {
-            to {
-                /* Shifts the background 400% to the right (matches background-size) */
-                background-position: 400% center; 
-            }
-        }
-
-        .animated-gradient-text {
-            /* Base styling */
-            display: inline-block;
-            font-weight: 900; /* Ensure the text is bold */
-
-            /* Gradient Definition: Softer blend between Gold/Orange/Red */
-            background: linear-gradient(90deg, 
-                #FFC300 0%,     /* Gold/Accent */
-                #FF8800 25%,    /* Warm Orange blend */
-                #FF5733 50%,    /* Reddish-Orange Peak */
-                #FF8800 75%,    /* Warm Orange blend */
-                #FFC300 100%    /* Gold/Accent */
-            );
-
-            /* Crucial for making the gradient visible through the text */
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-
-            /* Animation setup: 400% size for wider bands (softer transition) */
-            background-size: 400% auto; 
-            /* 10s duration for slower flow */
-            animation: text-flow 10s linear infinite; 
-        }
-        
-        /* New class to offset the animation for the second word */
-        .animated-gradient-text-offset {
-            /* Start the animation 5 seconds (half of the 10s cycle) into its cycle, 
-               making it flow out of sync with the first word. */
-            animation-delay: -5s; 
-        }
-
-        /* --- UPDATED CSS for Subtler Nav Title Glow Effect --- */
-        .nav-title-glow {
-            /* Base text shadow for non-hover state (subtle sharpness) */
-            text-shadow: 0 0 0.5px rgba(255, 255, 255, 0.5); /* Reduced initial shadow */
-            transition: text-shadow 0.3s ease-in-out;
-        }
-
-        .nav-title-glow:hover {
-            /* Significantly reduced glow intensity (cut blur/spread by ~50%) */
-            text-shadow: 
-                0 0 2px #fff,       /* White core glow */
-                0 0 5px #FFC300,   /* Accent yellow glow */
-                0 0 10px #FF8C00;   /* Deep orange halo */
-        }
-        
-        /* Removed custom media queries for pricing, relying on Tailwind now */
-
-    </style>
-</head>
-
-<body class="bg-black text-white min-h-screen font-sans">
-
-    <!-- Navbar (IMMEDIATELY VISIBLE) -->
-    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm shadow-md border-b border-gray-900">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
-            <!-- Logo/Title - Applied the subtle glow class -->
-            <div class="text-xl font-extrabold text-white tracking-wider nav-title-glow cursor-default">
-                Finsales <span class="text-accent-orange">Launchpad</span>
-            </div>
-
-            <!-- Navigation Links -->
-            <nav class="hidden md:flex space-x-8 text-sm font-medium">
-                <a href="#curriculum" class="text-gray-300 hover:text-accent-orange transition duration-200">Curriculum</a>
-                <a href="#benefits" class="text-gray-300 hover:text-accent-orange transition duration-200">Benefits</a>
-                <a href="#stories" class="text-gray-300 hover:text-accent-orange transition duration-200">Success Stories</a>
-                <a href="#pricing" class="text-gray-300 hover:text-accent-orange transition duration-200">Pricing</a>
-            </nav>
-
-            <!-- Enroll Button (Regular for Nav) -->
-            <a href="#pricing" class="bg-accent-orange text-black font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl hover:bg-yellow-400 transition duration-300 text-sm">
-                ENROLL NOW
-            </a>
-        </div>
-    </header>
-
-    <!-- Hero Container (Full Width with Starfield Background) -->
-    <section id="hero-container" class="relative bg-dark-bg overflow-hidden border-b border-gray-900">
-        <!-- Starfield Canvas -->
-        <canvas id="starfield" class="absolute inset-0 z-0"></canvas>
-        
-        <!-- Content Wrapper (Dark overlay for readability) -->
-        <div class="relative z-10 bg-black/80">
-            <!-- Main Hero Content (Centered) -->
-            <main class="pt-16 pb-20 md:pt-24 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
+    
+    <!-- STICKY NAVIGATION BAR (Light Frosted) -->
+    <nav class="fixed top-0 left-0 right-0 z-50 navbar-frosted">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <!-- Logo/Brand (Now Clickable) -->
+                <div class="flex items-center">
+                    <a href="#hero-section" class="flex items-center hover:opacity-80 transition duration-150">
+                        <!-- LOGO COLOR SWAP: 'Fin' is now fin-accent (Blue) and 'Engine' is now text-gray-900 (Black) -->
+                        <span class="text-2xl font-bold fin-accent">Fin<span class="text-gray-900">Engine</span></span>
+                    </a>
+                    <!-- Descriptive text visible on larger screens -->
+                    <span class="hidden sm:block text-sm text-gray-500 ml-3 pt-0.5 border-l pl-3 border-gray-300">Future-Forward BFSI Talent</span>
+                </div>
                 
-                <!-- Tag -->
-                <p class="inline-flex items-center text-xs sm:text-sm font-semibold text-black bg-accent-orange py-1 px-4 rounded-full mb-6 uppercase tracking-widest shadow-md fade-in-hidden" style="transition-delay: 0.30s;">
-                    LIMITED SEATS AVAILABLE
-                </p>
+                <!-- Desktop Links -->
+                <div class="hidden sm:ml-6 sm:flex sm:space-x-4 items-center">
+                    
+                    <!-- NEW FRESHER DROPDOWN MENU -->
+                    <div class="relative group h-full flex items-center">
+                        <button class="border-transparent text-gray-600 hover:border-fin-accent hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150 focus:outline-none h-full">
+                            Fresher Program
+                            <!-- Chevron Down Icon -->
+                            <svg class="ml-1 -mr-0.5 h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                            </svg>
+                        </button>
+                        <!-- Dropdown Menu (Hidden by default, shown on group-hover) -->
+                        <div class="hidden group-hover:block absolute top-full left-0 mt-0.5 w-48 rounded-lg shadow-xl py-1 bg-white ring-1 ring-black ring-opacity-5 z-20 dropdown-menu">
+                            <a href="#curriculum" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition duration-100">Curriculum (9 Weeks)</a>
+                            <a href="#value" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition duration-100">Program Value</a>
+                            <a href="#success-stories" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 hover:text-gray-900 transition duration-100">Success Stories</a>
+                            <div class="h-px bg-gray-100 my-1"></div>
+                            <a href="#apply-now" class="block px-4 py-2 text-sm font-semibold fin-accent hover:bg-gray-100 hover:text-fin-accent transition duration-100">Apply Now</a>
+                        </div>
+                    </div>
+                    <!-- END NEW FRESHER DROPDOWN MENU -->
+                    
+                    <a href="#hiring-manager-pitch" class="border-transparent text-gray-600 hover:border-fin-accent hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150">
+                        Hiring Manager
+                    </a>
+                    <a href="#careers-pitch" class="border-transparent text-gray-600 hover:border-fin-accent hover:text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium transition duration-150">
+                        Careers
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu button -->
+                <div class="sm:hidden flex items-center">
+                    <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-500 hover:text-gray-900 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-fin-accent" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <!-- Icon for closed menu (Hamburger) -->
+                        <svg id="menu-icon-open" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <!-- Icon for open menu (X) -->
+                        <svg id="menu-icon-close" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
 
-                <!-- Main Heading (UPDATED: Forced line break for two lines) -->
-                <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 fade-in-hidden" style="transition-delay: 0.60s;">
-                    Launch Your <span class="animated-gradient-text">BFSI</span><br>
-                    Sales <span class="animated-gradient-text animated-gradient-text-offset">Career</span>
-                </h1>
+        <!-- Mobile menu, show/hide based on menu state. -->
+        <div class="sm:hidden hidden bg-white shadow-lg border-t border-gray-200" id="mobile-menu">
+            <div class="pt-2 pb-3 space-y-1">
+                <!-- Fresher Parent Link -->
+                <a href="#fresher-pitch" class="block pl-3 pr-4 py-2 border-l-4 fin-border text-base font-medium fin-accent bg-gray-50">
+                    Fresher Program
+                </a>
+                <!-- Fresher Sub-links (Indented for better hierarchy) -->
+                <a href="#curriculum" class="block pl-8 pr-4 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100">
+                    &bull; Curriculum (9 Weeks)
+                </a>
+                <a href="#value" class="block pl-8 pr-4 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100">
+                    &bull; Program Value
+                </a>
+                <a href="#success-stories" class="block pl-8 pr-4 py-1 text-sm font-medium text-gray-600 hover:bg-gray-100">
+                    &bull; Success Stories
+                </a>
+                <a href="#apply-now" class="block pl-8 pr-4 py-1 text-sm font-medium text-red-600 hover:bg-gray-100">
+                    &bull; Apply Now
+                </a>
+                
+                <!-- Other Main Links -->
+                <a href="#hiring-manager-pitch" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-700 hover:bg-gray-50">
+                    Hiring Manager
+                </a>
+                <a href="#careers-pitch" class="block pl-3 pr-4 py-2 border-l-4 border-transparent text-base font-medium text-gray-700 hover:bg-gray-50">
+                    Careers
+                </a>
+            </div>
+        </div>
+    </nav>
+    <!-- END STICKY NAVIGATION BAR -->
 
-                <!-- Sub Heading / Tagline -->
-                <p class="text-xl sm:text-2xl font-semibold text-gray-200 mb-8 max-w-4xl mx-auto fade-in-hidden" style="transition-delay: 0.90s;">
+    <!-- Main Container for the Three Pitches -->
+    <div class="max-w-7xl mx-auto space-y-12">
+        <!-- HERO SECTION - Clean, High-Contrast Panel (Added ID: hero-section) -->
+        <div id="hero-section" class="bg-white p-8 md:p-16 rounded-3xl shadow-xl mb-16 text-center border border-gray-200 overflow-hidden">
+            <!-- 1. Intro Text (Delay 1) -->
+            <p class="text-lg font-medium text-gray-500 mb-2 hero-animated-item hero-delay-1">FinEngine Certification | BFSI Sales Excellence</p>
+            
+            <!-- 2. Main Headline (Split Lines, Delay 2 & 3) -->
+            <h2 class="text-4xl sm:text-5xl md:text-7xl font-extrabold text-gray-900 leading-snug flex flex-col justify-center">
+                <!-- Line 1 -->
+                <span class="hero-animated-item hero-delay-2 block">
+                    TALENT <span class="fin-accent">ACCELERATION.</span>
+                </span>
+                <!-- Line 2 -->
+                <span class="hero-animated-item hero-delay-3 block mt-2 md:mt-4">
+                    PREDICTABLE <span class="fin-accent">REVENUE.</span>
+                </span>
+            </h2>
+            
+            <!-- 3. Sub-Paragraph (Delay 4) -->
+            <p class="text-lg mt-6 max-w-4xl mx-auto text-gray-600 hero-animated-item hero-delay-4">
+                The structured, 9-week BFSI certification program that guarantees job-ready sales professionals capable of predictable success from Day 1.
+            </p>
+            
+            <!-- 4. CTA Buttons (Delay 5) -->
+            <div class="mt-12 flex flex-col md:flex-row justify-center gap-4 hero-animated-item hero-delay-5">
+                <!-- All buttons now use the primary blue accent -->
+                <!-- Button 1 -->
+                <a href="#fresher-pitch" class="flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full btn-primary transition duration-300">
+                    Freshers
+                </a>
+                <!-- Button 2 -->
+                <a href="#hiring-manager-pitch" class="flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full btn-primary transition duration-300">
+                    Hiring Managers
+                </a>
+                <a href="#careers-pitch" class="flex items-center justify-center px-8 py-4 text-lg font-bold rounded-full btn-primary transition duration-300">
+                    Join the Mission
+                </a>
+            </div>
+            
+        </div>
+        <!-- END HERO SECTION -->
+
+        <!-- One-Pager 1: FRESHER - UNIFIED BLUE ACCENT (Light Card) -->
+        <div id="fresher-pitch" class="one-pager overflow-hidden">
+             <div class="header fin-bg-light p-6 text-center border-b-4 fin-border">
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight fin-accent flex items-center justify-center gap-3 text-gray-900">
+                    FOR THE FRESHER
+                </h2>
+                <p class="text-base mt-2 text-gray-600">The System for Day 1 ROI.</p>
+            </div>
+            <!-- Main Hero and CTA (Light Accent Background) -->
+            <div class="fin-bg-light p-8 md:p-12 text-center rounded-t-2xl">
+                <p class="text-lg font-semibold fin-accent">Finsales Launchpad</p>
+                <!-- Headline uses dark text -->
+                <h2 class="text-3xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mt-2 leading-tight">
+                    Launch Your <span class="fin-accent">BFSI</span> Sales Career
+                </h2>
+                <p class="text-xl mt-4 max-w-3xl mx-auto text-gray-600">
                     Transform from Fresher to Industry-Ready Professional in Just 9 Weeks
                 </p>
 
-                <!-- CTA Buttons (The primary button has the pulsing-cta class) -->
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 fade-in-hidden" style="transition-delay: 1.20s;">
-                    <a href="#pricing" class="pulsing-cta bg-accent-orange text-black font-bold py-3 px-8 rounded-xl text-lg shadow-xl hover:bg-yellow-400 transition duration-300 w-full sm:w-auto">
-                        CLAIM YOUR SPOT NOW <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
+                    <!-- Primary CTA -->
+                    <a href="#apply-now" class="flex items-center justify-center px-8 py-4 text-xl font-bold rounded-full btn-primary transition duration-300">
+                        ENROLL NOW &nbsp;<span class="text-2xl text-white">&rarr;</span>
                     </a>
-                    <a href="#curriculum" class="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">
+                    <!-- Secondary button is clean ghost style -->
+                    <a href="#curriculum" class="flex items-center justify-center px-8 py-4 text-xl font-bold rounded-full btn-secondary-ghost transition duration-300">
                         VIEW CURRICULUM
                     </a>
                 </div>
-            </main>
-        </div>
-    </section>
-
-    <!-- Key Features Section -->
-    <section class="pb-8 pt-10">
-        <div class="separator-line mb-10"></div>
-        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-            
-            <!-- Feature Stats -->
-            <div class="flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-10 sm:gap-4">
-                
-                <!-- Feature Item 1 -->
-                <div class="flex flex-col items-center text-center">
-                    <span id="key-feature-1" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">9</span>
-                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Weeks</span>
-                </div>
-
-                <!-- Feature Item 2 -->
-                <div class="flex flex-col items-center text-center">
-                    <span id="key-feature-2" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">100%</span>
-                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Support</span>
-                </div>
-
-                <!-- Feature Item 3 -->
-                <div class="flex flex-col items-center text-center">
-                    <span id="key-feature-3" class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">20+</span>
-                    <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Industry Partners</span>
-                </div>
-
-            </div>
-            
-            <!-- PROGRAM DESCRIPTION -->
-            <p class="text-lg text-gray-400 mt-12 mb-0 max-w-4xl mx-auto text-center">
-                <span class="font-bold text-white">Exclusive Jaipur-based intensive program.</span> We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance & Fintech.
-            </p>
-
-        </div>
-    </section>
-    
-    <!-- Detailed Curriculum Section (REDUCED BOTTOM PADDING) -->
-    <section id="curriculum" class="pt-16 pb-12 md:pt-20 md:pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-                Your 9-Week Journey To <span class="text-accent-orange">BFSI Readiness</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto">
-                A weekly breakdown of the intensive, hands-on skills you will master to become a top-tier BFSI Sales professional.
-            </p>
-
-            <!-- Curriculum Grid (9 Weeks in a 3x3 layout on large screens) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <!-- Week 1: Foundations & Mindset -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 1</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Sales Mindset & Finance Basics</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Grit & Resilience: Handling Rejection, Sales Ethics in BFSI.</li>
-                        <li>Compensation: Understanding Fixed vs. Variable Pay, Quota, and Commission.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Create a personal P&L tracker.</li>
-                </div>
-                
-                <!-- Week 2: Prospecting & Funnel Basics -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 2</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">ICP, Prospecting & Sales Funnel</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Ideal Customer Profile (ICP) & Lead Sourcing (LinkedIn, local databases).</li>
-                        <li>Sales Funnel: Basics of Lead, Prospect, Opportunity, and Customer.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Build a qualified list of 50 target leads.</li>
-                </div>
-                
-                <!-- Week 3: Qualification Frameworks (BANT) -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 3</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">BANT Qualification Deep Dive</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Mastering BANT for financial services (Budget, Authority, Need, Timeline).</li>
-                        <li>Pre-Call Research (Competitors, Credit Health, Regulatory News).</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Develop BANT scorecards for 5 qualified prospects.</li>
-                </div>
-
-                <!-- Week 4: Cold Outreach & Communication -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 4</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Cold Calling & Email Mastery</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Cold Calling Mastery: Opening statements, gatekeeper navigation.</li>
-                        <li>Cold Emailing: Crafting compelling subject lines (AIDA) & DND compliance.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: 5 recorded Qualification Calls & draft a 3-email sequence.</li>
-                </div>
-                
-                <!-- Week 5: Deep Discovery (SPIN - S&P) -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 5</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">SPIN Selling: Situation & Problem</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Questioning Techniques: Mastering the Situation & Problem stages.</li>
-                        <li>Active Listening: Techniques for mirroring, summarizing, and showing empathy.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Role-play a discovery call focusing on problem identification.</li>
-                </div>
-                
-                <!-- Week 6: Presentation & Value (SPIN - I&N) -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 6</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">SPIN Selling: Implication & Need-Payoff</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Mastering Implication & Need-Payoff questions.</li>
-                        <li>Pitching Value, Not Features: Structuring the presentation for ROI.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Full 10-minute value-focused Product Presentation.</li>
-                </div>
-
-                <!-- Week 7: Objection Handling & Negotiation -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 7</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Objection Handling & Closing Skills</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Anticipating Objections: Top 10 BFSI objections.</li>
-                        <li>Handling Techniques: Feel-Felt-Found, Deflection, and Clarification.</li>
-                        <li>Closing Techniques: Assumptive, Scarcity, and Tie-down closing.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: High-stakes, graded Negotiation role-play.</li>
-                </div>
-                
-                <!-- Week 8: CRM & Pipeline Management -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 8</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">CRM Practical & Forecasting</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>CRM Practical: Hands-on Sandbox training (logging activities, updating stages).</li>
-                        <li>Forecasting & Sales Reporting: Accurately predicting deal closure.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Comprehensive CRM Pipeline Audit/Sales forecast submission.</li>
-                </div>
-
-                <!-- Week 9: Placement & Immersion -->
-                <div class="module-card-item p-6 rounded-xl shadow-lg">
-                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 9</div>
-                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Industry Immersion & Placement Prep</h3>
-                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
-                        <li>Live projects with industry partners & Resume building.</li>
-                        <li>Mock interviews with industry experts & Placement drives.</li>
-                    </ul>
-                    <li class="font-bold text-white text-sm mt-3">Output: Portfolio submission and first-round placement interviews.</li>
-                </div>
-                
-            </div>
-            
-        </div>
-    </section>
-
-    <!-- Benefits Section -->
-    <section id="benefits" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-                Why This Program Is <span class="text-accent-orange">Different</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-                We don't just teach theory. We transform careers.
-            </p>
-
-            <!-- Benefits Grid (6 items) -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Benefit 1 -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">Industry-Aligned Curriculum</h3>
-                    <p class="text-gray-400">Learn exactly what top BFSI & Fintech companies are looking for in their new hires.</p>
-                </div>
-                
-                <!-- Benefit 2 -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">Expert Mentorship</h3>
-                    <p class="text-gray-400">Direct access to industry veterans with 15+ years of experience in leading financial institutions.</p>
-                </div>
-                
-                <!-- Benefit 3 -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">100% Placement Support</h3>
-                    <p class="text-gray-400">Dedicated placement cell working with 20+ hiring partners to secure your dream role.</p>
-                </div>
-
-                <!-- Benefit 4 (UPDATED to focus on CRM Mastery) -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">CRM Sandbox Mastery</h3>
-                    <p class="text-gray-400">Gain guaranteed, hands-on experience using industry-standard CRM (Zoho/Salesforce) to log deals, forecast, and manage a clean pipeline.</p>
-                </div>
-                
-                <!-- Benefit 5 -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">Industry Certification</h3>
-                    <p class="text-gray-400">Receive recognized certification that adds credibility to your resume and LinkedIn profile.</p>
-                </div>
-                
-                <!-- Benefit 6 -->
-                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg">
-                    <h3 class="text-xl font-bold mb-3">Fast-Track Your Career</h3>
-                    <p class="text-gray-400">Bypass years of trial and error with proven frameworks used by successful professionals.</p>
-                </div>
-                
+                <p class="mt-3 text-sm font-semibold text-red-600">LIMITED SEATS AVAILABLE</p>
             </div>
 
-            <!-- Stats Bar below Benefits (Counter triggers immediately on load) -->
-            <div class="mt-16 text-center">
-                <p class="text-xl font-semibold text-gray-300 mb-8">Average Salary Package: <span class="text-2xl font-extrabold text-accent-orange">₹4.5-6 LPA</span></p>
-
-                <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
-                    <!-- Stat 1: Graduates Placed (Uses JS Counter) -->
-                    <div class="text-center" data-target-value="250" data-suffix="+">
-                        <span id="stat1" class="text-5xl font-extrabold text-white stat-counter">0</span>
-                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Graduates Placed</p>
-                    </div>
-                    <!-- Stat 2: Placement Rate (Uses JS Counter) -->
-                    <div class="text-center" data-target-value="92" data-suffix="%">
-                        <span id="stat2" class="text-5xl font-extrabold text-white stat-counter">0</span>
-                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Rate</p>
-                    </div>
-                    <!-- Stat 3: Student Rating (Uses JS Counter) -->
-                    <div class="text-center" data-target-value="4.8" data-suffix="/5" data-decimal-places="1">
-                        <span id="stat3" class="text-5xl font-extrabold text-white stat-counter">0</span>
-                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Student Rating</p>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <!-- Success Stories Section -->
-    <section id="stories" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto">
-            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-                Success Stories From <span class="text-accent-orange">Our Alumni</span>
-            </h2>
-            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto">
-                Real people. Real results. Real transformations.
-            </p>
-
-            <!-- Testimonial Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                
-                <!-- Testimonial Card 1: Priya Sharma -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl">
-                    <p class="text-gray-300 italic mb-6 text-lg">"This program completely transformed my career trajectory. I went from struggling to find interviews to receiving multiple offers from top banks. The mentorship and industry connections are invaluable."</p>
-                    <div class="flex items-center pt-4 border-t border-gray-700">
-                        <img src="https://placehold.co/48x48/FFC300/000?text=PS" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=PS'" alt="Priya Sharma" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
-                        <div>
-                            <p class="font-bold text-lg">Priya Sharma</p>
-                            <p class="text-sm text-accent-orange">Relationship Manager at HDFC Bank</p>
-                            <p class="text-xs text-gray-400">Package: 5.2 LPA</p>
+            <div class="p-8 space-y-12">
+                <!-- Program Overview Stats (Light) -->
+                <div class="text-center">
+                    <p class="text-lg font-medium text-gray-600 mb-6">
+                        Exclusive Jaipur-based intensive program. We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance & Fintech.
+                    </p>
+                    <!-- Stats block is styled with light blue border and background -->
+                    <div class="grid grid-cols-3 gap-4 border border-fin-accent rounded-xl p-6 fin-bg-light">
+                        <div class="p-2">
+                            <p class="text-4xl font-extrabold fin-accent">9</p>
+                            <p class="text-sm text-gray-600 mt-1">Weeks</p>
+                        </div>
+                        <div class="p-2 border-x border-blue-200">
+                            <p class="text-4xl font-extrabold fin-accent">100%</p>
+                            <p class="text-sm text-gray-600 mt-1">Placement Support</p>
+                        </div>
+                        <div class="p-2">
+                            <p class="text-4xl font-extrabold fin-accent">20+</p>
+                            <p class="text-sm text-gray-600 mt-1">Industry Partners</p>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial Card 2: Rahul Verma -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl">
-                    <p class="text-gray-300 italic mb-6 text-lg">"The curriculum is incredibly practical and relevant. Every single thing I learned is something I use in my daily work. The live projects gave me the confidence to ace my interviews."</p>
-                    <div class="flex items-center pt-4 border-t border-gray-700">
-                        <img src="https://placehold.co/48x48/FFC300/000?text=RV" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=RV'" alt="Rahul Verma" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
-                        <div>
-                            <p class="font-bold text-lg">Rahul Verma</p>
-                            <p class="text-sm text-accent-orange">Business Analyst at Paytm</p>
-                            <p class="text-xs text-gray-400">Package: 6.5 LPA</p>
+                <!-- 9-Week Journey (Curriculum) - Light Cards -->
+                <div id="curriculum">
+                    <h3 class="text-3xl font-extrabold text-gray-900 text-center mb-8 border-b-4 pb-3 fin-border">
+                        Your 9-Week Journey To BFSI Readiness
+                    </h3>
+                    <p class="text-center text-gray-600 mb-8">A weekly breakdown of the intensive, hands-on skills you will master to become a top-tier BFSI Sales professional.</p>
+
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Curriculum Cards (using .curriculum-card for inner light background) -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 1</span>
+                            <h4 class="text-lg font-bold text-gray-900">Sales Mindset & Finance Basics</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Grit & Resilience: Handling Rejection, Sales Ethics in BFSI.</li>
+                                <li>Compensation: Fixed vs. Variable Pay, Quota, and Commission.</li>
+                                <li>**Output:** Create a personal P&L tracker.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 2 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 2</span>
+                            <h4 class="text-lg font-bold text-gray-900">ICP, Prospecting & Sales Funnel</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Ideal Customer Profile (ICP) & Lead Sourcing.</li>
+                                <li>Sales Funnel: Lead, Prospect, Opportunity, Customer.</li>
+                                <li>**Output:** Build a qualified list of 50 target leads.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 3 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 3</span>
+                            <h4 class="text-lg font-bold text-gray-900">BANT Qualification Deep Dive</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Mastering BANT for financial services.</li>
+                                <li>Pre-Call Research (Competitors, Regulatory News).</li>
+                                <li>**Output:** Develop BANT scorecards for 5 qualified prospects.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 4 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 4</span>
+                            <h4 class="text-lg font-bold text-gray-900">Cold Calling & Email Mastery</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Cold Calling Mastery: Opening statements, gatekeeper navigation.</li>
+                                <li>Cold Emailing: Crafting compelling subject lines (AIDA).</li>
+                                <li>**Output:** 5 recorded Qualification Calls & draft a 3-email sequence.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 5 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 5</span>
+                            <h4 class="text-lg font-bold text-gray-900">SPIN Selling: Situation & Problem</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Questioning Techniques: Situation & Problem stages.</li>
+                                <li>Active Listening: Techniques for mirroring, summarizing.</li>
+                                <li>**Output:** Role-play a discovery call focusing on problem identification.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 6 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 6</span>
+                            <h4 class="text-lg font-bold text-gray-900">SPIN Selling: Implication & Need-Payoff</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Mastering Implication & Need-Payoff questions.</li>
+                                <li>Pitching Value, Not Features: Structuring for ROI.</li>
+                                <li>**Output:** Full 10-minute value-focused Product Presentation.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 7 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 7</span>
+                            <h4 class="text-lg font-bold text-gray-900">Objection Handling & Closing Skills</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Anticipating Objections: Top 10 BFSI objections.</li>
+                                <li>Handling Techniques: Feel-Felt-Found, Deflection.</li>
+                                <li>**Output:** High-stakes, graded Negotiation role-play.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 8 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 8</span>
+                            <h4 class="text-lg font-bold text-gray-900">CRM Practical & Forecasting</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>CRM Practical: Hands-on Sandbox training.</li>
+                                <li>Forecasting & Sales Reporting.</li>
+                                <li>**Output:** Comprehensive CRM Pipeline Audit/Sales forecast submission.</li>
+                            </ul>
+                        </div>
+                        <!-- Week 9 -->
+                        <div class="curriculum-card p-6">
+                            <div class="curriculum-card-header"></div>
+                            <span class="text-2xl font-extrabold fin-accent block mb-2 mt-2">Week 9</span>
+                            <h4 class="text-lg font-bold text-gray-900">Industry Immersion & Placement Prep</h4>
+                            <ul class="list-disc text-sm text-gray-600 ml-5 mt-2 space-y-1">
+                                <li>Live projects with industry partners & Resume building.</li>
+                                <li>Mock interviews & Placement drives.</li>
+                                <li>**Output:** Portfolio submission and first-round placement interviews.</li>
+                            </ul>
                         </div>
                     </div>
                 </div>
 
-                <!-- Testimonial Card 3: Anjali Gupta -->
-                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl">
-                    <p class="text-gray-300 italic mb-6 text-lg">"Best investment I made in my career. The instructors are industry experts who genuinely care about your success. The placement support team worked tirelessly to connect me with top fintech companies."</p>
-                    <div class="flex items-center pt-4 border-t border-gray-700">
-                        <img src="https://placehold.co/48x48/FFC300/000?text=AG" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=AG'" alt="Anjali Gupta" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
-                        <div>
-                            <p class="font-bold text-lg">Anjali Gupta</p>
-                            <p class="text-sm text-accent-orange">Product Specialist at PhonePe</p>
-                            <p class="text-xs text-gray-400">Package: 5.8 LPA</p>
+                <!-- Why This Program Is Different (Program Value Section) -->
+                <div id="value" class="mt-12 pt-8 border-t border-gray-200">
+                    <h3 class="text-3xl font-extrabold text-gray-900 text-center mb-8 border-b-4 pb-3 fin-border">
+                        Why This Program Is Different: Program Value
+                    </h3>
+                    <p class="text-center text-gray-600 mb-8">We don't just teach theory. We transform careers.</p>
+
+                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Feature 1 (Light) - Added Icon: File/Document -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">Industry-Aligned Curriculum</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Learn exactly what top BFSI & Fintech companies are looking for in their new hires.</p>
+                        </div>
+                        <!-- Feature 2 (Light) - Added Icon: Users/Mentors -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">Expert Mentorship</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Direct access to industry veterans with 15+ years of experience in leading financial institutions.</p>
+                        </div>
+                        <!-- Feature 3 (Light) - Added Icon: Handshake/Placement -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 12L3 21"/><path d="M16 12l2 2"/><path d="M19 12l2 2"/><path d="M20 19v3"/><path d="M17 19v3"/><path d="M14 19v3"/><path d="M13 19v3"/><path d="M10 19v3"/><path d="M9 19v3"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">100% Placement Support</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Dedicated placement cell working with 20+ hiring partners to secure your dream role.</p>
+                        </div>
+                        <!-- Feature 4 (Light) - Added Icon: Database/CRM -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 12a9 3 0 0 0 18 0"/><path d="M3 19a9 3 0 0 0 18 0"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">CRM Sandbox Mastery</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Gain guaranteed, hands-on experience using industry-standard CRM (Zoho/Salesforce) to log deals.</p>
+                        </div>
+                        <!-- Feature 5 (Light) - Added Icon: Trophy/Certificate -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 17.5a2.5 2.5 0 0 0-5 0V19h5Z"/><path d="M8.5 22h7"/><path d="M11 15h2a3 3 0 0 1-3-3v-4h-2a3 3 0 0 0 3-3V2l-1 1-1-1-1 1-1-1-1 1V6a3 3 0 0 0 3 3h2v4a3 3 0 0 1-3 3Z"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">Industry Certification</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Receive recognized certification that adds credibility to your resume and LinkedIn profile.</p>
+                        </div>
+                        <!-- Feature 6 (Light) - Added Icon: Lightning/Speed -->
+                        <div class="p-6 bg-gray-50 rounded-xl border border-gray-200 shadow-sm">
+                            <div class="flex items-center mb-2">
+                                <svg class="w-6 h-6 fin-accent mr-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 14l6-6M8 8l6 6M13 6l6 6M8 16l6-6"/><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10l-6-6z"/></svg>
+                                <h4 class="text-xl font-bold fin-accent">Fast-Track Your Career</h4>
+                            </div>
+                            <p class="text-sm text-gray-600 mt-2">Bypass years of trial and error with proven frameworks used by successful professionals.</p>
                         </div>
                     </div>
                 </div>
-                
-            </div>
-            
-        </div>
-    </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pt-12 pb-12 md:pt-16 md:pb-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
-        <div class="max-w-7xl mx-auto text-center">
-            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4">
-                Investment In Your <span class="text-accent-orange">Future</span>
-            </h2>
-            <p class="text-gray-400 mb-16 max-w-2xl mx-auto">
-                The cost of not taking action is greater than the investment in yourself.
-            </p>
-
-            <div class="lg:flex lg:justify-center lg:space-x-12">
-                <!-- Pricing Card -->
-                <div class="bg-black/70 p-8 md:p-10 rounded-3xl border-4 border-accent-orange shadow-2xl max-w-lg mx-auto lg:mx-0 lg:w-1/2">
+                <!-- Success Stories & Metrics Section -->
+                <div id="success-stories" class="mt-12 pt-8 border-t border-gray-200">
+                    <h3 class="text-3xl font-extrabold text-gray-900 text-center mb-8 border-b-4 pb-3 fin-border">
+                        Success Stories From Our Alumni
+                    </h3>
                     
-                    <p class="text-xl font-bold uppercase tracking-wider text-accent-orange mb-4">EARLY BIRD OFFER - LIMITED TIME ONLY</p>
+                    <!-- Metrics Grid (Light) -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center mb-10">
+                        <div>
+                            <p class="text-3xl md:text-5xl font-extrabold fin-accent">₹4.5-6</p>
+                            <p class="text-sm text-gray-600 mt-1">Average Salary Package (LPA)</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-5xl font-extrabold fin-accent">250+</p>
+                            <p class="text-sm text-gray-600 mt-1">Graduates Placed</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-5xl font-extrabold fin-accent">92%</p>
+                            <p class="text-sm text-gray-600 mt-1">Placement Rate</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl md:text-5xl font-extrabold fin-accent">4.8/5</p>
+                            <p class="text-sm text-gray-600 mt-1">Student Rating</p>
+                        </div>
+                    </div>
+
+                    <!-- Testimonials Grid (Light) -->
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
+                            <p class="italic text-gray-700 mb-4">"This program completely transformed my career trajectory. I went from struggling to find interviews to receiving multiple offers from top banks. The mentorship and industry connections are invaluable."</p>
+                            <p class="font-bold text-gray-900">Priya Sharma</p>
+                            <p class="text-sm fin-accent">Relationship Manager at HDFC Bank (Package: 5.2 LPA)</p>
+                        </div>
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
+                            <p class="italic text-gray-700 mb-4">"The curriculum is incredibly practical and relevant. Every single thing I learned is something I use in my daily work. The live projects gave me the confidence to ace my interviews."</p>
+                            <p class="font-bold text-gray-900">Rahul Verma</p>
+                            <p class="text-sm fin-accent">Business Analyst at Paytm (Package: 6.5 LPA)</p>
+                        </div>
+                        <div class="p-6 bg-gray-50 border border-gray-200 rounded-xl shadow-sm">
+                            <p class="italic text-gray-700 mb-4">"Best investment I made in my career. The instructors are industry experts who genuinely care about your success. The placement support team worked tirelessly to connect me with top fintech companies."</p>
+                            <p class="font-bold text-gray-900">Anjali Gupta</p>
+                            <p class="text-sm fin-accent">Product Specialist at PhonePe (Package: 5.8 LPA)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Investment Section (Apply Now Section) -->
+                <div id="apply-now" class="mt-12 pt-8 border-t border-gray-200 text-center bg-gray-50 p-8 rounded-2xl shadow-inner border border-gray-200">
+                    <h3 class="text-3xl font-extrabold text-gray-900 mb-4">Investment In Your Future</h3>
+                    <p class="text-gray-600 mb-6">The cost of not taking action is greater than the investment in yourself.</p>
                     
-                    <!-- RESPONSIVE PRICE FIX APPLIED HERE (Pure Tailwind) -->
-                    <div class="flex flex-wrap justify-center items-baseline gap-4 mb-6">
-                        <!-- Original Price (Struck-through) - Changed to text-xl (small) on mobile, text-3xl on larger screens -->
-                        <span class="text-xl sm:text-3xl line-through text-gray-500">₹79,999</span>
-                        
-                        <!-- Discounted Price (Prominent) - Changed to text-4xl (large but fits) on mobile, text-6xl on larger screens -->
-                        <span class="text-4xl sm:text-6xl font-extrabold text-white">₹49,999</span>
+                    <!-- Pricing Box (Light) -->
+                    <div class="max-w-xl mx-auto p-6 fin-bg-light rounded-xl shadow-lg border-2 border-blue-200">
+                        <p class="text-lg font-bold text-red-600">EARLY BIRD OFFER - LIMITED TIME ONLY</p>
+                        <div class="flex items-end justify-center my-3">
+                            <span class="text-2xl font-semibold line-through text-gray-500 mr-4">₹79,999</span>
+                            <span class="text-5xl font-extrabold text-gray-900">₹49,999</span>
+                        </div>
+                        <p class="text-sm font-medium text-gray-600">One-time payment for complete 9-week program</p>
+                        <p class="text-xs font-semibold text-red-600 mt-1">Offer expires in 48 hours</p>
                     </div>
 
-                    <p class="text-sm text-gray-400 mb-8 font-semibold">One-time payment for complete 9-week program</p>
-
-                    <div class="bg-red-900/50 text-red-300 py-3 rounded-xl font-bold mb-8 text-lg border border-red-800">
-                        Offer expires in 48 hours
-                    </div>
-
-                    <a href="#claim" class="pulsing-cta bg-accent-orange text-black font-extrabold py-4 px-8 rounded-xl text-xl shadow-xl hover:bg-yellow-400 transition duration-300 w-full block mb-6">
-                        ENROLL NOW & SAVE ₹30,000
+                    <a href="#" class="block btn-primary text-center p-4 rounded-xl font-bold text-xl mt-6 transition duration-300 max-w-lg mx-auto">
+                        CLAIM YOUR SPOT NOW &rarr;
                     </a>
 
-                    <!-- Inclusions -->
-                    <ul class="text-left space-y-3 text-gray-200 mt-8 border-t border-gray-700 pt-6">
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>9 weeks of intensive training</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Live projects with industry partners</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Expert mentorship & guidance</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>100% placement assistance</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Industry certification</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Lifetime access to course materials</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Alumni network access</li>
-                        <li class="flex items-center"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Interview preparation & resume building</li>
-                    </ul>
-
-                </div>
-
-                <!-- EMI Options & Guarantee -->
-                <div class="mt-12 lg:mt-0 lg:w-1/2 lg:flex lg:flex-col lg:items-start lg:text-left">
-                    <div class="p-6 rounded-xl border border-gray-700 bg-card-bg shadow-lg mb-8 w-full">
-                        <h4 class="text-xl font-bold mb-3">EMI Options Available</h4>
-                        <p class="text-gray-400 mb-2">Pay in easy installments starting at just <span class="text-accent-orange font-bold">₹8,333/month</span> for 6 months</p>
-                        <p class="text-sm text-gray-500">Zero-cost EMI available through leading banks</p>
+                    <!-- Value Proposition & Guarantee (Light) -->
+                    <div class="grid md:grid-cols-2 gap-4 mt-8 text-left text-sm text-gray-700">
+                        <ul class="space-y-2 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> 9 weeks of intensive training</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Live projects with industry partners</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Expert mentorship & guidance</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> 100% placement assistance</li>
+                        </ul>
+                        <ul class="space-y-2 p-4 bg-white rounded-xl border border-gray-200 shadow-sm">
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Industry certification</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Lifetime access to course materials</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Alumni network access</li>
+                            <li class="flex items-center"><span class="fin-accent mr-2 font-extrabold">&bull;</span> Interview preparation & resume building</li>
+                        </ul>
                     </div>
 
-                    <div class="p-6 rounded-xl border border-gray-700 bg-card-bg shadow-lg mb-8 w-full">
-                        <p class="text-accent-orange text-lg font-bold mb-3">30-day money-back guarantee</p>
-                        <p class="text-gray-400">If you're not satisfied, we offer a full refund within the first 30 days of the program.</p>
+                    <div class="mt-8">
+                        <p class="font-bold text-gray-900">EMI Options Available</p>
+                        <p class="text-gray-600">Pay in easy installments starting at just <span class="font-semibold fin-accent">₹8,333/month</span> for 6 months.</p>
+                        <p class="text-sm text-gray-500">Zero-cost EMI available through leading banks.</p>
                     </div>
 
-                    <div class="w-full">
-                        <h4 class="text-xl font-bold mb-4">Still have questions?</h4>
-                        <p class="text-gray-400 mb-4">Book a free consultation call.</p>
-                        <a href="#call" class="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-black transition duration-300 w-full block">
-                            SCHEDULE FREE CALL
-                        </a>
+                    <div class="mt-8 p-4 bg-red-100 rounded-xl border border-red-300">
+                        <p class="font-semibold text-red-600">30-day money-back guarantee</p>
+                        <p class="text-sm text-red-500">If you're not satisfied, we offer a full refund within the first 30 days of the program.</p>
+                    </div>
+
+                    <div class="mt-8">
+                        <p class="font-semibold text-gray-900">Still have questions?</p>
+                        <a href="#" class="fin-accent hover:underline font-medium">Book a free consultation call.</a>
                     </div>
                 </div>
+
             </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer class="bg-dark-bg border-t border-gray-900 pt-8 pb-16 px-4 sm:px-6 lg:px-8">
-        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
-            
-            <!-- Brand Info (Col 1 & 2 on mobile, Col 1 on desktop) -->
-            <div class="col-span-2 lg:col-span-2">
-                <div class="text-xl font-extrabold text-white tracking-wider mb-4">
-                    Finsales <span class="text-accent-orange">Launchpad</span>
+        <div class="separator"></div>
+
+        <!-- One-Pager 2: HIRING MANAGER - UNIFIED BLUE ACCENT (Light Card) -->
+        <div id="hiring-manager-pitch" class="one-pager overflow-hidden">
+            <div class="header fin-bg-light p-6 text-center border-b-4 fin-border">
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight fin-accent flex items-center justify-center gap-3 text-gray-900">
+                    FOR THE HIRING MANAGER
+                </h2>
+                <p class="text-base mt-2 text-gray-600">The System for Day 1 ROI.</p>
+            </div>
+
+            <div class="p-8 space-y-6">
+                <!-- Grid stacks on mobile -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="text-xl font-bold fin-accent">The Problem: Ramp-Up Risk</div>
+                        <p class="mt-2 text-gray-700 border-l-4 border-blue-200 pl-4">
+                            New sales hires cost 6-9 months of salary and managerial time before they hit quota, leading to volatile forecasting.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold fin-accent">The FinEngine Guarantee</div>
+                        <p class="mt-2 text-gray-700 border-l-4 border-blue-200 pl-4">
+                            Zero-Risk hiring. We deliver BFSI Professionals certified in a 9-week systematic methodology, ready to deliver **predictable revenue from Day 1.**
+                        </p>
+                    </div>
                 </div>
-                <p class="text-gray-400 text-sm mb-4">
-                    Jaipur's premier training institute for aspiring BFSI & Fintech professionals. We bridge the gap between academic knowledge and industry requirements.
-                </p>
-                <div class="flex space-x-4 text-gray-400">
-                    <!-- Social icons could go here -->
+
+                <div class="section-divider pt-4">
+                    <div class="h-px w-full bg-gray-200"></div>
                 </div>
-            </div>
 
-            <!-- Quick Links -->
-            <div>
-                <h4 class="text-white font-bold mb-4">Quick Links</h4>
-                <ul class="space-y-2 text-sm">
-                    <li><a href="#about" class="text-gray-400 hover:text-accent-orange">About Us</a></li>
-                    <li><a href="#curriculum" class="text-gray-400 hover:text-accent-orange">Curriculum</a></li>
-                    <li><a href="#stories" class="text-gray-400 hover:text-accent-orange">Success Stories</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">Placement Partners</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">FAQs</a></li>
-                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">Contact Us</a></li>
-                </ul>
-            </div>
+                <div class="text-xl font-bold fin-accent mb-4">Metrics: Risk Elimination & Value</div>
+                
+                <!-- Structured Outcomes Grid for Hiring Manager (Light) - Added Icons -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                        <!-- Icon: Clock for Zero Ramp-Up -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">Zero Ramp-Up</p>
+                        <p class="text-sm text-gray-600 mt-1">Immediate Readiness</p>
+                    </div>
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                         <!-- Icon: Check Shield for Accurate Data -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">Accurate Data</p>
+                        <p class="text-sm text-gray-600 mt-1">CRM Integrity Mastery</p>
+                    </div>
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                        <!-- Icon: Target for Aligned Process -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">Aligned Process</p>
+                        <p class="text-sm text-gray-600 mt-1">Systematic Methodology</p>
+                    </div>
+                </div>
 
-            <!-- Contact Info (Using col-span-1 to keep Quick Links and Contact side-by-side on mobile) -->
-            <div class="col-span-1 md:col-span-1 lg:col-span-2">
-                <h4 class="text-white font-bold mb-4">Contact</h4>
-                <ul class="space-y-3 text-sm">
-                    <li class="text-gray-400"> Finsales Launchpad, Premnagar Puliya, Agra Road, Jaipur, Rajasthan 302031</li>
-                    <li><a href="tel:+9743570824 class="text-gray-400 hover:text-accent-orange">+91 98765 43210</a></li>
-                    <li><a href="mailto:finsales.net" class="text-gray-400 hover:text-accent-orange">sales@shyamangi.com</a></li>
-                </ul>
-            </div>
-
-        </div>
-
-        <!-- Copyright & Legal -->
-        <div class="mt-16 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
-            <p>&copy; 2026 Finsales Launchpad. An Initiative by Shyamangi. All rights reserved.</p>
-            <div class="mt-2 space-x-4">
-                <a href="#" class="hover:text-accent-orange">Privacy Policy</a>
-                <a href="#" class="hover:text-accent-orange">Terms of Service</a>
-                <a href="#" class="hover:text-accent-orange">Refund</a>
+                <a href="#hiring-manager-pitch" class="block btn-primary text-center p-4 rounded-xl font-bold mt-8 transition duration-300">
+                    SECURE YOUR NEXT TALENT COHORT
+                </a>
             </div>
         </div>
-    </footer>
-    
-    <!-- JavaScript for On-Load Animation, Counter, and Starfield -->
+
+        <div class="separator"></div>
+
+        <!-- One-Pager 3: POTENTIAL INSTRUCTORS/STAFF - UNIFIED BLUE ACCENT (Light Card) -->
+        <div id="careers-pitch" class="one-pager overflow-hidden">
+            <div class="header fin-bg-light p-6 text-center border-b-4 fin-border">
+                <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight fin-accent flex items-center justify-center gap-3 text-gray-900">
+                    JOIN US AS INSTRUCTORS
+                </h2>
+                <p class="text-base mt-2 text-gray-600">Lead the Transformation in BFSI Sales.</p>
+            </div>
+
+            <div class="p-8 space-y-6">
+                <!-- Grid stacks on mobile -->
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <div class="text-xl font-bold fin-accent">Our Industry Mission</div>
+                        <p class="mt-2 text-gray-700 border-l-4 border-blue-200 pl-4">
+                            To redefine BFSI sales, moving it from individual talent to scalable, predictable, systematic revenue generation.
+                        </p>
+                    </div>
+                    <div>
+                        <div class="text-xl font-bold fin-accent">The Systematic Opportunity</div>
+                        <p class="mt-2 text-gray-700 border-l-4 border-blue-200 pl-4">
+                            You will instruct the FinEngine methodology—a high-demand system (BANT, SPIN, CRM) that corporate clients are actively seeking.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="section-divider pt-4">
+                    <div class="h-px w-full bg-gray-200"></div>
+                </div>
+
+                <div class="text-xl font-bold fin-accent mb-4">Role Value & Prestige</div>
+                
+                <!-- Structured Outcomes Grid for Careers (Light) - Added Icons -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                        <!-- Icon: Zap/Lightning for Brand Authority -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">Brand Authority</p>
+                        <p class="text-sm text-gray-600 mt-1">Industry Standard Setter</p>
+                    </div>
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                        <!-- Icon: Heart/Impact -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7z"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">Direct Impact</p>
+                        <p class="text-sm text-gray-600 mt-1">Mentoring High-Value Careers</p>
+                    </div>
+                    <div class="p-4 border-2 fin-border rounded-xl fin-bg-light text-center shadow-sm">
+                        <!-- Icon: Eye/Visibility -->
+                        <svg class="w-8 h-8 fin-accent mx-auto mb-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>
+                        <p class="text-2xl font-extrabold fin-accent">High Visibility</p>
+                        <p class="text-sm text-gray-600 mt-1">Corporate Training Niche</p>
+                    </div>
+                </div>
+
+                <a href="#careers-pitch" class="block btn-primary text-center p-4 rounded-xl font-bold mt-8 transition duration-300">
+                    APPLY NOW
+                </a>
+            </div>
+        </div>
+
+        <!-- Professional Footer (Light) -->
+        <footer class="text-center py-10 text-sm text-gray-500 border-t border-gray-200 mt-16">
+            <p>&copy; 2024 FinEngine, Inc. All rights reserved. | BFSI Sales Excellence Program.</p>
+            <p class="mt-2">
+                <a href="#" class="hover:text-gray-700 mx-2">Privacy Policy</a> &middot; 
+                <a href="#" class="hover:text-gray-700 mx-2">Terms of Service</a> &middot;
+                <a href="#" class="hover:text-gray-700 mx-2">Contact Us</a>
+            </p>
+        </footer>
+    </div>
+
+    <!-- JavaScript for Mobile Menu Toggle Only -->
     <script>
-        // --- Helper function to convert Hex color to RGB parts ---
-        const hexToRgbParts = (hex) => {
-            const bigint = parseInt(hex.slice(1), 16);
-            const r = (bigint >> 16) & 255;
-            const g = (bigint >> 8) & 255;
-            const b = bigint & 255;
-            return `${r}, ${g}, ${b}`;
-        };
-
-        // --- Counter Animation Function ---
-        function animateValue(element, start, end, duration, suffix, decimalPlaces) {
-            let startTimestamp = null;
-            const step = (timestamp) => {
-                if (!startTimestamp) startTimestamp = timestamp;
-                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-                
-                let currentValue;
-                if (decimalPlaces > 0) {
-                    currentValue = start + (end - start) * progress;
-                    element.textContent = currentValue.toFixed(decimalPlaces) + suffix;
-                } else {
-                    currentValue = Math.floor(start + (end - start) * progress);
-                    element.textContent = currentValue + suffix;
-                }
-
-                if (progress < 1) {
-                    window.requestAnimationFrame(step);
-                } else {
-                    element.textContent = end.toFixed(decimalPlaces) + suffix;
-                }
-            };
-            window.requestAnimationFrame(step);
-        }
-        
-        // --- Starfield Animation Logic ---
-        const canvas = document.getElementById('starfield');
-        const ctx = canvas ? canvas.getContext('2d') : null;
-        let stars = [];
-        // OPTIMIZATION: Reduced the number of stars from 250 to 125 for better mobile performance.
-        const numStars = 125; 
-        const speed = 0.5;
-
-        // Define the color palette for the stars (Yellow/Orange tones)
-        const starColors = ['#FFC300', '#FFA500', '#FF8C00', '#FFFFE0']; 
-
-        // Star Object Constructor
-        function Star() {
-            this.x = Math.random() * canvas.width - canvas.width / 2;
-            this.y = Math.random() * canvas.height - canvas.height / 2;
-            this.z = Math.random() * canvas.width;
-            this.radius = 1.0; 
-            // Assign a random color from the defined palette
-            this.color = starColors[Math.floor(Math.random() * starColors.length)];
-
-            // Update star position and movement
-            this.update = function() {
-                this.z -= speed * 2;
-
-                if (this.z <= 0) {
-                    this.x = Math.random() * canvas.width - canvas.width / 2;
-                    this.y = Math.random() * canvas.height - canvas.height / 2;
-                    this.z = canvas.width;
-                }
-            };
-
-            // Draw the star
-            this.draw = function() {
-                // Calculate screen position (projection)
-                const f = canvas.width / this.z; 
-                const px = this.x * f + canvas.width / 2;
-                const py = this.y * f + canvas.height / 2;
-
-                // Calculate size and opacity based on depth
-                const r = 1 + f * 0.5 * this.radius; 
-                // Increased brightness factor from 0.7 to 1.4 (200% brighter)
-                const opacity = Math.min(1, f * 1.4); // Closer stars are brighter (more opaque)
-
-                ctx.beginPath();
-                ctx.arc(px, py, r, 0, Math.PI * 2);
-                
-                // Use the star's defined color with calculated opacity
-                ctx.fillStyle = `rgba(${hexToRgbParts(this.color)}, ${opacity})`;
-
-                ctx.fill();
-            };
-        }
-
-        // Initialize Starfield (Set sizes and create stars)
-        function initStarfield() {
-            if (!canvas || !ctx) return;
+        document.addEventListener('DOMContentLoaded', function() {
+            // --- Mobile Menu Toggle Logic ---
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+            const openIcon = document.getElementById('menu-icon-open');
+            const closeIcon = document.getElementById('menu-icon-close');
             
-            // Set canvas size dynamically
-            canvas.width = window.innerWidth;
-            const heroContainer = document.getElementById('hero-container');
-            if (heroContainer) {
-                canvas.height = heroContainer.offsetHeight; 
+            if (button && menu && openIcon && closeIcon) {
+                button.addEventListener('click', function () {
+                    const isHidden = menu.classList.toggle('hidden');
+                    
+                    // Toggle icons
+                    openIcon.classList.toggle('hidden');
+                    closeIcon.classList.toggle('hidden');
+                });
+
+                // Close menu when a navigation link is clicked
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        // Check if menu is visible before hiding
+                        if (!menu.classList.contains('hidden')) {
+                            menu.classList.add('hidden');
+                            openIcon.classList.remove('hidden');
+                            closeIcon.classList.add('hidden');
+                        }
+                    });
+                });
             }
-            
-            if (stars.length === 0) {
-                for (let i = 0; i < numStars; i++) {
-                    stars.push(new Star());
-                }
-            }
-        }
-        
-        // Animation Loop - NO TRAIL
-        function animateStarfield() {
-            if (!canvas || !ctx) return;
-
-            // Clear canvas completely on every frame (removes the trail effect)
-            ctx.fillStyle = 'black'; 
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            stars.forEach(star => {
-                star.update();
-                star.draw();
-            });
-
-            requestAnimationFrame(animateStarfield);
-        }
-        
-        // Handle resizing
-        window.addEventListener('resize', () => {
-             // Reset the size of the canvas on resize
-             const heroContainer = document.getElementById('hero-container');
-             if(heroContainer && canvas) {
-                 canvas.width = window.innerWidth;
-                 canvas.height = heroContainer.offsetHeight;
-             }
-        });
-
-
-        // --- On-Load Activation Logic ---
-        document.addEventListener('DOMContentLoaded', () => {
-            
-            // 1. Initialize and start the Starfield animation
-            if (canvas && ctx) {
-                setTimeout(() => {
-                    initStarfield();
-                    animateStarfield();
-                }, 100); 
-            }
-
-            // 2. Hero Section Animation (Sequential Fade-In)
-            const heroElements = document.querySelectorAll('main .fade-in-hidden');
-            
-            heroElements.forEach(el => {
-                el.classList.add('fade-in-visible');
-            });
-
-            // 3. Counter Animation (Immediate Trigger)
-            const statElements = document.querySelectorAll('.stat-counter');
-            const duration = 1500; // 1.5 seconds
-
-            statElements.forEach(stat => {
-                const container = stat.closest('[data-target-value]');
-                const targetValue = parseFloat(container.dataset.targetValue);
-                const suffix = container.dataset.suffix || '';
-                const decimalPlaces = parseInt(container.dataset.decimalPlaces) || 0;
-
-                animateValue(stat, 0, targetValue, duration, suffix, decimalPlaces);
-            });
         });
     </script>
 
