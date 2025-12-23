@@ -3,277 +3,623 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- NEW BRAND NAME IN TITLE: "The Closer" -->
-    <title>The Closer: BFSI Sales Program | An Initiative by Shyamangi</title>
-    <!-- SEO: Meta Description and Keywords - UPDATED FOR NEW BRANDING -->
-    <meta name="description" content="The Closer: The 8-week BFSI Sales Launchpad in Jaipur by Shyamangi. Fast-track your career by mastering closing techniques, BANT, SPIN, and local compliance for top financial sales roles in Rajasthan.">
-    <meta name="keywords" content="The Closer sales training, BFSI closer course Jaipur, financial sales closing course, Jaipur banking job training, Shyamangi sales program, financial services career Rajasthan">
-
-    <!-- Load Tailwind CSS for utility classes (used primarily for rounding and spacing) -->
+    <title>Finsales Launchpad</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- SEO: JSON-LD Structured Data for Course - UPDATED NAME -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Course",
-      "name": "The Closer: BFSI Sales Program (Jaipur)",
-      "description": "An 8-week intensive training program by Shyamangi designed to equip beginners with the skills to become expert closers, mastering BANT, SPIN, and CRM to secure high-paying sales jobs in the Banking, Financial Services, and Insurance (BFSI) sector in Jaipur.",
-      "provider": {
-        "@type": "Organization",
-        "name": "Shyamangi"
-      },
-      "educationalCredentialAwarded": "BFSI Sales Mastery Certificate",
-      "timeRequired": "8 weeks",
-      "coursePrerequisites": "No prior sales experience required.",
-      "hasCourseInstance": {
-        "@type": "CourseInstance",
-        "courseMode": "In-person",
-        "location": {
-          "@type": "Place",
-          "name": "Jaipur, Rajasthan, India"
+    <!-- Custom Tailwind Configuration for Accent Color and Font -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'accent-orange': '#FFC300', // The primary highlight color from the design
+                        'dark-bg': '#0A0A0A',
+                        'card-bg': '#1a1a1a',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
         }
-      }
-    }
     </script>
-    
     <style>
-        /* BASE RESET & TYPOGRAPHY - Using system fonts for Apple aesthetic */
-        :root {
-            --primary-color: #007AFF; /* Apple Blue */
-            --background-light: #F5F5F7; /* Light Gray/Off-White */
-            --text-dark: #1D1D1F; /* Near Black */
-            /* Using system font stack for the authentic Apple look */
-            --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        /* Ensuring smooth scrolling for navigation links */
+        html {
+            scroll-behavior: smooth;
+        }
+        /* Custom border for the feature section separator */
+        .separator-line {
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.1), transparent);
+            height: 1px;
+            width: 80%;
+            margin: 0 auto;
+        }
+        /* Style for the curriculum module cards */
+        .module-card-item {
+            background-color: #1a1a1a;
+            border: 1px solid #333;
+            transition: all 0.3s;
+        }
+        .module-card-item:hover {
+            border-color: #FFC300;
+            box-shadow: 0 0 15px rgba(255, 195, 0, 0.3);
+            transform: translateY(-2px);
         }
 
-        body {
-            font-family: var(--font-family);
-            color: var(--text-dark);
-            background-color: white; /* Clean white background */
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Custom Styles for the Minimalist Aesthetic */
-
-        /* CTA Button Styling: Pill shape with soft shadow */
-        .cta-button {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: var(--primary-color);
-            color: white;
-            text-decoration: none;
-            font-size: 1.1rem;
-            font-weight: 600;
-            border-radius: 999px; /* Pill shape */
-            transition: background-color 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .cta-button:hover {
-            background-color: #0056b3; /* Darker blue on hover */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-        
-        /* Header specific styles */
-        .hero-header {
-            background-color: var(--background-light); /* Subtle background for the hero section */
-            border-bottom: 1px solid #E0E0E0;
-        }
-
-        .tagline {
-            color: var(--primary-color);
-            font-weight: 500;
-        }
-        
-        /* Card styles for the features section */
-        .card {
-            background-color: white;
-            border: 1px solid #E0E0E0;
-            border-radius: 12px;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
-            transition: transform 0.2s ease;
-        }
-
-        .card:hover {
-            transform: translateY(-2px); /* Subtle lift on hover */
-        }
-
-        .card h3 {
-            color: var(--primary-color);
-            font-weight: 600;
-        }
-
-        /* --- ANIMATION STYLES --- */
-        
-        /* Keyframes for smooth fade-in and subtle move up */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        /* Base state for all staggered elements (hidden and slightly offset) */
-        .stagger-item {
+        /* --- Unified CSS for Soft Fade-In and Lift-Up Effect --- */
+        /* This class will be applied to all elements that should fade in. */
+        .fade-in-hidden {
             opacity: 0;
-            transform: translateY(15px);
-            visibility: hidden;
+            /* Start further down for a soft lift-up effect */
+            transform: translateY(50px);
+            /* Define the transition property for the animation */
+            transition: opacity 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94), 
+                        transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
-
-        /* Class added by JS to start the animation */
-        .animate-start {
-            visibility: visible;
-            animation-name: fadeInUp;
-            animation-duration: 0.6s;
-            animation-fill-mode: both;
-            /* Cubic Bezier for smooth, decelerating Apple-like motion */
-            animation-timing-function: cubic-bezier(0.165, 0.84, 0.44, 1);
+        
+        /* This class is added by the IntersectionObserver when the element is visible */
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
-<body class="antialiased">
 
-    <!-- HEADER & HERO SECTION (Above the Fold Focus) -->
-    <header class="hero-header text-center p-8 sm:p-12">
-        <div class="max-w-4xl mx-auto">
-            <!-- POSITIONING: Primary Tagline -->
-            <p class="tagline text-sm mb-1 uppercase tracking-wider stagger-item">THE ULTIMATE BFSI SALES PROGRAM</p>
-            <!-- COMPANY BACKER -->
-            <p class="text-sm text-gray-500 mb-2 font-medium stagger-item">An Initiative by SHYAMANGI</p>
-            <!-- NEW BRAND NAME: The Closer -->
-            <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4 text-center stagger-item">
-                <span class="text-gray-900">The Closer</span>
-                <span class="text-gray-500 block sm:inline"> | Jaipur Edition</span>
-            </h1>
-            <!-- POSITIONING: Description focuses on the transformation/outcome -->
-            <p class="text-lg sm:text-xl text-gray-700 max-w-2xl mx-auto mb-8 stagger-item">
-                Go from zero experience to a certified **Closer** in 8 weeks, mastering the advanced objection handling and negotiation tactics required to land the highest commissions in financial services.
-            </p>
-            <!-- Primary CTA -->
-            <a href="#register" class="cta-button stagger-item">Enroll Now & Secure Your Closing Kit</a>
+<body class="bg-black text-white min-h-screen font-sans">
+
+    <!-- Navbar (IMMEDIATELY VISIBLE - NO ANIMATION CLASSES) -->
+    <header class="sticky top-0 z-50 bg-black/95 backdrop-blur-sm shadow-md border-b border-gray-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center py-4">
+            <!-- Logo/Title -->
+            <div class="text-xl font-extrabold text-white tracking-wider">
+                Finsales <span class="text-accent-orange">Launchpad</span>
+            </div>
+
+            <!-- Navigation Links (Hidden on small screens) -->
+            <nav class="hidden md:flex space-x-8 text-sm font-medium">
+                <a href="#curriculum" class="text-gray-300 hover:text-accent-orange transition duration-200">Curriculum</a>
+                <a href="#benefits" class="text-gray-300 hover:text-accent-orange transition duration-200">Benefits</a>
+                <a href="#stories" class="text-gray-300 hover:text-accent-orange transition duration-200">Success Stories</a>
+                <a href="#pricing" class="text-gray-300 hover:text-accent-orange transition duration-200">Pricing</a>
+            </nav>
+
+            <!-- Enroll Button -->
+            <a href="#pricing" class="bg-accent-orange text-black font-bold py-2 px-4 rounded-lg shadow-lg hover:shadow-xl hover:bg-yellow-400 transition duration-300 text-sm">
+                ENROLL NOW
+            </a>
         </div>
     </header>
 
-    <!-- MAIN CONTENT - Compact Sections -->
-    <main class="max-w-4xl mx-auto px-4 py-8 sm:py-12">
+    <!-- Main Hero Section (SCROLL-TRIGGERED FADE-IN - will fire immediately on load since it's visible) -->
+    <main class="pt-16 pb-20 md:pt-24 md:pb-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto text-center">
         
-        <!-- HIGH-LEVEL FEATURES (Grid for Mobile & Desktop) -->
-        <section class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
-            
-            <div class="card p-6 stagger-item">
-                <h3 class="text-xl mb-3">Master Closing Frameworks</h3>
-                <p class="text-sm text-gray-600">Deep dive into **BANT, SPIN Selling, and AIDA**—plus advanced **Negotiation and Closing** techniques specific to BFSI.</p>
-            </div>
-            
-            <div class="card p-6 stagger-item">
-                <h3 class="text-xl mb-3">High-Value Pipeline Focus</h3>
-                <p class="text-sm text-gray-600">Hands-on pipeline management and forecasting practice in a **Salesforce/Zoho Sandbox** environment.</p>
-            </div>
-            
-            <div class="card p-6 stagger-item">
-                <!-- POSITIONING: Sharpened to focus on hiring differentiation -->
-                <h3 class="text-xl mb-3">Jaipur Hiring Edge</h3>
-                <p class="text-sm text-gray-600">Curriculum tailored for Jaipur's MSME and FinTech landscape, including TRAI compliance basics and interview roleplay.</p>
-            </div>
-        </section>
+        <!-- Tag -->
+        <p class="inline-flex items-center text-xs sm:text-sm font-semibold text-black bg-accent-orange py-1 px-4 rounded-full mb-6 uppercase tracking-widest shadow-md fade-in-hidden" style="transition-delay: 0.1s;">
+            LIMITED SEATS AVAILABLE
+        </p>
 
-        <!-- CURRICULUM SNAPSHOT (Minimal List) -->
-        <section class="text-center mb-12">
-            <h2 class="text-3xl font-semibold mb-6 stagger-item">The 8-Week Skill Progression</h2>
-            
-            <div class="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-lg max-w-2xl mx-auto stagger-item">
-                <ul class="divide-y divide-gray-100">
-                    <!-- Content remains detailed for transparency -->
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 1</strong>
-                        <span class="w-2/3 sm:w-3/4">Sales Mindset & Personal P&L (Grit, Ethics, Compensation)</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 2</strong>
-                        <span class="w-2/3 sm:w-3/4">Prospecting, Lead Sourcing & Defining the ICP</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 3</strong>
-                        <span class="w-2/3 sm:w-3/4">Qualification Frameworks (Deep Dive into BANT)</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 4</strong>
-                        <span class="w-2/3 sm:w-3/4">Cold Outreach Mastery (Phone, Email, AIDA, Compliance)</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 5</strong>
-                        <span class="w-2/3 sm:w-3/4">Discovery Calls & Active Listening (SPIN Selling)</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 6</strong>
-                        <span class="w-2/3 sm:w-3/4">Product Presentation & Value Proposition Pitching</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 7</strong>
-                        <!-- WEEK 7: Emphasis shifted to closing skills -->
-                        <span class="w-2/3 sm:w-3/4 font-semibold text-gray-800">Advanced Objection Handling & Negotiation Mastery</span>
-                    </li>
-                    <li class="p-4 sm:p-5 flex justify-between items-center text-left">
-                        <strong class="font-medium w-1/3 sm:w-1/4 text-gray-500">Week 8</strong>
-                        <span class="w-2/3 sm:w-3/4">CRM Mastery, Pipeline Management & Forecasting</span>
-                    </li>
-                </ul>
-            </div>
-        </section>
+        <!-- Main Heading -->
+        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 fade-in-hidden" style="transition-delay: 0.2s;">
+            Master <span class="text-accent-orange">BFSI</span> Sales Frameworks &amp; 
+            Secure Your <span class="text-accent-orange">First Role</span>
+        </h1>
 
-        <!-- TESTIMONIAL / SOCIAL PROOF (Slightly different background) -->
-        <section class="text-center p-8 bg-gray-50 rounded-xl mb-12 stagger-item">
-            <h3 class="text-xl font-semibold text-gray-700 mb-4">What Graduates Say</h3>
-            <!-- POSITIONING: Testimonial context adjusted for career change and outcome -->
-            <blockquote class="italic text-lg text-gray-800 max-w-xl mx-auto mb-4">
-                "The focus on BANT and **advanced closing** instantly changed my discovery calls. I went from being a product seller to a trusted financial advisor, and got hired locally within two weeks of graduating."
-            </blockquote>
-            <p class="font-medium text-gray-500">— Ravi K., Sales Associate, Jaipur FinTech</p>
-        </section>
-        
-        <!-- FINAL CALL TO ACTION SECTION -->
-        <section id="register" class="text-center p-6 sm:p-8">
-            <h2 class="text-3xl font-semibold mb-4 stagger-item">Ready to Become The Closer?</h2>
-            <p class="text-lg text-gray-600 mb-8 max-w-xl mx-auto stagger-item">
-                Seats are highly limited to ensure personalized mentor attention and live role-play feedback. Don't miss your chance to **Join the ranks of Top BFSI Closers.**
-            </p>
-            <!-- POSITIONING: CTA reinforces the 'Closer' concept -->
-            <a href="#" class="cta-button stagger-item">Secure Your Closing Slot Now (Limited Seats)</a>
-        </section>
+        <!-- Sub Heading / Tagline -->
+        <p class="text-xl sm:text-2xl font-semibold text-gray-200 mb-8 max-w-4xl mx-auto fade-in-hidden" style="transition-delay: 0.3s;">
+            Transform from Fresher to Industry-Ready Professional in Just 9 Weeks
+        </p>
 
+        <!-- Description -->
+        <p class="text-base text-gray-400 mb-10 max-w-3xl mx-auto fade-in-hidden" style="transition-delay: 0.4s;">
+            Exclusive Jaipur-based intensive program. We combine **practical, role-play-driven modules** (SPIN, BANT, CRM) with local market insights to guarantee you are placed in high-paying sales roles in Banking, Financial Services, Insurance &amp; Fintech.
+        </p>
+
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 fade-in-hidden" style="transition-delay: 0.5s;">
+            <a href="#pricing" class="bg-accent-orange text-black font-bold py-3 px-8 rounded-xl text-lg shadow-xl hover:bg-yellow-400 transition duration-300 w-full sm:w-auto">
+                CLAIM YOUR SPOT NOW <span class="ml-2 inline-block transition-transform group-hover:translate-x-1">&rarr;</span>
+            </a>
+            <a href="#curriculum" class="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-black transition duration-300 w-full sm:w-auto">
+                DOWNLOAD CURRICULUM
+            </a>
+        </div>
     </main>
 
-    <!-- FOOTER - Updated with company name -->
-    <footer class="text-center text-sm text-gray-500 border-t border-gray-200 mt-8 py-6">
-        &copy; 2025 Shyamangi. The Closer Program. All rights reserved. | <a href="#" class="text-gray-500 hover:text-gray-700">Privacy Policy</a>
-    </footer>
+    <!-- Key Features Section (Scroll-Triggered Fade-In) -->
+    <section class="pb-16 pt-10">
+        <div class="separator-line mb-10 fade-in-hidden" style="transition-delay: 0.1s;"></div>
+        <!-- This entire block uses the scroll-triggered fade-in -->
+        <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-10 sm:gap-4">
+            
+            <!-- Feature Item 1 -->
+            <div class="flex flex-col items-center text-center fade-in-hidden" style="transition-delay: 0.2s;">
+                <span class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">9</span>
+                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Weeks</span>
+            </div>
 
-    <!-- JavaScript to apply staggered loading animation -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Select all elements tagged for staggering
-            const elements = document.querySelectorAll('.stagger-item');
-            elements.forEach((el, index) => {
-                // Calculate delay (0.08s increments for a smooth, fast stagger)
-                const delay = index * 0.08;
+            <!-- Feature Item 2 -->
+            <div class="flex flex-col items-center text-center fade-in-hidden" style="transition-delay: 0.3s;">
+                <span class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">100%</span>
+                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Support</span>
+            </div>
+
+            <!-- Feature Item 3 -->
+            <div class="flex flex-col items-center text-center fade-in-hidden" style="transition-delay: 0.4s;">
+                <span class="text-5xl sm:text-6xl font-extrabold text-accent-orange leading-none">20+</span>
+                <span class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Industry Partners</span>
+            </div>
+
+        </div>
+    </section>
+    
+    <!-- Detailed Curriculum Section (Scroll-Triggered Fade-In) -->
+    <section id="curriculum" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 fade-in-hidden" style="transition-delay: 0.1s;">
+                Your 9-Week Journey To <span class="text-accent-orange">BFSI Readiness</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-3xl mx-auto fade-in-hidden" style="transition-delay: 0.2s;">
+                A weekly breakdown of the intensive, hands-on skills you will master to become a top-tier BFSI Sales professional.
+            </p>
+
+            <!-- Curriculum Grid (9 Weeks in a 3x3 layout on large screens) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                // Set the animation delay directly on the element
-                el.style.animationDelay = `${delay}s`;
+                <!-- Week 1: Foundations & Mindset -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.3s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 1</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Sales Mindset & Finance Basics</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Grit & Resilience: Handling Rejection, Sales Ethics in BFSI.</li>
+                        <li>Compensation: Understanding Fixed vs. Variable Pay, Quota, and Commission.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Create a personal P&L tracker.</li>
+                </div>
+                
+                <!-- Week 2: Prospecting & Funnel Basics -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.4s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 2</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">ICP, Prospecting & Sales Funnel</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Ideal Customer Profile (ICP) & Lead Sourcing (LinkedIn, local databases).</li>
+                        <li>Sales Funnel: Basics of Lead, Prospect, Opportunity, and Customer.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Build a qualified list of 50 target leads.</li>
+                </div>
+                
+                <!-- Week 3: Qualification Frameworks (BANT) -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.5s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 3</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">BANT Qualification Deep Dive</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Mastering BANT for financial services (Budget, Authority, Need, Timeline).</li>
+                        <li>Pre-Call Research (Competitors, Credit Health, Regulatory News).</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Develop BANT scorecards for 5 qualified prospects.</li>
+                </div>
 
-                // Start the animation by adding the class
-                // requestAnimationFrame ensures this runs efficiently
-                requestAnimationFrame(() => {
-                    el.classList.add('animate-start');
+                <!-- Week 4: Cold Outreach & Communication -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.6s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 4</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Cold Calling & Email Mastery</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Cold Calling Mastery: Opening statements, gatekeeper navigation.</li>
+                        <li>Cold Emailing: Crafting compelling subject lines (AIDA) & DND compliance.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: 5 recorded Qualification Calls & draft a 3-email sequence.</li>
+                </div>
+                
+                <!-- Week 5: Deep Discovery (SPIN - S&P) -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.7s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 5</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">SPIN Selling: Situation & Problem</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Questioning Techniques: Mastering the Situation & Problem stages.</li>
+                        <li>Active Listening: Techniques for mirroring, summarizing, and showing empathy.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Role-play a discovery call focusing on problem identification.</li>
+                </div>
+                
+                <!-- Week 6: Presentation & Value (SPIN - I&N) -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.8s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 6</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">SPIN Selling: Implication & Need-Payoff</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Mastering Implication & Need-Payoff questions.</li>
+                        <li>Pitching Value, Not Features: Structuring the presentation for ROI.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Full 10-minute value-focused Product Presentation.</li>
+                </div>
+
+                <!-- Week 7: Objection Handling & Negotiation -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 0.9s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 7</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Objection Handling & Closing Skills</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Anticipating Objections: Top 10 BFSI objections.</li>
+                        <li>Handling Techniques: Feel-Felt-Found, Deflection, and Clarification.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: High-stakes, graded Negotiation role-play.</li>
+                </div>
+                
+                <!-- Week 8: CRM & Pipeline Management -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 1.0s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 8</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">CRM Practical & Forecasting</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>CRM Practical: Hands-on Sandbox training (logging activities, updating stages).</li>
+                        <li>Forecasting & Sales Reporting: Accurately predicting deal closure.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Comprehensive CRM Pipeline Audit/Sales forecast submission.</li>
+                </div>
+
+                <!-- Week 9: Placement & Immersion -->
+                <div class="module-card-item p-6 rounded-xl shadow-lg fade-in-hidden" style="transition-delay: 1.1s;">
+                    <div class="text-3xl font-bold text-accent-orange mb-3">Week 9</div>
+                    <h3 class="text-xl font-bold mb-4 border-b border-gray-800 pb-2">Industry Immersion & Placement Prep</h3>
+                    <ul class="space-y-2 text-sm text-gray-300 list-disc list-inside">
+                        <li>Live projects with industry partners & Resume building.</li>
+                        <li>Mock interviews with industry experts & Placement drives.</li>
+                    </ul>
+                    <li class="font-bold text-white text-sm mt-3">Output: Portfolio submission and first-round placement interviews.</li>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 fade-in-hidden" style="transition-delay: 0.1s;">
+                Why This Program Is <span class="text-accent-orange">Different</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto fade-in-hidden" style="transition-delay: 0.2s;">
+                We don't just teach theory. We transform careers.
+            </p>
+
+            <!-- Benefits Grid (6 items) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Benefit 1 -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.3s;">
+                    <h3 class="text-xl font-bold mb-3">Industry-Aligned Curriculum</h3>
+                    <p class="text-gray-400">Learn exactly what top BFSI & Fintech companies are looking for in their new hires.</p>
+                </div>
+                
+                <!-- Benefit 2 -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.4s;">
+                    <h3 class="text-xl font-bold mb-3">Expert Mentorship</h3>
+                    <p class="text-gray-400">Direct access to industry veterans with 15+ years of experience in leading financial institutions.</p>
+                </div>
+                
+                <!-- Benefit 3 -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.5s;">
+                    <h3 class="text-xl font-bold mb-3">100% Placement Support</h3>
+                    <p class="text-gray-400">Dedicated placement cell working with 20+ hiring partners to secure your dream role.</p>
+                </div>
+
+                <!-- Benefit 4 (UPDATED to focus on CRM Mastery) -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.6s;">
+                    <h3 class="text-xl font-bold mb-3">CRM Sandbox Mastery</h3>
+                    <p class="text-gray-400">Gain guaranteed, hands-on experience using industry-standard CRM (Zoho/Salesforce) to log deals, forecast, and manage a clean pipeline.</p>
+                </div>
+                
+                <!-- Benefit 5 -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.7s;">
+                    <h3 class="text-xl font-bold mb-3">Industry Certification</h3>
+                    <p class="text-gray-400">Receive recognized certification that adds credibility to your resume and LinkedIn profile.</p>
+                </div>
+                
+                <!-- Benefit 6 -->
+                <div class="p-6 rounded-xl border-t-4 border-accent-orange bg-card-bg shadow-lg fade-in-hidden" style="transition-delay: 0.8s;">
+                    <h3 class="text-xl font-bold mb-3">Fast-Track Your Career</h3>
+                    <p class="text-gray-400">Bypass years of trial and error with proven frameworks used by successful professionals.</p>
+                </div>
+                
+            </div>
+
+            <!-- Stats Bar below Benefits -->
+            <div class="mt-16 text-center">
+                <p class="text-xl font-semibold text-gray-300 mb-8 fade-in-hidden" style="transition-delay: 0.9s;">Average Salary Package: <span class="text-2xl font-extrabold text-accent-orange">₹4.5-6 LPA</span></p>
+
+                <div class="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16">
+                    <!-- Stat 1: Graduates Placed -->
+                    <div class="text-center fade-in-hidden" data-target-value="250" data-suffix="+" style="transition-delay: 1.0s;">
+                        <span id="stat1" class="text-5xl font-extrabold text-white stat-counter">0</span>
+                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Graduates Placed</p>
+                    </div>
+                    <!-- Stat 2: Placement Rate -->
+                    <div class="text-center fade-in-hidden" data-target-value="92" data-suffix="%" style="transition-delay: 1.1s;">
+                        <span id="stat2" class="text-5xl font-extrabold text-white stat-counter">0</span>
+                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Placement Rate</p>
+                    </div>
+                    <!-- Stat 3: Student Rating (Float) -->
+                    <div class="text-center fade-in-hidden" data-target-value="4.8" data-suffix="/5" data-decimal-places="1" style="transition-delay: 1.2s;">
+                        <span id="stat3" class="text-5xl font-extrabold text-white stat-counter">0</span>
+                        <p class="text-sm font-semibold uppercase tracking-widest text-gray-400 mt-1">Student Rating</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Success Stories Section -->
+    <section id="stories" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-center text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 fade-in-hidden" style="transition-delay: 0.1s;">
+                Success Stories From <span class="text-accent-orange">Our Alumni</span>
+            </h2>
+            <p class="text-center text-gray-400 mb-16 max-w-2xl mx-auto fade-in-hidden" style="transition-delay: 0.2s;">
+                Real people. Real results. Real transformations.
+            </p>
+
+            <!-- Testimonial Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Testimonial Card 1: Priya Sharma -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl fade-in-hidden" style="transition-delay: 0.3s;">
+                    <p class="text-gray-300 italic mb-6 text-lg">"This program completely transformed my career trajectory. I went from struggling to find interviews to receiving multiple offers from top banks. The mentorship and industry connections are invaluable."</p>
+                    <div class="flex items-center pt-4 border-t border-gray-700">
+                        <img src="https://placehold.co/48x48/FFC300/000?text=PS" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=PS'" alt="Priya Sharma" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
+                        <div>
+                            <p class="font-bold text-lg">Priya Sharma</p>
+                            <p class="text-sm text-accent-orange">Relationship Manager at HDFC Bank</p>
+                            <p class="text-xs text-gray-400">Package: 5.2 LPA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 2: Rahul Verma -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl fade-in-hidden" style="transition-delay: 0.4s;">
+                    <p class="text-gray-300 italic mb-6 text-lg">"The curriculum is incredibly practical and relevant. Every single thing I learned is something I use in my daily work. The live projects gave me the confidence to ace my interviews."</p>
+                    <div class="flex items-center pt-4 border-t border-gray-700">
+                        <img src="https://placehold.co/48x48/FFC300/000?text=RV" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=RV'" alt="Rahul Verma" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
+                        <div>
+                            <p class="font-bold text-lg">Rahul Verma</p>
+                            <p class="text-sm text-accent-orange">Business Analyst at Paytm</p>
+                            <p class="text-xs text-gray-400">Package: 6.5 LPA</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Testimonial Card 3: Anjali Gupta -->
+                <div class="bg-card-bg p-8 rounded-xl border border-gray-800 shadow-xl fade-in-hidden" style="transition-delay: 0.5s;">
+                    <p class="text-gray-300 italic mb-6 text-lg">"Best investment I made in my career. The instructors are industry experts who genuinely care about your success. The placement support team worked tirelessly to connect me with top fintech companies."</p>
+                    <div class="flex items-center pt-4 border-t border-gray-700">
+                        <img src="https://placehold.co/48x48/FFC300/000?text=AG" onerror="this.onerror=null; this.src='https://placehold.co/48x48/FFC300/000?text=AG'" alt="Anjali Gupta" class="w-12 h-12 rounded-full mr-4 border-2 border-accent-orange">
+                        <div>
+                            <p class="font-bold text-lg">Anjali Gupta</p>
+                            <p class="text-sm text-accent-orange">Product Specialist at PhonePe</p>
+                            <p class="text-xs text-gray-400">Package: 5.8 LPA</p>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 md:py-24 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+        <div class="max-w-7xl mx-auto text-center">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold mb-4 fade-in-hidden" style="transition-delay: 0.1s;">
+                Investment In Your <span class="text-accent-orange">Future</span>
+            </h2>
+            <p class="text-gray-400 mb-16 max-w-2xl mx-auto fade-in-hidden" style="transition-delay: 0.2s;">
+                The cost of not taking action is greater than the investment in yourself.
+            </p>
+
+            <div class="lg:flex lg:justify-center lg:space-x-12">
+                <!-- Pricing Card -->
+                <div class="bg-black/70 p-8 md:p-10 rounded-3xl border-4 border-accent-orange shadow-2xl max-w-lg mx-auto lg:mx-0 lg:w-1/2 fade-in-hidden" style="transition-delay: 0.3s;">
+                    
+                    <p class="text-xl font-bold uppercase tracking-wider text-accent-orange mb-4">EARLY BIRD OFFER - LIMITED TIME ONLY</p>
+                    
+                    <div class="flex justify-center items-baseline mb-6">
+                        <span class="text-3xl line-through text-gray-500 mr-4">₹79,999</span>
+                        <span class="text-6xl font-extrabold text-white">₹49,999</span>
+                    </div>
+
+                    <p class="text-sm text-gray-400 mb-8 font-semibold">One-time payment for complete 9-week program</p>
+
+                    <div class="bg-red-900/50 text-red-300 py-3 rounded-xl font-bold mb-8 text-lg border border-red-800">
+                        Offer expires in 48 hours
+                    </div>
+
+                    <a href="#claim" class="bg-accent-orange text-black font-extrabold py-4 px-8 rounded-xl text-xl shadow-xl hover:bg-yellow-400 transition duration-300 w-full block mb-6">
+                        ENROLL NOW & SAVE ₹30,000
+                    </a>
+
+                    <!-- Inclusions -->
+                    <ul class="text-left space-y-3 text-gray-200 mt-8 border-t border-gray-700 pt-6">
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.4s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>9 weeks of intensive training</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.5s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Live projects with industry partners</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.6s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Expert mentorship & guidance</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.7s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>100% placement assistance</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.8s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Industry certification</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 0.9s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Lifetime access to course materials</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 1.0s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Alumni network access</li>
+                        <li class="flex items-center fade-in-hidden" style="transition-delay: 1.1s;"><svg class="w-5 h-5 text-accent-orange mr-3" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Interview preparation & resume building</li>
+                    </ul>
+
+                </div>
+
+                <!-- EMI Options & Guarantee -->
+                <div class="mt-12 lg:mt-0 lg:w-1/2 lg:flex lg:flex-col lg:items-start lg:text-left">
+                    <div class="p-6 rounded-xl border border-gray-700 bg-card-bg shadow-lg mb-8 w-full fade-in-hidden" style="transition-delay: 0.4s;">
+                        <h4 class="text-xl font-bold mb-3">EMI Options Available</h4>
+                        <p class="text-gray-400 mb-2">Pay in easy installments starting at just <span class="text-accent-orange font-bold">₹8,333/month</span> for 6 months</p>
+                        <p class="text-sm text-gray-500">Zero-cost EMI available through leading banks</p>
+                    </div>
+
+                    <div class="p-6 rounded-xl border border-gray-700 bg-card-bg shadow-lg mb-8 w-full fade-in-hidden" style="transition-delay: 0.5s;">
+                        <p class="text-accent-orange text-lg font-bold mb-3">30-day money-back guarantee</p>
+                        <p class="text-gray-400">If you're not satisfied, we offer a full refund within the first 30 days of the program.</p>
+                    </div>
+
+                    <div class="w-full fade-in-hidden" style="transition-delay: 0.6s;">
+                        <h4 class="text-xl font-bold mb-4">Still have questions?</h4>
+                        <p class="text-gray-400 mb-4">Book a free consultation call.</p>
+                        <a href="#call" class="border-2 border-white text-white font-semibold py-3 px-8 rounded-xl text-lg hover:bg-white hover:text-black transition duration-300 w-full block">
+                            SCHEDULE FREE CALL
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer (ANIMATION REMOVED) -->
+    <footer class="bg-dark-bg border-t border-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-10">
+            
+            <!-- Brand Info (Col 1 & 2 on mobile, Col 1 on desktop) -->
+            <div class="col-span-2 lg:col-span-2">
+                <div class="text-xl font-extrabold text-white tracking-wider mb-4">
+                    Finsales <span class="text-accent-orange">Launchpad</span>
+                </div>
+                <p class="text-gray-400 text-sm mb-4">
+                    Jaipur's premier training institute for aspiring BFSI & Fintech professionals. We bridge the gap between academic knowledge and industry requirements.
+                </p>
+                <div class="flex space-x-4 text-gray-400">
+                    <!-- Social icons could go here -->
+                </div>
+            </div>
+
+            <!-- Quick Links -->
+            <div>
+                <h4 class="text-white font-bold mb-4">Quick Links</h4>
+                <ul class="space-y-2 text-sm">
+                    <li><a href="#about" class="text-gray-400 hover:text-accent-orange">About Us</a></li>
+                    <li><a href="#curriculum" class="text-gray-400 hover:text-accent-orange">Curriculum</a></li>
+                    <li><a href="#stories" class="text-gray-400 hover:text-accent-orange">Success Stories</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">Placement Partners</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">FAQs</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-accent-orange">Contact Us</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info (Changed col-span-2 to col-span-1 for mobile side-by-side layout) -->
+            <div class="col-span-1 md:col-span-1 lg:col-span-2">
+                <h4 class="text-white font-bold mb-4">Contact</h4>
+                <ul class="space-y-3 text-sm">
+                    <li class="text-gray-400">C-Scheme, Jaipur, Rajasthan 302001</li>
+                    <li><a href="tel:+919876543210" class="text-gray-400 hover:text-accent-orange">+91 98765 43210</a></li>
+                    <li><a href="mailto:info@bfsicareer.com" class="text-gray-400 hover:text-accent-orange">info@bfsicareer.com</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+        <!-- Copyright & Legal -->
+        <div class="mt-16 border-t border-gray-800 pt-8 text-center text-sm text-gray-500">
+            <p>&copy; 2024 Finsales Launchpad. All rights reserved.</p>
+            <div class="mt-2 space-x-4">
+                <a href="#" class="hover:text-accent-orange">Privacy Policy</a>
+                <a href="#" class="hover:text-accent-orange">Terms of Service</a>
+                <a href="#" class="hover:text-accent-orange">Refund</a>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript for Scroll Animation Logic and Counter -->
+    <script>
+        // --- Counter Animation Function ---
+        /**
+         * Animates a numerical value from 0 up to a target value.
+         * @param {HTMLElement} element - The DOM element to update.
+         * @param {number} start - The initial value (usually 0).
+         * @param {number} end - The final target value.
+         * @param {number} duration - Duration of the animation in milliseconds.
+         * @param {string} suffix - Text suffix to append (e.g., '+', '%', '/5').
+         * @param {number} decimalPlaces - Number of decimal places to show.
+         */
+        function animateValue(element, start, end, duration, suffix, decimalPlaces) {
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                
+                let currentValue;
+                if (decimalPlaces > 0) {
+                    // Interpolate for floating point numbers
+                    currentValue = start + (end - start) * progress;
+                    element.textContent = currentValue.toFixed(decimalPlaces) + suffix;
+                } else {
+                    // Interpolate for integer numbers
+                    currentValue = Math.floor(start + (end - start) * progress);
+                    element.textContent = currentValue + suffix;
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                } else {
+                    // Ensure the final, exact value is displayed
+                    element.textContent = end.toFixed(decimalPlaces) + suffix;
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // --- Intersection Observer for Fade-In and Counter Trigger ---
+        document.addEventListener('DOMContentLoaded', () => {
+            const elementsToAnimate = document.querySelectorAll('.fade-in-hidden');
+            const statElements = document.querySelectorAll('.stat-counter');
+            
+            // Set to track if the counters have been activated
+            let countersActivated = false;
+
+            const observerOptions = {
+                root: null, // viewport as the root
+                rootMargin: '0px',
+                threshold: 0.1 // 10% of item must be visible to trigger
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        // 1. Handle Fade-In Animation
+                        if (entry.target.classList.contains('fade-in-hidden')) {
+                            entry.target.classList.add('fade-in-visible');
+                            // Only unobserve elements that are not the counter container (to allow counter trigger)
+                            if (!entry.target.querySelector('.stat-counter')) {
+                                observer.unobserve(entry.target);
+                            }
+                        }
+
+                        // 2. Handle Counter Animation (Trigger when the stats container is visible)
+                        if (entry.target.id === 'benefits' && !countersActivated) {
+                            statElements.forEach(stat => {
+                                const container = stat.closest('[data-target-value]');
+                                const targetValue = parseFloat(container.dataset.targetValue);
+                                const suffix = container.dataset.suffix || '';
+                                const decimalPlaces = parseInt(container.dataset.decimalPlaces) || 0;
+
+                                animateValue(stat, 0, targetValue, 1500, suffix, decimalPlaces); // 1.5 seconds duration
+                            });
+                            countersActivated = true;
+                        }
+                    }
                 });
+            }, observerOptions);
+
+            // Observe all elements with the 'fade-in-hidden' class
+            elementsToAnimate.forEach(el => {
+                observer.observe(el);
             });
+
+            // Also explicitly observe the 'benefits' section to trigger the counter
+            const benefitsSection = document.getElementById('benefits');
+            if (benefitsSection) {
+                observer.observe(benefitsSection);
+            }
         });
     </script>
+
 </body>
 </html>
