@@ -1,837 +1,224 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <!-- UPDATED: Added Shyamangi Educraft to the title for domain context -->
-  <title>Shyamangi Educraft | SalesCraft Academy – Sales Career Training</title>
-
-  <!-- Using Inter as a clean, high-quality sans-serif font (like SF Pro) -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Hind:wght=400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    /* APPLE AESTHETICS - Minimal, clean, spacious */
-    :root {
-      --accent-color: #F69500; /* Muted Gold/Orange for premium details */
-      --text-dark: #1D1D1F; /* Very dark gray for soft black look */
-      --text-medium: #6E6E73; /* Subdued gray for body text */
-      --bg-light: #F5F5F7; /* Apple-style light background */
-      --bg-white: #FFFFFF;
-      --green: #34C759; /* System green for "Live" badge */
-      --blue: #007AFF; /* System blue for links/actions/primary CTA */
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      color: var(--text-dark);
-      background: var(--bg-white);
-      line-height: 1.4;
-      font-weight: 400;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: auto;
-      padding: 32px 24px; /* Increased top/bottom padding */
-    }
-
-    /* HEADER - Clean and minimal */
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 24px;
-      border-bottom: 1px solid #EAEAEA;
-      background: var(--bg-white);
-      font-size: 14px;
-      
-      /* New sticky styles */
-      position: fixed; /* Make it sticky */
-      top: 0; /* Pin it to the top */
-      width: 100%; /* Ensure full width */
-      z-index: 100; /* Keep it above other content */
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Subtle shadow for separation */
-    }
-    
-    /* UPDATED: Container for the two-line logo (SalesCraft / Shyamangi) */
-    .logo-group {
-        display: flex;
-        flex-direction: column;
-        line-height: 1.2; /* General line height */
-        /* NEW: Center alignment for the two logo lines */
-        align-items: center;
-    }
-
-    /* NEW: Base style for both logo lines (Sales Craft and Initiative) */
-    .logo-line {
-        font-weight: 700;
-        padding: 0;
-        margin: 0;
-        white-space: nowrap;
-    }
-    
-    /* NEW: Dark style for SALES Craft - Base size 18px */
-    .logo-line.dark-text {
-        color: var(--text-dark); 
-        font-size: 18px; /* Explicitly set main line size */
-    }
-
-    /* NEW: Accent color for the 'SALES' part of the logo */
-    .logo-accent-part {
-        color: var(--accent-color);
-        font-weight: 800; /* Slightly bolder for more pop */
-    }
-    
-    /* UPDATED: Parent Company Tag - Secondary text, now back to standalone line */
-    .logo-group .parent-tag {
-        font-size: 11px; 
-        font-weight: 500;
-        color: var(--text-medium); /* Subdued gray for parent company mention */
-        margin-top: -2px; /* Tightens space with the line above for compact logo appearance */
-        letter-spacing: 0.05em; /* Subtle spacing for readability */
-    }
-    /* END LOGO CSS UPDATE */
-
-    /* Navigation Menu Styles */
-    .nav-menu {
-        display: flex;
-        align-items: center;
-        /* Increased gap to account for the new CTA button */
-        gap: 40px; 
-    }
-
-    .nav-links {
-        display: flex;
-        gap: 24px;
-        align-items: center;
-    }
-
-    .nav-item {
-        position: relative;
-        list-style: none;
-    }
-
-    .nav-link {
-        color: var(--text-dark);
-        text-decoration: none;
-        font-weight: 500;
-        padding: 6px 8px;
-        border-radius: 6px;
-        transition: background 0.2s;
-    }
-    
-    .nav-link:hover {
-        background: var(--bg-light);
-    }
-
-    /* Dropdown container styles */
-    .dropdown-content {
-        display: none; /* Hidden by default */
-        position: absolute;
-        top: 100%; /* Position below the link */
-        left: 0;
-        z-index: 10;
-        min-width: 150px;
-        background: var(--bg-white);
-        padding: 8px 0;
-        border-radius: 8px; /* Rounded corners */
-        margin-top: 8px; /* Gap from the header */
-        /* Subtle shadow */
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1); 
-        border: 1px solid #EAEAEA;
-    }
-    
-    /* Show dropdown on hover */
-    .nav-item:hover .dropdown-content {
-        display: block;
-    }
-    
-    /* Style for individual dropdown links */
-    .dropdown-content a {
-        display: block;
-        padding: 8px 16px;
-        text-decoration: none;
-        color: var(--text-dark);
-        font-weight: 400;
-        transition: background 0.2s;
-        font-size: 14px;
-    }
-    
-    .dropdown-content a:hover {
-        background: var(--bg-light); /* Hover background */
-    }
-    /* End Navigation Menu Styles */
-
-    /* ROLLED BACK: Header Call Button - Now a solid, high-impact button */
-    .call-btn {
-      background: var(--accent-color); /* Solid accent color */
-      color: var(--bg-white); /* White text for contrast */
-      border: none; /* No border */
-      padding: 8px 16px; 
-      font-weight: 600;
-      text-decoration: none;
-      border-radius: 999px; /* Pill-shaped button */
-      transition: opacity 0.2s; /* Transition for hover */
-      white-space: nowrap; 
-      /* Adding a soft shadow for impact */
-      box-shadow: 0 4px 8px rgba(246, 149, 0, 0.3); 
-    }
-
-    /* ROLLED BACK: Hover state for solid button */
-    .call-btn:hover {
-        background: var(--accent-color); 
-        color: var(--bg-white);
-        opacity: 0.85; /* Simple opacity change */
-    }
-
-    /* HERO - Central, huge focal point */
-    .hero {
-      /* Add margin to push content below the fixed header (approx 55px height) */
-      margin-top: 55px; 
-      /* Reduced original top padding to maintain overall visual spacing */
-      padding: 60px 24px 60px;
-      text-align: center;
-    }
-
-    .hero .weeks {
-      font-size: 160px; /* Massive size */
-      font-weight: 800;
-      /* UPDATED: Changed color from light gray (#D0D0D0) to the accent color */
-      color: var(--accent-color); 
-      line-height: 1;
-      text-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-
-    .hero h1 {
-      font-family: 'Hind', sans-serif;
-      font-size: 44px; /* Larger and impactful */
-      margin-top: 24px;
-      font-weight: 700;
-      line-height: 1.1;
-    }
-    
-    /* Hero Claims - Important data highlighted near the top */
-    .hero-claim {
-        font-size: 18px; 
-        font-weight: 500;
-        color: var(--text-dark); 
-        line-height: 1.6;
-        margin-top: 16px; 
-        /* UPDATED: Further reduced bottom margin to tighten spacing with the next section */
-        margin-bottom: 10px; 
-    }
-    
-    .section-title {
-        font-size: 20px;
-        font-weight: 600;
-        color: var(--text-dark); 
-        margin-top: 24px;
-    }
-    
-    /* ================================================== */
-    /* NEW: SOCIAL PROOF SECTION STYLES */
-    /* ================================================== */
-    .social-proof-section {
-        /* UPDATED: Increased vertical padding to 60px for consistent section spacing */
-        padding: 60px 24px; 
-        background: var(--bg-light);
-        border-top: 1px solid #EAEAEA;
-    }
-
-    .key-stats {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        margin-bottom: 50px;
-        text-align: center;
-    }
-
-    .stat-item h4 {
-        font-size: 36px;
-        font-weight: 800;
-        color: var(--accent-color);
-        line-height: 1;
-        margin-bottom: 4px;
-    }
-
-    .stat-item p {
-        font-size: 14px;
-        font-weight: 600;
-        color: var(--text-dark);
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-    }
-
-    .testimonial-card {
-        max-width: 700px;
-        margin: 0 auto;
-        padding: 30px;
-        background: var(--bg-white);
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-        border: 1px solid #EAEAEA;
-    }
-
-    .quote-text {
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 1.7;
-        color: var(--text-dark);
-        margin-bottom: 15px;
-    }
-
-    .quote-author {
-        font-size: 15px;
-        font-weight: 600;
-        color: var(--accent-color);
-    }
-    
-    .quote-author span {
-        font-weight: 400;
-        color: var(--text-medium);
-    }
-    
-    /* ================================================== */
-
-    /* SECTORS - Clean Pills */
-    .sectors-section {
-        /* UPDATED: Reduced bottom padding to tighten spacing with the Curriculum below */
-        padding: 0 24px 30px;
-    }
-    
-    .sectors {
-      margin-top: 20px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      font-weight: 500;
-      font-size: 14px;
-    }
-
-    .sector {
-      padding: 6px 14px;
-      border: 1px solid #ddd;
-      border-radius: 999px; /* Pill shape */
-      background: var(--bg-white);
-      opacity: 0.5; 
-      color: var(--text-medium);
-    }
-
-    /* Live Sector Styling - Subtle distinction */
-    .sector-live {
-        opacity: 1; 
-        font-weight: 600;
-        border-color: var(--accent-color);
-        color: var(--text-dark);
-    }
-
-    /* Style for the "Live Now" badge */
-    .live-badge {
-        font-weight: 700;
-        color: var(--bg-white);
-        background-color: var(--green);
-        padding: 1px 8px;
-        border-radius: 999px;
-        margin-left: 6px;
-        font-size: 10px;
-        line-height: 1.2;
-        vertical-align: middle;
-    }
-    
-    .coming-soon-text {
-        font-size: 13px; 
-        color: var(--text-medium); 
-        margin-top: 10px;
-        font-weight: 400;
-    }
-    
-    /* CURRICULUM STYLES - Card-based, clean design */
-    .curriculum-section {
-        /* This is now close to the sectors section, keeping the top margin tight */
-        margin-top: 0;
-        text-align: left;
-    }
-
-    .curriculum-details {
-        max-width: 700px;
-        margin: 0 auto;
-        border: 1px solid #EAEAEA;
-        border-radius: 12px;
-        overflow: hidden;
-        background: var(--bg-white);
-        box-shadow: 0 1px 3px rgba(0,0,0,0.05); /* Soft shadow */
-    }
-
-    .curriculum-details summary {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 20px 24px; /* More padding */
-        font-weight: 600;
-        font-size: 18px;
-        cursor: pointer;
-        background: var(--bg-white);
-        list-style: none;
-        border-bottom: 1px solid #F0F0F0;
-        transition: background 0.3s;
-    }
-
-    .curriculum-details[open] summary {
-        background: var(--bg-light);
-        color: var(--text-dark);
-    }
-
-    /* Custom indicator */
-    .curriculum-details summary::after {
-        content: '+';
-        font-size: 28px;
-        transition: transform 0.2s;
-        line-height: 1;
-        font-family: sans-serif;
-        color: var(--text-medium);
-    }
-    
-    .curriculum-details[open] summary::after {
-        content: '—';
-        transform: rotate(0deg);
-        color: var(--text-dark);
-    }
-
-    .curriculum-content {
-        padding: 24px;
-        background: var(--bg-light); /* Content background slightly different */
-    }
-
-    .curriculum-header {
-        font-size: 22px;
-        font-weight: 700;
-        margin-bottom: 12px;
-        color: var(--text-dark);
-    }
-
-    .curriculum-description {
-        font-size: 15px;
-        color: var(--text-medium);
-        margin-bottom: 30px;
-        line-height: 1.6;
-    }
-
-    .week-item {
-        margin-bottom: 24px;
-        padding-bottom: 24px;
-        border-bottom: 1px dashed #E0E0E0;
-    }
-
-    .week-item h3 {
-        font-size: 17px;
-        font-weight: 600;
-        margin-bottom: 6px;
-        color: var(--text-dark);
-    }
-
-    .week-output {
-        font-style: italic;
-        font-size: 14px;
-        color: var(--text-medium);
-        margin-top: 12px;
-        padding-left: 15px;
-        border-left: 3px solid var(--accent-color);
-        line-height: 1.6;
-    }
-
-    .week-details li {
-        font-size: 15px;
-        color: var(--text-dark);
-        margin-top: 6px;
-    }
-
-    .week-details li::before {
-        content: "•";
-        color: var(--accent-color);
-        margin-right: 8px;
-    }
-
-    /* CTA SECTION - Full-width, clean background */
-    .cta {
-      margin-top: 60px;
-      padding: 60px 24px;
-      background: var(--bg-light);
-      text-align: center;
-      border-top: 1px solid #EAEAEA;
-    }
-
-    .cta h2 {
-      font-size: 32px;
-      margin-bottom: 20px;
-      font-weight: 700;
-    }
-
-    /* ROLLED BACK: Main CTA Button - Now uses Accent Color for high impact */
-    .cta .cta-button {
-      display: inline-block;
-      margin-top: 12px;
-      font-size: 20px;
-      font-weight: 600;
-      color: var(--bg-white); /* White text on accent color */
-      text-decoration: none;
-      background: var(--accent-color); /* Rolled back to accent color */
-      padding: 12px 30px;
-      border-radius: 999px;
-      transition: opacity 0.2s;
-      box-shadow: 0 6px 15px rgba(246, 149, 0, 0.4); /* Stronger shadow for impact */
-    }
-    
-    .cta .cta-button:hover {
-        opacity: 0.85;
-    }
-
-    /* FOOTER - Minimal Disclaimer */
-    footer {
-      text-align: center;
-      padding: 30px 24px;
-      font-size: 13px;
-      color: var(--text-medium);
-    }
-    
-    .disclaimer-title {
-        font-size: 12px;
-        font-weight: 600;
-        color: var(--text-medium);
-        margin-bottom: 2px;
-    }
-
-    .proof-footnote {
-        margin-top: 4px; 
-        font-size: 12px; 
-        color: var(--text-medium);
-        line-height: 1.4;
-    }
-
-    @media (max-width: 768px) {
-      .hero .weeks {
-        font-size: 120px;
-      }
-
-      .hero h1 {
-        font-size: 34px;
-        /* UPDATED: Increased line height for multi-line heading on mobile for better readability */
-        line-height: 1.2; 
-      }
-      
-      .hero-claim {
-          font-size: 16px;
-      }
-
-      .curriculum-details {
-        margin: 0; 
-        border-radius: 0; 
-        border-left: none;
-        border-right: none;
-        box-shadow: none;
-      }
-      header {
-          /* Revert header to align items horizontally for mobile to keep space for logo and button */
-          flex-direction: row; 
-          justify-content: space-between;
-          padding: 12px 16px; /* slightly less vertical padding */
-      }
-      .nav-menu {
-          /* Hide navigation links on small screens to prioritize the Call button */
-          /* Note: We still need to display the nav-menu container to show the button within it */
-      }
-      
-      /* New class to explicitly show only the call button on mobile */
-      .nav-menu .call-btn {
-        display: block;
-      }
-
-      /* Compensate for standard header height (approx 55px height) */
-      .hero {
-          margin-top: 55px;
-          padding-top: 40px; /* Adjusted padding for mobile */
-      }
-      
-      .key-stats {
-        flex-direction: column;
-        gap: 20px;
-      }
-      .stat-item h4 {
-        font-size: 30px;
-      }
-      .stat-item p {
-        font-size: 13px;
-      }
-      
-      /* Ensure the primary CTA button in the header is visible */
-      header .call-btn {
-        padding: 6px 14px;
-        font-size: 14px;
-      }
-      
-      /* Re-styling the CTA menu on mobile to show the button while hiding links */
-      .nav-menu {
-        display: flex; /* Re-enable flex layout */
-        width: auto;
-      }
-      .nav-links {
-        display: none; /* Explicitly hide links on mobile */
-      }
-      
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Goldstone | Jaipur's Gold Standard Sales Talent by Shyamangi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --goldstone-navy: #0f172a;
+            --goldstone-gold: #d4af37;
+            --goldstone-stone: #f8fafc;
+        }
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--goldstone-navy);
+            background-color: white;
+        }
+        h1, h2, h3, .brand-font {
+            font-family: 'Cinzel', serif;
+        }
+        .bg-navy { background-color: var(--goldstone-navy); }
+        .text-gold { color: var(--goldstone-gold); }
+        .border-gold { border-color: var(--goldstone-gold); }
+        .btn-gold {
+            background-color: var(--goldstone-gold);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        .btn-gold:hover {
+            background-color: #b8860b;
+            transform: translateY(-2px);
+        }
+        .gradient-overlay {
+            background: linear-gradient(rgba(15, 23, 42, 0.85), rgba(15, 23, 42, 0.95));
+        }
+        .gem-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0l20 20-20 20L0 20z' fill='%23d4af37' fill-opacity='0.03' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+    </style>
 </head>
+<body class="overflow-x-hidden gem-pattern">
 
-<body>
-
-  <!-- HEADER -->
-  <header>
-    <!-- UPDATED: Logo structure for two centered, separate lines -->
-    <div class="logo-group">
-        <!-- Line 1: SALESCraft (SALES is accent color, Craft is dark) -->
-        <div class="logo-line dark-text">
-            <span class="logo-accent-part">SALES</span>Craft
+    <!-- Header / Nav -->
+    <nav class="py-4 px-6 md:px-12 flex justify-between items-center bg-white shadow-sm sticky top-0 z-50">
+        <div class="flex items-center gap-2">
+            <div class="w-10 h-10 bg-navy flex items-center justify-center rounded-sm">
+                <span class="text-gold font-bold text-lg">G</span>
+            </div>
+            <span class="brand-font font-bold text-xl tracking-widest uppercase">Goldstone</span>
         </div>
-        
-        <!-- Line 2: A Shyamangi Group Initiative -->
-        <div class="parent-tag">A Shyamangi Group Initiative</div>
-    </div>
-    
-    <nav class="nav-menu">
-        <ul class="nav-links">
-            <!-- UPDATED: Our Brands changed to Why Us -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">Why Us</a>
-            </li>
-            
-            <!-- EXISTING: Careers Section -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">Careers</a>
-            </li>
-            
-            <!-- EXISTING: Our Centers -->
-            <li class="nav-item">
-                <a href="#" class="nav-link">Our Centers</a>
-                <div class="dropdown-content">
-                    <a href="#">Agra Road</a>
-                    <a href="#">Sikar Road</a>
-                </div>
-            </li>
-        </ul>
-        
-        <!-- CALL TO ACTION BUTTON ADDED TO THE NAVIGATION BAR -->
-        <a href="tel:9743570824" class="call-btn">Call 9743570824</a>
+        <div class="hidden md:flex gap-8 font-bold text-xs uppercase tracking-[0.2em]">
+            <a href="#employers" class="hover:text-gold transition-colors">Client Solutions</a>
+            <a href="#seekers" class="hover:text-gold transition-colors">The Gold Standard</a>
+            <a href="#shyamangi" class="hover:text-gold transition-colors">Our Roots</a>
+        </div>
+        <button onclick="document.getElementById('contact-modal').style.display='flex'" class="btn-gold px-6 py-2 rounded-sm text-xs font-bold uppercase tracking-widest">Inquiry</button>
     </nav>
-  </header>
 
-  <!-- HERO -->
-  <section class="hero container">
-    <div class="weeks">9</div>
-    <h1>हफ्तों में SALES CAREER की तैयारी</h1>
-
-    <!-- Key Claims: Clear and prominent -->
-    <p class="hero-claim">
-        Entry-level sales roles &middot; 3–4.5 LPA potential* &middot; Placement assistance available*
-    </p>
-
-    <!-- Sectors moved below Social Proof for better flow -->
-
-    <!-- END HERO SECTION -->
-  </section>
-  
-  <!-- ================================================== -->
-  <!-- CHOOSE YOUR SPECIALIZATION SECTION -->
-  <!-- ================================================== -->
-  <section class="container sectors-section">
-      <div class="section-title" style="text-align: center;">
-          Choose Your Specialisation:
-      </div>
-  
-      <!-- Sectors List - Clean Pills -->
-      <div class="sectors">
-        <div class="sector sector-live">BFSI <span class="live-badge">LIVE NOW</span></div>
-        <div class="sector">IT</div>
-        <div class="sector">Real Estate</div>
-        <div class="sector">Retail</div>
-        <div class="sector">Automotive</div>
-        <div class="sector">Healthcare</div>
-      </div>
-      <div class="coming-soon-text" style="text-align: center;">
-          IT, Real Estate, Retail, Automotive, and Healthcare specialisations coming in next quarters.
-      </div>
-  </section>
-  <!-- ================================================== -->
-
-  <!-- START: EXPANDABLE CURRICULUM SECTION (NEW POSITION) -->
-  <!-- Keeping the container padding-top: 0 to connect visually to the specialization section -->
-  <section class="container" style="padding-top: 0;"> 
-
-      <!-- EXPANDABLE CURRICULUM SECTION - Clean Card Style -->
-      <div class="curriculum-section" style="margin-top: 0;">
-        <!-- Curriculum is closed by default -->
-        <details class="curriculum-details">
-          <summary>
-            BFSI 9-Week Curriculum
-          </summary>
-          <div class="curriculum-content">
-            <h2 class="curriculum-header">Your 9-Week Journey To BFSI Readiness</h2>
-            <p class="curriculum-description">A weekly breakdown of the intensive, hands-on skills you will master to become a top-tier BFSI Sales professional.</p>
-
-            <div class="week-item">
-              <h3>Week 1: Sales Mindset & Finance Basics</h3>
-              <ul class="week-details">
-                <li>Grit & Resilience: Handling Rejection, Sales Ethics in BFSI.</li>
-                <li>Compensation: Fixed vs. Variable Pay, Quota, and Commission.</li>
-              </ul>
-              <div class="week-output">Output: Create a personal P&L tracker.</div>
+    <!-- Hero Section -->
+    <header class="relative h-[85vh] flex items-center justify-center text-white text-center px-4 overflow-hidden">
+        <div class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=2000')] bg-cover bg-center"></div>
+        <div class="absolute inset-0 gradient-overlay"></div>
+        
+        <div class="relative z-10 max-w-4xl">
+            <div class="flex justify-center mb-6">
+                <span class="border-y border-gold py-1 px-4 text-gold tracking-[0.4em] uppercase text-[10px] font-bold">A Shyamangi Enterprise</span>
             </div>
-
-            <div class="week-item">
-              <h3>Week 2: ICP, Prospecting & Sales Funnel</h3>
-              <ul class="week-details">
-                <li>Ideal Customer Profile (ICP) & Lead Sourcing.</li>
-                <li>Sales Funnel: Lead, Prospect, Opportunity, Customer.</li>
-              </ul>
-              <div class="week-output">Output: Build a qualified list of 50 target leads.</div>
+            <h1 class="text-5xl md:text-7xl mb-6 leading-tight">The Gold Standard<br>of Sales Talent.</h1>
+            <p class="text-lg md:text-2xl font-light mb-10 max-w-2xl mx-auto opacity-90 italic">
+                "In Jaipur's market, everyone sells. But only a few closing talents are pure gold."
+            </p>
+            <div class="flex flex-col md:flex-row gap-5 justify-center">
+                <a href="#employers" class="btn-gold px-12 py-4 rounded-sm font-bold uppercase tracking-widest text-sm shadow-xl">Recruit Excellence</a>
+                <a href="#seekers" class="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white hover:text-navy px-12 py-4 rounded-sm font-bold uppercase tracking-widest text-sm transition-all">Join the Elite</a>
             </div>
-
-            <div class="week-item">
-              <h3>Week 3: BANT Qualification Deep Dive</h3>
-              <ul class="week-details">
-                <li>Mastering BANT for financial services.</li>
-                <li>Pre-Call Research (Competitors, Regulatory News).</li>
-              </ul>
-              <div class="week-output">Output: Develop BANT scorecards for 5 qualified prospects.</div>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 4: Cold Calling & Email Mastery</h3>
-              <ul class="week-details">
-                <li>Cold Calling Mastery: Opening statements, gatekeeper navigation.</li>
-                <li>Cold Emailing: Crafting compelling subject lines (AIDA).</li>
-              </ul>
-              <div class="week-output">Output: 5 recorded Qualification Calls & draft a 3-email sequence.</div>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 5: SPIN Selling: Situation & Problem</h3>
-              <ul class="week-details">
-                <li>Questioning Techniques: Situation & Problem stages.</li>
-                <li>Active Listening: Techniques for mirroring, summarizing.</li>
-              </ul>
-              <div class="week-output">Output: Role-play a discovery call focusing on problem identification.</div>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 6: SPIN Selling: Implication & Need-Payoff</h3>
-              <ul class="week-details">
-                <li>Mastering Implication & Need-Payoff questions.</li>
-                <li>Pitching Value, Not Features: Structuring for ROI.</li>
-              </ul>
-              <div class="week-output">Output: Full 10-minute value-focused Product Presentation.</div>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 7: Objection Handling & Closing Skills</h3>
-              <ul class="week-details">
-                <li>Anticipating Objections: Top 10 BFSI objections.</li>
-                <li>Handling Techniques: Feel-Felt-Found, Deflection.</li>
-                </ul>
-              <div class="week-output">Output: High-stakes, graded Negotiation role-play.</div>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 8: CRM Practical & Forecasting</h3>
-              <ul class="week-details">
-                <li>CRM Practical: Hands-on Sandbox training.</li>
-                <li>Forecasting & Sales Reporting.</li>
-              </ul>
-              <div class="week-output">Output: Comprehensive CRM Pipeline Audit/Sales forecast submission.</li>
-            </div>
-
-            <div class="week-item">
-              <h3>Week 9: Industry Immersion & Placement Prep</h3>
-              <ul class="week-details">
-                <li>Live projects with industry partners & Resume building.</li>
-                <li>Mock interviews & Placement drives.</li>
-              </ul>
-              <div class="week-output">Output: Portfolio submission and first-round placement interviews.</li>
-            </div>
-
-          </div>
-        </details>
-      </div>
-      <!-- END EXPANDABLE CURRICULUM SECTION -->
-  </section>
-  <!-- END: EXPANDABLE CURRICULUM SECTION (NEW POSITION) -->
-
-  <!-- ================================================== -->
-  <!-- SOCIAL PROOF SECTION (MOVED DOWN) -->
-  <!-- ================================================== -->
-  <section class="social-proof-section">
-      <div class="container">
-          <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">
-              Success By The Numbers
-          </h2>
-
-          <!-- Key Stats Block -->
-          <div class="key-stats">
-              <div class="stat-item">
-                  <h4>92%</h4>
-                  <p>Placement Rate</p>
-              </div>
-              <div class="stat-item">
-                  <h4>4.5 LPA</h4>
-                  <p>Highest Package</p>
-              </div>
-              <div class="stat-item">
-                  <h4>18+</h4>
-                  <p>Graduates Placed</p>
-              </div>
-          </div>
-
-          <!-- Testimonial Card -->
-          <div class="testimonial-card">
-              <div class="quote-text">
-                  “I moved from an entry-level call center job to a relationship manager role within 3 months of graduation. The real-world BFSI training was the difference maker.”
-              </div>
-              <div class="quote-author">
-                  Sanjay Kumawat <span>| Placed at HDFC Bank,Bani Park, Jaipur</span>
-              </div>
-          </div>
-      </div>
-  </section>
-  <!-- ================================================== -->
-
-  <!-- CTA -->
-  <section class="cta">
-    <h2>Admissions Open</h2>
-    <a href="tel:9743570824" class="cta-button">Call 9743570824</a>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <!-- Disclaimer Section -->
-    <div class="proof">
-        <div class="disclaimer-title">
-            Disclaimer :
         </div>
-        <!-- Detailed Disclosure -->
-        <p class="proof-footnote">
-            *Salary and placement outcomes depend on student performance, attendance, and interview results.
-        </p>
+    </header>
+
+    <!-- Shyamangi Heritage Section -->
+    <section id="shyamangi" class="py-16 px-6 bg-white border-b border-stone-100">
+        <div class="max-w-4xl mx-auto text-center">
+            <h3 class="brand-font text-gold text-sm tracking-[0.3em] uppercase mb-4">The Shyamangi Legacy</h3>
+            <p class="text-gray-600 text-lg leading-relaxed">
+                Goldstone is powered by <strong>Shyamangi</strong>, a name synonymous with reliability and industrial excellence in Rajasthan. We combine deep-rooted business values with modern sales performance to deliver talent that is as valuable as its namesake.
+            </p>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section id="process" class="py-24 px-6 bg-stone-50">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-4xl mb-16 brand-font uppercase tracking-wider">The Refining Process</h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-white p-10 rounded-sm shadow-sm border-b-4 border-navy hover:shadow-2xl transition-all group">
+                    <div class="w-16 h-16 bg-navy/5 text-navy rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+                        <span class="text-2xl font-bold">01</span>
+                    </div>
+                    <h3 class="text-xl mb-4 font-bold uppercase tracking-widest">The Sieve</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">We filter through hundreds of applicants to find the raw potential that possesses the core 'hunger' for sales success.</p>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="bg-white p-10 rounded-sm shadow-xl border-b-4 border-gold scale-105 z-10">
+                    <div class="w-16 h-16 bg-gold text-white rounded-full flex items-center justify-center mx-auto mb-6">
+                        <span class="text-2xl font-bold">02</span>
+                    </div>
+                    <h3 class="text-xl mb-4 font-bold text-gold uppercase tracking-widest">The Assay</h3>
+                    <p class="text-sm text-gray-600 leading-relaxed italic">"Verified Performance."</p>
+                    <p class="text-sm text-gray-500 leading-relaxed">Candidates undergo the Salesforge training, ensuring their skills are tested and verified against real-world targets.</p>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="bg-white p-10 rounded-sm shadow-sm border-b-4 border-navy hover:shadow-2xl transition-all group">
+                    <div class="w-16 h-16 bg-navy/5 text-navy rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-navy group-hover:text-gold transition-colors">
+                        <span class="text-2xl font-bold">03</span>
+                    </div>
+                    <h3 class="text-xl mb-4 font-bold uppercase tracking-widest">The Mint</h3>
+                    <p class="text-sm text-gray-500 leading-relaxed">Finally, we place 'Goldstone Certified' talent into your organization—ready to generate high-value revenue.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Employer Section -->
+    <section id="employers" class="py-24 px-6 max-w-6xl mx-auto grid md:grid-cols-2 gap-20 items-center">
+        <div class="relative">
+            <div class="absolute -left-4 -top-4 w-24 h-24 border-t-2 border-l-2 border-gold opacity-30"></div>
+            <h2 class="text-4xl mb-8 brand-font leading-snug">Assets That Grow.<br>Teams That Close.</h2>
+            <p class="mb-6 text-gray-600 leading-relaxed text-lg">
+                For Jaipur's business leaders, sales is the heartbeat. <strong>Goldstone</strong> ensures that heartbeat is strong. We don't just fill positions; we place assets that provide an immediate Return on Investment.
+            </p>
+            <div class="space-y-4 mb-10">
+                <div class="flex items-center gap-4 border-l-4 border-gold pl-4 py-2">
+                    <span class="font-bold text-navy uppercase text-sm tracking-widest">Quality Assurance Guarantee</span>
+                </div>
+                <div class="flex items-center gap-4 border-l-4 border-gold pl-4 py-2">
+                    <span class="font-bold text-navy uppercase text-sm tracking-widest">Salesforge Trained Graduates</span>
+                </div>
+                <div class="flex items-center gap-4 border-l-4 border-gold pl-4 py-2">
+                    <span class="font-bold text-navy uppercase text-sm tracking-widest">Exclusive Rajasthan Network</span>
+                </div>
+            </div>
+            <button onclick="document.getElementById('contact-modal').style.display='flex'" class="btn-gold px-10 py-4 rounded-sm font-bold uppercase text-xs tracking-[0.2em]">Partner with Goldstone</button>
+        </div>
+        <div class="relative">
+            <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?auto=format&fit=crop&q=80&w=1000" class="rounded-sm shadow-2xl grayscale hover:grayscale-0 transition-all duration-700" alt="Executive Meeting">
+            <div class="absolute -bottom-6 -right-6 bg-navy p-8 text-white max-w-xs shadow-2xl">
+                <p class="text-gold font-bold mb-2 uppercase text-[10px] tracking-widest">The Standard</p>
+                <p class="text-sm italic">"A Goldstone placement is designed to be the top 1% of your sales force."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seeker CTA -->
+    <section id="seekers" class="py-24 px-6 bg-navy text-white text-center relative overflow-hidden">
+        <div class="absolute inset-0 opacity-5 gem-pattern"></div>
+        <div class="relative z-10 max-w-4xl mx-auto">
+            <h2 class="text-4xl mb-6 brand-font text-gold uppercase tracking-widest">Become Gold Standard.</h2>
+            <p class="text-xl mb-12 font-light opacity-80 max-w-2xl mx-auto">
+                Are you a top performer? Don't settle for average placements. Join Goldstone and get connected with Jaipur's most prestigious firms.
+            </p>
+            <button onclick="document.getElementById('seeker-form').style.display='flex'" class="btn-gold px-12 py-5 rounded-sm font-bold uppercase tracking-widest text-lg shadow-2xl animate-pulse">Check Eligibility</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-16 px-6 bg-white border-t border-gray-100">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-10">
+            <div>
+                <div class="flex items-center gap-2 mb-4">
+                    <span class="brand-font font-bold text-2xl tracking-tighter uppercase">Goldstone</span>
+                </div>
+                <p class="text-xs text-gray-400 uppercase tracking-widest">A Strategic Division of Shyamangi Enterprises</p>
+            </div>
+            <div class="text-right">
+                <p class="text-sm font-bold uppercase tracking-widest mb-2">Corporate Office</p>
+                <p class="text-xs text-gray-500 uppercase tracking-wider">Mansarovar Industrial Area, Jaipur, Rajasthan</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Form Modals -->
+    <div id="seeker-form" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-md p-10 rounded-sm relative border-t-8 border-gold">
+            <button onclick="document.getElementById('seeker-form').style.display='none'" class="absolute right-4 top-4 text-gray-300 hover:text-navy text-3xl transition-colors">&times;</button>
+            <h3 class="brand-font text-2xl mb-2 text-navy uppercase">Candidate Assay</h3>
+            <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">Entry to the Goldstone Network</p>
+            <form class="space-y-6" onsubmit="event.preventDefault(); alert('Initial Assay complete. Our vetting team will contact you for a private interview.'); location.reload();">
+                <div>
+                    <label class="block text-[10px] font-bold uppercase mb-2 text-gray-400 tracking-widest">Your Sales Ambition</label>
+                    <select class="w-full border-b border-gray-200 py-2 outline-none focus:border-gold text-sm transition-colors">
+                        <option>To become the highest-paid closer</option>
+                        <option>To lead a national sales division</option>
+                        <option>To build my own business portfolio</option>
+                    </select>
+                </div>
+                <input type="text" placeholder="FULL NAME" required class="w-full border-b border-gray-200 py-3 outline-none focus:border-gold text-sm uppercase tracking-widest">
+                <input type="tel" placeholder="PHONE (WHATSAPP)" required class="w-full border-b border-gray-200 py-3 outline-none focus:border-gold text-sm tracking-widest">
+                <button type="submit" class="w-full btn-gold py-5 font-bold uppercase tracking-[0.3em] text-xs shadow-lg mt-4">Submit Application</button>
+            </form>
+        </div>
     </div>
-    <!-- End Disclaimer Section -->
-    
-    <!-- UPDATED: Copyright reflects parent company ownership -->
-    © 2024 Shyamangi Educraft Pvt. Ltd. | SalesCraft Academy
-  </footer>
+
+    <!-- Contact Modal -->
+    <div id="contact-modal" class="fixed inset-0 bg-black/90 z-[100] hidden items-center justify-center p-4 backdrop-blur-sm">
+        <div class="bg-white w-full max-w-md p-10 rounded-sm relative border-t-8 border-navy">
+            <button onclick="document.getElementById('contact-modal').style.display='none'" class="absolute right-4 top-4 text-gray-300 hover:text-navy text-3xl transition-colors">&times;</button>
+            <h3 class="brand-font text-2xl mb-2 text-navy uppercase">Talent Audit</h3>
+            <p class="text-xs text-gray-500 mb-8 uppercase tracking-widest">Upgrade to the Gold Standard</p>
+            <form class="space-y-4" onsubmit="event.preventDefault(); alert('Audit request received. We will contact your office shortly.'); location.reload();">
+                <input type="text" placeholder="COMPANY NAME" required class="w-full border-b border-gray-200 py-3 outline-none focus:border-navy text-sm uppercase tracking-widest">
+                <input type="text" placeholder="YOUR NAME" required class="w-full border-b border-gray-200 py-3 outline-none focus:border-navy text-sm uppercase tracking-widest">
+                <input type="tel" placeholder="MOBILE NUMBER" required class="w-full border-b border-gray-200 py-3 outline-none focus:border-navy text-sm tracking-widest">
+                <button type="submit" class="w-full bg-navy text-white py-5 font-bold uppercase tracking-[0.3em] text-xs shadow-lg mt-6 hover:bg-navy/90 transition-all">Request Audit</button>
+            </form>
+        </div>
+    </div>
 
 </body>
 </html>
