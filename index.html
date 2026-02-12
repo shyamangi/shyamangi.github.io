@@ -116,11 +116,36 @@
             color: var(--text-main);
         }
 
-        /* Filter drawer (right side) */
-        .filter-drawer { position: fixed; right: 0; top: 0; bottom: 0; width: 320px; background:#fff; z-index:220; transform: translateX(110%); transition: transform 0.35s ease; box-shadow: -12px 0 40px rgba(0,0,0,0.08); padding: 20px; overflow-y:auto }
-        .filter-drawer.show { transform: translateX(0); }
+        /* Filter drawer (burger box) - top dropdown under header */
+        .filter-drawer {
+            position: fixed;
+            left: 50%;
+            top: var(--header-h);
+            transform: translate(-50%, -110%);
+            width: min(980px, 96%);
+            max-height: 68vh;
+            background: #fff;
+            z-index: 220;
+            transition: transform 0.28s ease, opacity 0.28s;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+            padding: 18px;
+            overflow-y: auto;
+            border-radius: 12px;
+            opacity: 0;
+        }
+        .filter-drawer.show { transform: translate(-50%, 8px); opacity: 1; }
         .filter-drawer .close { display:block; margin-bottom:14px; background:none; border:none; font-weight:700; color:var(--accent); cursor:pointer }
-        @media (max-width:767px) { .filter-drawer { width: 100%; transform: translateY(110%); right:0; bottom:0; top:auto; border-top-left-radius:14px; border-top-right-radius:14px; } .filter-drawer.show{ transform: translateY(0); } }
+        @media (max-width:767px) {
+            .filter-drawer {
+                left: 0;
+                top: var(--header-h);
+                transform: translateY(-110%);
+                width: 100%;
+                max-height: 76vh;
+                border-radius: 0 0 14px 14px;
+            }
+            .filter-drawer.show{ transform: translateY(0); opacity:1; }
+        }
 
         /* Mobile filters: hide chip row and show a compact Filters button */
         #mobileFiltersBtn { display: none; background: #fff; border: 1px solid #eee; padding: 8px 12px; border-radius: 10px; font-weight:700; }
@@ -339,11 +364,8 @@
 
 <div class="container">
     <header>
-        <div style="display:flex; align-items:center; gap:12px">
-            <button id="burgerBtn" class="burger" aria-label="Open filters" onclick="toggleFilterDrawer()">☰</button>
-            <div class="brand">
-                <h1>Merit Book House</h1>
-            </div>
+        <div class="brand">
+            <h1>Merit Book House</h1>
         </div>
         <button class="desktop-cart" onclick="toggleCart()">
             Bag (<span id="cartCountDesktop">0</span>)
@@ -358,17 +380,9 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
             <input type="text" id="searchInput" placeholder="Search title, exam, or author...">
         </div>
-        <div class="filter-scroll" id="filterContainer">
-            <!-- Buttons will be generated dynamically inside drawer now. left empty here for accessibility and fallback -->
-        </div>
-    </div>
-</div>
-
-<!-- Filter drawer toggled by burger button -->
-<div id="filterDrawer" class="filter-drawer" aria-hidden="true">
-    <button class="close" onclick="toggleFilterDrawer()">Close</button>
-    <div id="filterContainer"></div>
-</div>
+        <!-- filters removed; only search remains -->
+     </div>
+ </div>
 
 <div class="container">
     <div id="bookGrid" class="grid"></div>
@@ -627,7 +641,7 @@
  { id: 208, title: "R.Gupta Ncc National Cadet (E)", title_hi: "(राष्ट्रीय कैडेट कोर) इंग्लिश", exam: " NCC NATIONAL CADET (E)", author: "R. Gupta's", publisher: "RPH", price: 224.00, img: "152_pgWgNyiZDaXXS8KsY_W22I_2iG8e7" },
  { id: 209, title: "R.Gupta Ncc National Cadet (H)", title_hi: "(राष्ट्रीय कैडेट कोर)  हिंदी", exam: " NCC NATIONAL CADET (H)", author: "R. Gupta's", publisher: "RPH", price: 207.00, img: "15Av-kPeuSmv44_q8ogSWUl06Gk-WSmnj" },
  { id: 210, title: "Rajasthan Vanpal", title_hi: "राजस्थान वनपाल", exam: "RAJASTHAN VANPAL", author: "Kanti Jain ,Mahaveer Jain", publisher: "Lakshya", price: 329.00, img: "16b9opzCkjljEDCRLAbSibFM7OiV1iCGi" },
- { id: 211, title: "Raj. Bhugol Arthvyavastha", title_hi: "राजस्थान भूगोल एवं अर्थव्यवस्था", exam: "ALL EXAM", author: "Dr.H.D. Singh ,Chitra Rao", publisher: "Panorama", price: 512.00, img: "16s2iZYQBGvVIZNm8_2yfo6IOhezgaXVK" },
+ { id: 211, title: "Raj. Bhugol Arthvyavastha", title_hi: "राजस्थान भूगोल एवं अर्थव्यवस्था", exam: "ALL EXAM", author: "Dr.H.D. सिंह ,Chitra Rao", publisher: "Panorama", price: 512.00, img: "16s2iZYQBGvVIZNm8_2yfo6IOhezgaXVK" },
  { id: 212, title: "Rajasthan Kala Avam Sanskriti", title_hi: "राजस्थान कला एवं संस्कृति", exam: "ALL EXAM", author: "Hoshiyar Singh", publisher: "DP", price: 300.00, img: "17OuScjjT5F_LqFn5NqX0MsbbPtgnnzyo" },
  { id: 213, title: "UGC NET Shikshan Avm Shodh", title_hi: "UGC NET शिक्षण एवं शोध", exam: "UGC NET ", author: "SAHITYA", publisher: "Sahitya ", price: 207.00, img: "17X3iAaDKKqy42CFp9JqMTdpNkSHXzAyt" },
  { id: 214, title: "Ugc Net/Jrf Hindi Paper 2", title_hi: "NTA UGC NET/JRF के लिए हिंदी साहित्य (Paper-II)", exam: "NTA UGC NET/JRF", author: "SAHITYA", publisher: "Sahitya ", price: 347.00, img: "18ZMWS-a6WkvUVTuKBmOlO8dv41_RNuaH" },
@@ -699,112 +713,62 @@
         book._examKey = arr.map(a => a.toLowerCase()); // lowercase keys for matching
     });
 
-    // compute unique filters with counts and display label
-    const filterMap = new Map(); // key(lowercase) -> {name, count}
-    inventory.forEach(book => {
-        (book._examDisplay || []).forEach((name, i) => {
-            const key = name.toLowerCase();
-            if (!filterMap.has(key)) filterMap.set(key, { name: name, count: 0 });
-            filterMap.get(key).count += 1;
-        });
-    });
-
-    const filters = Array.from(filterMap.entries()).map(([key, v]) => ({ key, name: v.name, count: v.count }));
-    // sort filters by count desc then name
-    filters.sort((a,b)=> b.count - a.count || a.name.localeCompare(b.name));
-
     // state
-    let currentFilters = new Set();
     let cart = JSON.parse(localStorage.getItem('merit_cart') || '[]');
 
     function saveCart(){ localStorage.setItem('merit_cart', JSON.stringify(cart)); }
 
-    // render filter buttons dynamically
-    function renderFilterButtons() {
-        const container = document.getElementById('filterContainer');
-        container.innerHTML = '';
-
-        const allBtn = document.createElement('button');
-        allBtn.className = 'filter-btn ' + (currentFilters.size === 0 ? 'active' : '');
-        allBtn.innerText = 'All';
-        allBtn.onclick = () => { currentFilters.clear(); renderFilterButtons(); render(); };
-        container.appendChild(allBtn);
-
-        filters.forEach(f => {
-            const btn = document.createElement('button');
-            btn.className = 'filter-btn' + (currentFilters.has(f.key) ? ' active' : '');
-            btn.setAttribute('data-filter', f.key);
-            btn.innerHTML = `${f.name} <small style="opacity:.6; margin-left:6px">(${f.count})</small>`;
-            btn.onclick = () => { toggleFilter(f.key); };
-            container.appendChild(btn);
-        });
-    }
-
-    function toggleFilter(key) {
-        if (currentFilters.has(key)) currentFilters.delete(key);
-        else currentFilters.add(key);
-        renderFilterButtons();
-        render();
-    }
-
-    // filter drawer toggle (burger)
-    function toggleFilterDrawer() {
-        const drawer = document.getElementById('filterDrawer');
-        const open = drawer.classList.toggle('show');
-        drawer.setAttribute('aria-hidden', !open);
-        // move focus for accessibility
-        if (open) drawer.querySelector('.close')?.focus(); else document.getElementById('burgerBtn')?.focus();
-    }
-
-    // debounce helper
-    function debounce(fn, wait) { let t; return function(...a){ clearTimeout(t); t = setTimeout(()=>fn.apply(this,a), wait); } }
-
     function render() {
         const grid = document.getElementById('bookGrid');
         const searchTerm = (document.getElementById('searchInput').value || '').toLowerCase();
- 
-        const filtered = inventory.filter(book => {
-            const title = (book.title || '').toLowerCase();
-            const titleHi = (book.title_hi || '').toLowerCase();
-            const author = (book.author || '').toLowerCase();
-            const examStr = (book._examDisplay || []).join(' ').toLowerCase();
- 
-            const matchesSearch = title.includes(searchTerm) || titleHi.includes(searchTerm) || author.includes(searchTerm) || examStr.includes(searchTerm);
- 
-            const matchesFilter = (currentFilters.size === 0) || book._examKey.some(k => Array.from(currentFilters).includes(k));
-            return matchesSearch && matchesFilter;
-        });
- 
+
+        let filtered;
+        if (!searchTerm.trim()) {
+            // empty search -> show all books
+            filtered = inventory.slice();
+        } else {
+            filtered = inventory.filter(book => {
+                const title = (book.title || '').toLowerCase();
+                const titleHi = (book.title_hi || '').toLowerCase();
+                const author = (book.author || '').toLowerCase();
+                const examStr = (book._examDisplay || []).join(' ').toLowerCase();
+
+                const matchesSearch = title.includes(searchTerm) || titleHi.includes(searchTerm) || author.includes(searchTerm) || examStr.includes(searchTerm);
+                const matchesFilter = true; // filters removed — search-only
+                return matchesSearch && matchesFilter;
+            });
+        }
+
         grid.innerHTML = filtered.map((book, i) => {
-             const isInCart = cart.some(item => item.id === book.id);
-             const examTags = (book._examDisplay || []).map(e => `<small style="margin-right:6px">${e}</small>`).join(' ');
-             return `
+            const isInCart = cart.some(item => item.id === book.id);
+            const examTags = (book._examDisplay || []).map(e => `<small style="margin-right:6px">${e}</small>`).join(' ');
+            return `
                 <div class="card" data-index="${i}">
-                     <div class="img-wrap">
-                         <img loading="lazy" src="https://lh3.googleusercontent.com/d/${book.img}" alt="${(book.title_hi||book.title).replace(/"/g,'') }" onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
-                     </div>
-                     <div class="card-meta">
-                         <span class="exam-tag">${examTags}</span>
-                         <span class="title-hi">${book.title_hi}</span>
-                         <div class="title-author-row">
-                             <span class="title-en">${book.title}</span>
-                             <span class="author">• ${book.author}</span>
-                         </div>
-                         <span class="book-id">Merit ID: #${book.id}</span>
-                     </div>
-                     <div class="card-footer">
-                         <div class="price-tag">₹${book.price.toFixed(0)}</div>
-                         <button type="button" class="add-btn ${isInCart ? 'in-cart' : ''}" onclick="toggleInCart(${book.id})" aria-pressed="${isInCart}">
-                             ${isInCart ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>' }
-                         </button>
-                     </div>
-                 </div>
-             `;
-         }).join('');
- 
+                    <div class="img-wrap">
+                        <img loading="lazy" src="https://lh3.googleusercontent.com/d/${book.img}" alt="${(book.title_hi||book.title).replace(/"/g,'') }" onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
+                    </div>
+                    <div class="card-meta">
+                        <span class="exam-tag">${examTags}</span>
+                        <span class="title-hi">${book.title_hi}</span>
+                        <div class="title-author-row">
+                            <span class="title-en">${book.title}</span>
+                            <span class="author">• ${book.author}</span>
+                        </div>
+                        <span class="book-id">Merit ID: #${book.id}</span>
+                    </div>
+                    <div class="card-footer">
+                        <div class="price-tag">₹${book.price.toFixed(0)}</div>
+                        <button type="button" class="add-btn ${isInCart ? 'in-cart' : ''}" onclick="toggleInCart(${book.id})" aria-pressed="${isInCart}">
+                            ${isInCart ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>' : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>' }
+                        </button>
+                    </div>
+                </div>
+            `;
+        }).join('');
+
         // After rendering update observer and progress
         initializeReelBehavior();
-     }
+    }
  
     // === Reel behavior ===
     let currentIndex = 0;
@@ -922,7 +886,6 @@
     // start autoplay initially
     // ensure render called before starting autoplay
     // init
-    renderFilterButtons();
     const debouncedRender = debounce(render, 220);
     document.getElementById('searchInput').addEventListener('input', debouncedRender);
     render(); updateCartUI(); startAutoplay();
