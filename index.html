@@ -18,6 +18,7 @@
             --ticker-h: 42px;
             --header-h: 88px;
             --controls-h: 72px; /* search + filters */
+            --tab-h: 78px; /* bottom tab bar height reserve */
         }
 
         * {
@@ -202,13 +203,57 @@
             margin: 0 auto;
         }
 
-        @media (min-width: 768px) {
-            .card { flex: 0 0 min(70vw, 560px); }
-            .desktop-cart { display: block; }
+        /* Reel container: vertical snap, one card per viewport */
+        #bookGrid {
+            height: calc(100vh - var(--ticker-h) - var(--header-h) - var(--controls-h) - var(--tab-h));
+            overflow-y: auto;
+            scroll-snap-type: y mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding: 0; /* container already has padding around it */
+        }
+        
+        /* Each card occupies the full reel viewport area and snaps into view */
+        .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            scroll-snap-align: start;
+            border-radius: 0; /* keep card edges flushed with viewport */
+            padding: 20px;
+            max-width: 900px;
+            margin: 0 auto 14px auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.06);
         }
 
-        @media (min-width: 1024px) {
-            .card { flex: 0 0 min(56vw, 640px); }
+        /* Bigger, centered book image for reel feel */
+        .img-wrap {
+            width: 100%;
+            max-width: 640px;
+            height: 62vh;
+            border-radius: 12px;
+            overflow: hidden;
+            background: #f1f1f1;
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-wrap img { width: auto; max-height: 100%; max-width: 100%; object-fit: cover; }
+
+        /* Make card meta content centered and readable */
+        .card-meta { text-align: center; }
+        .card-meta .title-en { max-width: 80%; white-space: normal; overflow: visible; text-overflow: none; display:block; margin:0 auto }
+        .card-meta .author { opacity: 0.75; }
+
+        /* Ensure body top padding still respects header+controls */
+        body { padding-top: calc(var(--ticker-h) + var(--header-h) + var(--controls-h)); padding-bottom: calc(var(--tab-h)); }
+
+        @media (min-width: 768px) {
+            #bookGrid { height: calc(100vh - var(--ticker-h) - var(--header-h) - var(--controls-h) - var(--tab-h)); }
+            .card { padding: 28px; }
         }
 
         /* Book Card */
