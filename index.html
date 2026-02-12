@@ -182,20 +182,34 @@
         }
         .filter-btn.active { background: #000; color: #fff; border-color: #000; }
 
-        /* Grid */
+        /* Horizontal carousel: one centered card with side peeks, snap-to-center */
         .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
+            display: flex;
             gap: 16px;
             padding: 25px 0;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            padding-bottom: 18px;
+            align-items: start;
+        }
+        .grid::-webkit-scrollbar { display: none; }
+
+        /* Each card is fixed-width and snaps to center */
+        .card {
+            flex: 0 0 min(86vw, 520px);
+            scroll-snap-align: center;
+            margin: 0 auto;
         }
 
-        @media (min-width: 768px) { 
-            /* keep two columns on tablet/desktop but increase gap; show desktop cart */
-            .grid { grid-template-columns: repeat(2, 1fr); gap: 24px; } 
+        @media (min-width: 768px) {
+            .card { flex: 0 0 min(70vw, 560px); }
             .desktop-cart { display: block; }
         }
-        @media (min-width: 1024px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+
+        @media (min-width: 1024px) {
+            .card { flex: 0 0 min(56vw, 640px); }
+        }
 
         /* Book Card */
         .card {
@@ -533,7 +547,7 @@
  { id: 133, title: "Frp  2nd Grade Bhugol", title_hi: "II Grade भूगोल", exam: "II Grade", author: "Dr. Vijay Prakash, Sanjay Chaudhari, Nidhi Yadav", publisher: "Chyavan", price: 219.00, img: "1P4IOMDglULGh_FdRZPf0mR8opgG2O-18" },
  { id: 134, title: "Rajasthan Ki Rajvyvastha", title_hi: "राजस्थान की राजव्यवस्था", exam: "ALL EXAM", author: "Dr. Rahul Chaudhary", publisher: "Gyan Vitan", price: 308.00, img: "1QgxCq4Mst-uIL2rfzVvixLP8Zkcb8eM9" },
  { id: 135, title: "Bharat Ki Rajvyavastha", title_hi: "भारत की राजव्यवस्था", exam: "ALL EXAM", author: "Dr. Rahul Chaudhary", publisher: "Gyan Vitan", price: 364.00, img: "1QwHe7cpv7_v-qE60p1Bpmgwx_wNhTmqb" },
- { id: 136, title: "Current Varshiki", title_hi: "करेंट अफेयर्स वार्षिकी 2025-26", exam: "ALL EXAM", author: "Mukesh kumar ", publisher: "Speedy", price: 90.00, img: "1RgpFx8xdPWEJKbtFYEyMIf9sELoBwjsU" },
+ { id: 136, title: "Current Varshiki", title_hi: "करेंट अफेयर्स वार्षिकी 2025-26", exam: "ALL EXAM", author: "Mukesh kumar ", publisher: "Speedy", price:  90.00, img: "1RgpFx8xdPWEJKbtFYEyMIf9sELoBwjsU" },
  { id: 137, title: "Frp Current Gk", title_hi: "राजस्थान विशेष: प्रमुख हॉट टॉपिक्स (2025-26)", exam: "ALL EXAM", author: "Santosh Sharma", publisher: "Mumal", price: 27.00, img: "1Rk7v6UEOoPLKFjSjKB4IOdWz7e78epfA" },
  { id: 138, title: "Static Gk", title_hi: "स्थैतिक सामान्य ज्ञान", exam: "ALL EXAM", author: "Naveen Sharma Sir", publisher: "Ankit Bhati", price: 159.00, img: "1S73t_rhyahozBi8bFXOocTGaAbv5ToNX" },
  { id: 139, title: "Ssc Gd Samanya Hindi", title_hi: "SSC GD सामान्य हिंदी", exam: "SSC GD CONSTABLE", author: "Ankit Bhati", publisher: "Ankit Bhati", price: 119.00, img: "1SO_SMIvweJxRA5LeFPVvBaoRHAOjd1G-" },
