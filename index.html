@@ -15,9 +15,9 @@
             --whatsapp: #25d366;
             --radius: 18px;
             --max-width: 1200px;
-            --ticker-h: 42px;
+            --ticker-h: 0; /* removed banner */
             --header-h: 88px;
-            --controls-h: 72px; /* search + filters */
+            --controls-h: 72px; /* search area height */
             --tab-h: 78px; /* bottom tab bar height reserve */
         }
 
@@ -43,37 +43,18 @@
             padding: 0 20px;
         }
 
-        /* Ticker */
-        .ticker {
-            background: #000;
-            color: #fff;
-            font-size: 11px;
-            height: var(--ticker-h);
-            line-height: var(--ticker-h);
-            padding: 0;
-            text-align: center;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 120;
-        }
-
         /* Header */
         header {
-            padding: 12px 0; /* compact fixed header */
+            padding: 12px 16px; /* compact fixed header */
             display: flex;
             justify-content: space-between;
             align-items: center;
             position: fixed;
-            top: var(--ticker-h);
+            top: 0;
             left: 0;
             right: 0;
             z-index: 130;
-            background: rgba(248,249,250,0.9);
+            background: rgba(248,249,250,0.95);
             backdrop-filter: blur(8px);
             -webkit-backdrop-filter: blur(8px);
             border-bottom: 1px solid rgba(0,0,0,0.03);
@@ -135,53 +116,14 @@
             color: var(--text-main);
         }
 
-        .filter-scroll {
-            display: flex;
-            overflow-x: auto;
-            gap: 10px;
-            scrollbar-width: none;
-            padding-bottom: 4px;
-        }
-        .filter-scroll::-webkit-scrollbar { display: none; }
+        /* Filter drawer (right side) */
+        .filter-drawer { position: fixed; right: 0; top: 0; bottom: 0; width: 320px; background:#fff; z-index:220; transform: translateX(110%); transition: transform 0.35s ease; box-shadow: -12px 0 40px rgba(0,0,0,0.08); padding: 20px; overflow-y:auto }
+        .filter-drawer.show { transform: translateX(0); }
+        .filter-drawer .close { display:block; margin-bottom:14px; background:none; border:none; font-weight:700; color:var(--accent); cursor:pointer }
+        @media (max-width:767px) { .filter-drawer { width: 100%; transform: translateY(110%); right:0; bottom:0; top:auto; border-top-left-radius:14px; border-top-right-radius:14px; } .filter-drawer.show{ transform: translateY(0); } }
 
         /* Mobile filters: hide chip row and show a compact Filters button */
         #mobileFiltersBtn { display: none; background: #fff; border: 1px solid #eee; padding: 8px 12px; border-radius: 10px; font-weight:700; }
-
-        /* When opened on mobile, the filter row becomes a bottom sheet */
-        .filter-scroll.mobile-modal {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: #fff;
-            padding: 14px 16px;
-            box-shadow: 0 -12px 40px rgba(0,0,0,0.12);
-            border-top-left-radius: 14px;
-            border-top-right-radius: 14px;
-            max-height: 60vh;
-            overflow-y: auto;
-            z-index: 200;
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        @media (max-width: 767px) {
-            .filter-scroll { display: none; }
-            #mobileFiltersBtn { display: inline-block; }
-        }
-
-        .filter-btn {
-            padding: 8px 22px;
-            background: #fff;
-            border: 1px solid #eee;
-            border-radius: 25px;
-            white-space: nowrap;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-        .filter-btn.active { background: #000; color: #fff; border-color: #000; }
 
         /* Horizontal carousel: one centered card with side peeks, snap-to-center */
         .grid {
@@ -395,15 +337,13 @@
 </head>
 <body>
 
-<div class="ticker">🚀 Fast Delivery Across Rajasthan</div>
-
 <div class="container">
     <header>
-        <div class="brand">
-            <h1>Merit Book House</h1>
-            <p>Rajasthan Govt. Exam Books </p>
-            <p> RAS-Police-REET-Patwar Abki Baar Merit Paar  </p>
-            
+        <div style="display:flex; align-items:center; gap:12px">
+            <button id="burgerBtn" class="burger" aria-label="Open filters" onclick="toggleFilterDrawer()">☰</button>
+            <div class="brand">
+                <h1>Merit Book House</h1>
+            </div>
         </div>
         <button class="desktop-cart" onclick="toggleCart()">
             Bag (<span id="cartCountDesktop">0</span>)
@@ -418,11 +358,16 @@
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
             <input type="text" id="searchInput" placeholder="Search title, exam, or author...">
         </div>
-        <button id="mobileFiltersBtn" aria-expanded="false" aria-controls="filterContainer" onclick="toggleMobileFilters()">Filters</button>
         <div class="filter-scroll" id="filterContainer">
-            <!-- Buttons will be generated dynamically -->
+            <!-- Buttons will be generated dynamically inside drawer now. left empty here for accessibility and fallback -->
         </div>
     </div>
+</div>
+
+<!-- Filter drawer toggled by burger button -->
+<div id="filterDrawer" class="filter-drawer" aria-hidden="true">
+    <button class="close" onclick="toggleFilterDrawer()">Close</button>
+    <div id="filterContainer"></div>
 </div>
 
 <div class="container">
@@ -802,12 +747,13 @@
         render();
     }
 
-    // mobile filters toggle
-    function toggleMobileFilters() {
-        const container = document.getElementById('filterContainer');
-        const btn = document.getElementById('mobileFiltersBtn');
-        const open = container.classList.toggle('mobile-modal');
-        btn.setAttribute('aria-expanded', open);
+    // filter drawer toggle (burger)
+    function toggleFilterDrawer() {
+        const drawer = document.getElementById('filterDrawer');
+        const open = drawer.classList.toggle('show');
+        drawer.setAttribute('aria-hidden', !open);
+        // move focus for accessibility
+        if (open) drawer.querySelector('.close')?.focus(); else document.getElementById('burgerBtn')?.focus();
     }
 
     // debounce helper
@@ -981,7 +927,6 @@
     document.getElementById('searchInput').addEventListener('input', debouncedRender);
     render(); updateCartUI(); startAutoplay();
  </script>
-
 </body>
 </html>
 
