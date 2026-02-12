@@ -290,9 +290,9 @@
             <p> RAS-Police-REET-Patwar Abki Baar Merit Paar  </p>
             
         </div>
-        <div class="desktop-cart" onclick="toggleCart()">
+        <button class="desktop-cart" onclick="toggleCart()">
             Bag (<span id="cartCountDesktop">0</span>)
-        </div>
+        </button>
     </header>
 </div>
 
@@ -300,7 +300,7 @@
     <div class="container">
         <div class="search-box">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.3-4.3"></path></svg>
-            <input type="text" id="searchInput" placeholder="Search title, exam, or author..." onkeyup="render()">
+            <input type="text" id="searchInput" placeholder="Search title, exam, or author...">
         </div>
         <div class="filter-scroll" id="filterContainer">
             <button class="filter-btn active" onclick="setFilter('All', this)">All</button>
@@ -333,7 +333,7 @@
     <div class="cart-inner">
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px">
             <h2 style="font-size:26px; letter-spacing:-1px">Your Bag</h2>
-            <div onclick="toggleCart()" style="font-weight:700; color:var(--accent); cursor:pointer">Done</div>
+            <button onclick="toggleCart()" style="font-weight:700; color:var(--accent); cursor:pointer; background:none; border:none">Done</button>
         </div>
         <div id="cartList"></div>
     </div>
@@ -349,8 +349,9 @@
 </div>
 
 <script>
+    // Inventory (unchanged)
     const inventory = [
-       
+        
  { id: 1, title: "Rajasthan Ka Bhugol", title_hi: "राजस्थान का भूगोल ", exam: "RAS ,PSI", author: "Kapil Choudhary", publisher: "Booster Academy", price: 228.00, img: "1rQGjNj2r65ohKv9ocewOQzveFvkIplua" },
  { id: 2, title: "Rajasthan Rajvyavastha", title_hi: "राजस्थान राजव्यवस्था", exam: "RAS ,PSI", author: "Kapil Choudhary", publisher: "Booster Academy", price: 171.00, img: "1LzP9tJ6Ul_Z7glgIunMyfSCwaI7d3r_g" },
  { id: 3, title: "Rajasthan Itihas", title_hi: "राजस्थान इतिहास", exam: "RAS ,PSI", author: "Kapil Choudhary", publisher: "Booster Academy", price: 238.00, img: "1RbPiMySozXViyN3e-46YrY61lpIgl5fX" },
@@ -394,9 +395,9 @@
  { id: 41, title: "Ssc Gd Constable", title_hi: "एस.एस.सी. जीडी कांस्टेबल", exam: "SSC GD CONSTABLE", author: "Khan Sir", publisher: "RBD", price: 280.00, img: "1HuFomJBfZRc6ZNaADjTS2HOJ6ecuEteu" },
  { id: 42, title: "Frp Raj. Police Gk Vigyan", title_hi: "राजस्थान पुलिस कांस्टेबल", exam: "RAJASTHION POLICE CONSTABLE", author: "Subhash Charan ,Ramakant Sharma,Narayan Sharma,U.S. Shekhawat", publisher: "RBD", price: 470.00, img: "1G7ee2c0_EYldY3q8LF2dREeu8p8olkH6" },
  { id: 43, title: "Rajasthan Ka Itihas Divyastra", title_hi: "राजस्थान इतिहास", exam: "ALL EXAM", author: "Subhash Charan", publisher: "RBD", price: 162.00, img: "1XyvbrzvCgvnl-0iNV4kSbrBhC4cifIzU" },
- { id: 44, title: "Frp Rajasthan Kala Sanskriti", title_hi: "राजस्थान कला एवं संस्कृति", exam: "ALL EXAM", author: "Subhash Charan ,Ramakant Sharma", publisher: "RBD", price: 181.00, img: "1nhAexu82IPab92LB5DiJadINLKYhHZqD" },
- { id: 45, title: "Rajasthan Ka Bhugol Divyastra", title_hi: "राजस्थान का भूगोल ", exam: "ALL EXAM", author: "Subhash Charan , Narayan Sharma", publisher: "RBD", price: 162.00, img: "1fRRGsdSCyjhNAfAWCotAsA_7bknu5YoY" },
- { id: 46, title: "High Court Guide Rbd", title_hi: "राजस्थान उच्च न्यायालय", exam: "HIGH COURT", author: "Dr. Sumanlata Yadav, Subhash Charan, Narayan Sharma", publisher: "RBD", price: 297.00, img: "1m3tsx3GPk7jfpgvxUoY1J657kZRa4Es0" },
+ { id: 44, title: "Frp Rajasthan Kala Sanskriti", title_hi: "राजस्थान कला एवं संस्कृति", exam: "ALL EXAM", author: "Subhash Charan ,Ramakant शर्मा", publisher: "RBD", price: 181.00, img: "1nhAexu82IPab92LB5DiJadINLKYhHZqD" },
+ { id: 45, title: "Rajasthan Ka Bhugol Divyastra", title_hi: "राजस्थान का भूगोल ", exam: "ALL EXAM", author: "Subhash Charan , Narayan शर्मा", publisher: "RBD", price: 162.00, img: "1fRRGsdSCyjhNAfAWCotAsA_7bknu5YoY" },
+ { id: 46, title: "High Court Guide Rbd", title_hi: "राजस्थान उच्च न्यायालय", exam: "HIGH COURT", author: "Dr. Sumanlata Yadav, Subhash Charan, Narayan शर्मा", publisher: "RBD", price: 297.00, img: "1m3tsx3GPk7jfpgvxUoY1J657kZRa4Es0" },
  { id: 47, title: "2nd Grade SST Itihas", title_hi: "II Grade (द्वितीय श्रेणी शिक्षक) केसामाजिक विज्ञान (SST) विषय के इतिहास", exam: "II Grade", author: "Pawan Bhawariya", publisher: "Nath Publication", price: 171.00, img: "1eg6OkASJKqErJoMZibSyHQ6S9G0AQZJH" },
  { id: 48, title: "1st Grade Shekshik Prabandh", title_hi: "I Grade (School Lecturer) परीक्षा के प्रथम प्रश्न-पत्र (Paper-I) के खंड शैक्षिक प्रबन्ध ", exam: "1st Grade", author: "Pawan Bhawariya", publisher: "Nath Publication", price: 180.00, img: "1VB3VcOCwotYJa7ecY_6DRYSWAZOKZSAB" },
  { id: 49, title: "2nd Grade Bhugol SST", title_hi: "II Grade (द्वितीय श्रेणी शिक्षक) SST (सामाजिक विज्ञान) विषय के भूगोल", exam: "II Grade", author: "K.C .Godhra ,Vinod taler", publisher: "Nath Publication", price: 225.00, img: "1UqljcrHmtbg5jpVdmA4CF5h6vDu6mdJ8" },
@@ -618,22 +619,41 @@
  { id: 265, title: "Amar Manak Hindi Shabdkosh H-H", title_hi: "अमर मानक हिंदी शब्दकोश (Hindi-Hindi)", exam: "CENTRAL ALL EXAM", author: "Krishnakant Dikshit ,Suryanarayan Upadhyay", publisher: "KAMAL", price: 216.00, img: "1zookcHa7rKn6uRPhHlwme0juJyyJUjjP" },
     ];
 
-    let cart = [];
+    // Restore cart from localStorage
+    let cart = JSON.parse(localStorage.getItem('merit_cart') || '[]');
     let currentFilter = 'All';
+
+    function saveCart() {
+        localStorage.setItem('merit_cart', JSON.stringify(cart));
+    }
+
+    // Simple debounce
+    function debounce(fn, wait) {
+        let t;
+        return function(...args) {
+            clearTimeout(t);
+            t = setTimeout(() => fn.apply(this, args), wait);
+        }
+    }
 
     function render() {
         const grid = document.getElementById('bookGrid');
         const searchTerm = document.getElementById('searchInput').value.toLowerCase();
         
         const filtered = inventory.filter(book => {
-            const matchesSearch = 
-                book.title.toLowerCase().includes(searchTerm) || 
-                book.title_hi.includes(searchTerm) ||
-                book.author.toLowerCase().includes(searchTerm) ||
-                book.exam.toLowerCase().includes(searchTerm);
+            const title = (book.title || '').toLowerCase();
+            const titleHi = (book.title_hi || '').toLowerCase();
+            const author = (book.author || '').toLowerCase();
+            const exam = (book.exam || '').toLowerCase();
 
-            const examList = book.exam.split(',').map(e => e.trim());
-            const matchesFilter = (currentFilter === 'All' || examList.includes(currentFilter));
+            const matchesSearch = 
+                title.includes(searchTerm) || 
+                titleHi.includes(searchTerm) ||
+                author.includes(searchTerm) ||
+                exam.includes(searchTerm);
+
+            const examList = (book.exam || '').split(',').map(e => e.trim().toLowerCase());
+            const matchesFilter = (currentFilter === 'All' || examList.includes(currentFilter.toLowerCase()));
 
             return matchesSearch && matchesFilter;
         });
@@ -643,7 +663,7 @@
             return `
                 <div class="card">
                     <div class="img-wrap">
-                        <img src="https://lh3.googleusercontent.com/d/${book.img}" alt="${book.title}" onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
+                        <img loading="lazy" src="https://lh3.googleusercontent.com/d/${book.img}" alt="${(book.title_hi||book.title).replace(/"/g,'') }" onerror="this.src='https://via.placeholder.com/300x420?text=No+Image'">
                     </div>
                     <div class="card-meta">
                         <span class="exam-tag">${book.exam}</span>
@@ -656,12 +676,12 @@
                     </div>
                     <div class="card-footer">
                         <div class="price-tag">₹${book.price.toFixed(0)}</div>
-                        <div class="add-btn ${isInCart ? 'in-cart' : ''}" onclick="toggleInCart(${book.id})">
+                        <button type="button" class="add-btn ${isInCart ? 'in-cart' : ''}" onclick="toggleInCart(${book.id})" aria-pressed="${isInCart}">
                             ${isInCart ? 
                                 '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"></polyline></svg>' : 
                                 '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>'
                             }
-                        </div>
+                        </button>
                     </div>
                 </div>
             `;
@@ -671,7 +691,7 @@
     function setFilter(cat, btn) {
         currentFilter = cat;
         document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-        btn.classList.add('active');
+        if (btn) btn.classList.add('active');
         render();
     }
 
@@ -681,10 +701,11 @@
             cart.splice(index, 1);
         } else {
             const book = inventory.find(b => b.id === id);
-            cart.push(book);
+            if (book) cart.push(book);
         }
         updateCartUI();
         render();
+        saveCart();
     }
 
     function updateCartUI() {
@@ -700,19 +721,20 @@
         } else {
             list.innerHTML = cart.map(item => `
                 <div class="cart-item">
-                    <img src="https://lh3.googleusercontent.com/d/${item.img}" onerror="this.src='https://via.placeholder.com/50x70?text=?'">
+                    <img loading="lazy" src="https://lh3.googleusercontent.com/d/${item.img}" alt="${(item.title_hi||item.title).replace(/"/g,'')}" onerror="this.src='https://via.placeholder.com/50x70?text=No+Image'">
                     <div style="flex:1">
                         <div style="font-weight:700; font-size:15px; line-height:1.2">${item.title_hi}</div>
                         <div style="color:var(--text-sub); font-size:12px">Merit ID: #${item.id}</div>
-                        <div style="font-weight:600; font-size:14px; margin-top:2px">₹${item.price}</div>
+                        <div style="font-weight:600; font-size:14px; margin-top:2px">₹${item.price.toFixed(0)}</div>
                     </div>
-                    <div onclick="toggleInCart(${item.id})" style="color:#ff3b30; font-size:12px; font-weight:700; cursor:pointer">Remove</div>
+                    <button type="button" onclick="toggleInCart(${item.id})" style="color:#ff3b30; font-size:12px; font-weight:700; cursor:pointer; background:none; border:none">Remove</button>
                 </div>
             `).join('');
         }
 
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
+        const total = cart.reduce((sum, item) => sum + (Number(item.price)||0), 0);
         document.getElementById('totalPrice').innerText = `₹${total.toFixed(0)}`;
+        saveCart();
     }
 
     function toggleCart() {
@@ -724,15 +746,21 @@
         if (cart.length === 0) return;
         let text = `*New Order from Merit*\n---\n`;
         cart.forEach((item, idx) => {
-            text += `${idx + 1}. [Merit ID: ${item.id}] ${item.title_hi} - ₹${item.price}\n`;
+            text += `${idx + 1}. [Merit ID: ${item.id}] ${item.title_hi} - ₹${item.price.toFixed(0)}\n`;
         });
-        const total = cart.reduce((sum, item) => sum + item.price, 0);
-        text += `\n*Total Amount: ₹${total}*\n---\nKindly confirm my order.`;
+        const total = cart.reduce((sum, item) => sum + (Number(item.price)||0), 0);
+        text += `\n*Total Amount: ₹${total.toFixed(0)}*\n---\nKindly confirm my order.`;
         const wpUrl = `https://wa.me/919829000000?text=${encodeURIComponent(text)}`;
         window.open(wpUrl, '_blank');
     }
 
+    // Debounced search
+    const debouncedRender = debounce(render, 220);
+    document.getElementById('searchInput').addEventListener('input', debouncedRender);
+
+    // Initial UI
     render();
+    updateCartUI();
 </script>
 
 </body>
